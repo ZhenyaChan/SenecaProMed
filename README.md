@@ -1,2 +1,12 @@
-# SenecaProMed
-PRJ566 Project
+# PRJ566 Project - SenecaProMed
+
+## Overview:
+
+Ever since the COVID-19 pandemic, people have been hesitant to leave their houses. Many businesses have been significantly impacted. Uber Eats, Skip the Dishes, and similar services have seen a rise in use as people work remotely and more often choose to have meals and groceries delivered. However, purchasing prescription drugs and medication has not changed with the times. We look to address this issue by creating a web application that will allow for the delivery of needed medication with an easy-to-use interface.
+
+According to the Canadian Drugs and Substances Act (CDSA), medications need to be sent by those who are authorized, pharmacists. Medications that are ordered need to be recorded in a detailed database and reviewed with the patient before release. The Drug and Pharmacies Regulation Act (DPRA) states that all deliveries must be traceable and auditable. Moreover, signatures from patients are required (either pen, ink, or electronically) when receiving NAPRA scheduled 1 medication. The delivery person of the medicines is prohibited from signing for the patients. Special instructions for leaving the medications unattended, such as outside or between doors, are not allowed.
+
+## Background
+
+People who need prescription medication must physically go to a pharmacy with ID to purchase and pick up their medication or have a family member purchase and pick up the medication on their behalf. This may be a problem for those who are very sick or have mobility issues as well as the elderly. Today almost anything can be purchased online and delivered but not prescription medication. 
+Having a system to handle the interaction between the patients and the pharmacists would be appreciated. With the ideal system, time would be saved, fewer physical papers to document, and be extra safe. 
