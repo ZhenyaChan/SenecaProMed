@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-- [Overview:](#overview)
+- [Overview](#overview)
 - [Background](#background)
 - [Weekly Deliverable Schedule](#weekly-deliverable-schedule)
 - [Suggested Tools](#suggested-tools)
@@ -10,7 +10,7 @@
   - [Development Languages](#development-languages)
   - [Development and Versioning Tools](#development-and-versioning-tools)
 
-## Overview:
+## Overview
 
 Ever since the COVID-19 pandemic, people have been hesitant to leave their houses. Many businesses have been significantly impacted. Uber Eats, Skip the Dishes, and similar services have seen a rise in use as people work remotely and more often choose to have meals and groceries delivered. However, purchasing prescription drugs and medication has not changed with the times. We look to address this issue by creating a web application that will allow for the delivery of needed medication with an easy-to-use interface.
 
@@ -47,4 +47,4 @@ Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x
 - Git
   - GitHub
 - Markdown
-  - [Markdown-ToC](https://luciopaiva.com/markdown-toc/): To generate a Table of Contents in Markdown
+  - [Markdown-ToC](https://luciopaiva.com/markdown-toc/): To quickly generate a Table of Contents in Markdown.
