@@ -1,6 +1,6 @@
 # PRJ566 Project - SenecaProMed
 
-# Table of contents
+## Table of contents
 
 - [Overview:](#overview)
 - [Background](#background)
