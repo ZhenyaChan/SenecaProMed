@@ -10,3 +10,7 @@ According to the Canadian Drugs and Substances Act (CDSA), medications need to b
 
 People who need prescription medication must physically go to a pharmacy with ID to purchase and pick up their medication or have a family member purchase and pick up the medication on their behalf. This may be a problem for those who are very sick or have mobility issues as well as the elderly. Today almost anything can be purchased online and delivered but not prescription medication. 
 Having a system to handle the interaction between the patients and the pharmacists would be appreciated. With the ideal system, time would be saved, fewer physical papers to document, and be extra safe. 
+
+## Weekly Deliverable Schedule
+
+Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x:/r/sites/20220906PRJ566-Team01/_layouts/15/Doc.aspx?action=edit&sourcedoc=%7B7979abd8-0c7a-45f5-ba54-66a6cb0435a4%7D&wdOrigin=TEAMS-ELECTRON.teamsSdk.openFilePreview&wdExp=TEAMS-CONTROL) on the teams sharepoint. 
