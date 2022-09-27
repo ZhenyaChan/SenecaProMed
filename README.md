@@ -1,5 +1,15 @@
 # PRJ566 Project - SenecaProMed
 
+# Table of contents
+
+- [Overview:](#overview)
+- [Background](#background)
+- [Weekly Deliverable Schedule](#weekly-deliverable-schedule)
+- [Suggested Tools](#suggested-tools)
+  - [UI/UXD - Wireframes/Mock-ups](#uiuxd---wireframesmock-ups)
+  - [Development Languages](#development-languages)
+  - [Development and Versioning Tools](#development-and-versioning-tools)
+
 ## Overview:
 
 Ever since the COVID-19 pandemic, people have been hesitant to leave their houses. Many businesses have been significantly impacted. Uber Eats, Skip the Dishes, and similar services have seen a rise in use as people work remotely and more often choose to have meals and groceries delivered. However, purchasing prescription drugs and medication has not changed with the times. We look to address this issue by creating a web application that will allow for the delivery of needed medication with an easy-to-use interface.
@@ -14,3 +24,27 @@ Having a system to handle the interaction between the patients and the pharmacis
 ## Weekly Deliverable Schedule
 
 Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x:/r/sites/20220906PRJ566-Team01/_layouts/15/Doc.aspx?action=edit&sourcedoc=%7B7979abd8-0c7a-45f5-ba54-66a6cb0435a4%7D&wdOrigin=TEAMS-ELECTRON.teamsSdk.openFilePreview&wdExp=TEAMS-CONTROL) on the teams sharepoint. 
+
+## Suggested Tools
+
+### UI/UXD - Wireframes/Mock-ups
+
+- [Adobe XD](https://www.adobe.com/ca/products/xd.html)
+- [Figma](https://www.figma.com/)
+- [Wireframe](https://wireframe.cc/)
+
+> A comprehensive list of different tools for UI/UX design can be found in this [article](https://webflow.com/blog/ui-ux-design-tools).  
+
+### Development Languages
+
+- JavaScript
+- HTML/CSS
+
+### Development, Documentation, and Versioning Tools
+
+- IDEs
+  - VSCode
+- Git
+  - GitHub
+- Markdown
+  - [Markdown-ToC](https://luciopaiva.com/markdown-toc/): To generate a Table of Contents in Markdown
