@@ -57,7 +57,7 @@ Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x
  - Start web app
  - Professor can create an account
 
-## Mileston 2 
+## Milestone 2 
   - Create front-end header and footer layouts
   - Standadize fonts colors, graphics
   - Discuss about the application and sample layouts with professor
@@ -70,7 +70,7 @@ Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x
       - Create driver layouts
   - Access layouts for all user with professor
 
-## Milstone 4
+## Milestone 4
    - Begin to cre API for users
       - Create administrator API
       - Create pharmacy API
