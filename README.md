@@ -50,10 +50,22 @@ Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x
   - [Markdown-ToC](https://luciopaiva.com/markdown-toc/): To quickly generate a Table of Contents in Markdown.
 
 ## Milestone 1 
-
  - Configure cloud storage
  - Create database and add sample data
  - Connect web app to the database
  - Create user account
  - Start web app
- 
+
+## Mileston 2 
+  - Create front-end header and footer layouts
+  - Standadize fonts colors, graphics
+  - Discuss about the application and sample layouts with professor
+
+## Milestone 3
+  - Begin to create user componets
+      - Create administrator layouts
+      - Create pharmacy layouts
+      - Create client layouts
+      - Create driver layouts
+  - Access layouts for all user with professor
+    
