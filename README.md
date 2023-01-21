@@ -9,7 +9,7 @@
   - [UI/UXD - Wireframes/Mock-ups](#uiuxd---wireframesmock-ups)
   - [Development Languages](#development-languages)
   - [Development and Versioning Tools](#development-and-versioning-tools)
-- [Milestones](#Milestone 1)
+- [Milestones](#Milestone-1)
 
 ## Overview
 
