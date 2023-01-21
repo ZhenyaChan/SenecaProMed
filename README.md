@@ -49,12 +49,13 @@ Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x
 - Markdown
   - [Markdown-ToC](https://luciopaiva.com/markdown-toc/): To quickly generate a Table of Contents in Markdown.
 
-## Milestone 1 
+## Milestone 1 ## 12 days
  - Configure cloud storage
  - Create database and add sample data
  - Connect web app to the database
  - Create user account
  - Start web app
+ - Professor can create an account
 
 ## Mileston 2 
   - Create front-end header and footer layouts
@@ -68,4 +69,22 @@ Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x
       - Create client layouts
       - Create driver layouts
   - Access layouts for all user with professor
+
+## Milstone 4
+   - Begin to cre API for users
+      - Create administrator API
+      - Create pharmacy API
+      - Create client API
+      - Create driver API
+   - Ability to navigate through layouts
+   - Check the app functionalities
+
+## Milestone 5
+  - Create integration tests for API
+    - check for bugs
+    - Comment on necessary areas
+    - Change areas based on professor's suggestions
+  - Closing
+    - Closing meetings
+  
     
