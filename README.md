@@ -49,8 +49,8 @@ Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x
 - Markdown
   - [Markdown-ToC](https://luciopaiva.com/markdown-toc/): To quickly generate a Table of Contents in Markdown.
 
-## Milestone 1 ## 12 days
- - Configure cloud storage
+## Milestone 1 
+ -[ ] Configure cloud storage
  - Create database and add sample data
  - Connect web app to the database
  - Create user account
