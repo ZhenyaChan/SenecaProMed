@@ -23,7 +23,7 @@ Having a system to handle the interaction between the patients and the pharmacis
 
 ## Weekly Deliverable Schedule
 
-Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x:/r/sites/20220906PRJ566-Team01/_layouts/15/Doc.aspx?action=edit&sourcedoc=%7B7979abd8-0c7a-45f5-ba54-66a6cb0435a4%7D&wdOrigin=TEAMS-ELECTRON.teamsSdk.openFilePreview&wdExp=TEAMS-CONTROL) on the teams sharepoint. 
+Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x:/r/sites/2023WinterPRJ666NAAProjectImplementationcopy/_layouts/15/Doc.aspx?action=edit&sourcedoc=%7Bd1649f49-b9ef-4213-8a1b-b955fb3a7386%7D&wdOrigin=TEAMS-ELECTRON.teamsSdk.openFilePreview&wdExp=TEAMS-CONTROL&web=1) on the teams sharepoint. 
 
 ## Suggested Tools
 
