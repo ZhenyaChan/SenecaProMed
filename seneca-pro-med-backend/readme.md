@@ -4,7 +4,7 @@ Server can create client user<br>
 
 using local path localhost:3000/client/signup <br>
 
-**client Model only have firstName and lastName** will be updated later 
+**Client model have firstName and lastName only** will be updated later 
 
 back-end server hierarchy<br>
 server.js   -> user model<br>
