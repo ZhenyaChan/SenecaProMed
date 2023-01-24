@@ -1,6 +1,7 @@
+
 const clientModel = require("../users-models/client-model");
 
-
+//for Post
 exports.createClient = (req, res)=>{
     const clientUser = new clientModel(req.body);
 

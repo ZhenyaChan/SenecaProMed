@@ -13,14 +13,8 @@ app.get("/", (req, res) => {
   res.json({message: "Server started"})
 });
 
+//api request
 app.use("/client",clientControllers)
-
-
-
-//HTTP error, 404 unable to locate website 
-app.use((req, res) => { 
-    res.status(404).send("Error 404! page Not Found");
-});
 
 
 app.listen(PORT, (req, res)=>{
@@ -33,4 +27,9 @@ app.listen(PORT, (req, res)=>{
     .catch(err => {
         console.log(`Error ${err}`)
     });
+});
+
+//HTTP error, 404 unable to locate website 
+app.use((req, res) => { 
+    res.status(404).send("Error 404! page Not Found");
 });
