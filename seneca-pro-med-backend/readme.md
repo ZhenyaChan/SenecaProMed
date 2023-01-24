@@ -8,7 +8,7 @@ using local path localhost:3000/client/signup <br>
 
 back-end server hierarchy<br>
 server.js   -> user model<br>
-            -> users-controllers -> users-services<br>
+server.js   -> users-controllers -> users-services<br>
 
 ## SenecaProMed MongoDB and Outlook account
 
