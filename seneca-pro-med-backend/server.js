@@ -17,15 +17,15 @@ app.get("/", (req, res) => {
 app.use("/client",clientControllers)
 
 
-app.listen(PORT, (req, res)=>{
+app.listen(PORT, (req, res) => {
     console.log(`REST API is up and running on PORT: ${PORT}`);
 
     mongoose.connect(`mongodb+srv://senecapromed:senec%40ProMed1234@senecapromeddb.xjhswji.mongodb.net/UsersDB?retryWrites=true&w=majority`)
-    .then(()=>{
-        console.log(`Connected to the mongodb`);
+    .then(() => {
+        console.log(`Connected to the MongoDB`);
     })
     .catch(err => {
-        console.log(`Error ${err}`)
+        console.log(`Error: ${err}`);
     });
 });
 
