@@ -1,13 +1,12 @@
-const MONGOOSE = require("mongoose");
-const express = require("express");
+const express = require('express');
+const mongoose = require('mongoose');
+
+
+const PORT = 3000;
 const app = express();
-
-MONGOOSE.set("strictQuery", false);
-
-//let js to understand  json body, pass by postman
 app.use(express.json());
+mongoose.set("strictQuery", false);
 
-const port = 3000;
 
 //home root
 app.get("/", (req, res) => {
@@ -16,6 +15,7 @@ app.get("/", (req, res) => {
 
 
 const clientModel = require("./users-models/client-model.js");
+
 app.post("/createClient", (req, res)=>{
     const clientUser = new clientModel(req.body);
 
@@ -28,20 +28,6 @@ app.post("/createClient", (req, res)=>{
     .catch(err=>{
         console.log(`error ${err}`);
     });
-})
-
-
-//setup http server to listen on HTTP_PORT
-app.listen(process.env.PORT, (req, res)=>{
-    console.log(`listening on local host ${port}`);
-
-    MONGOOSE.connect(`mongodb+srv://senecapromed:senec%40ProMed1234@senecapromeddb.xjhswji.mongodb.net/UsersDB?retryWrites=true&w=majority`)
-    .then(()=>{
-        console.log(`Connected to the mongodb`);
-    })
-    .catch(err => {
-        console.log(`Error ${err}`)
-    });
 });
 
 //HTTP error, 404 unable to locate website 
@@ -50,3 +36,14 @@ app.use((req, res) => {
 });
 
 
+app.listen(PORT, (req, res)=>{
+    console.log(`REST API is up and running on PORT: ${PORT}`);
+
+    mongoose.connect(`mongodb+srv://senecapromed:senec%40ProMed1234@senecapromeddb.xjhswji.mongodb.net/UsersDB?retryWrites=true&w=majority`)
+    .then(()=>{
+        console.log(`Connected to the mongodb`);
+    })
+    .catch(err => {
+        console.log(`Error ${err}`)
+    });
+});
