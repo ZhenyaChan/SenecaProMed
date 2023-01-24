@@ -1,34 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
-
-const PORT = 3000;
 const app = express();
+
 app.use(express.json());
 mongoose.set("strictQuery", false);
 
+const PORT = 3000;
+const clientControllers = require("./users-controllers/client-controller.js")
 
 //home root
 app.get("/", (req, res) => {
   res.json({message: "Server started"})
 });
 
+app.use("/client",clientControllers)
 
-const clientModel = require("./users-models/client-model.js");
 
-app.post("/createClient", (req, res)=>{
-    const clientUser = new clientModel(req.body);
-
-    clientUser.save().then((newClientUser)=>{
-        res.json({
-            message: "client user is created",
-            data : newClientUser
-        })
-    })
-    .catch(err=>{
-        console.log(`error ${err}`);
-    });
-});
 
 //HTTP error, 404 unable to locate website 
 app.use((req, res) => { 
