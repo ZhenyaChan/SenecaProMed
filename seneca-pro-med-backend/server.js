@@ -11,7 +11,6 @@ mongoose.set("strictQuery", false);
 //api request
 app.use("/client", clientControllers);
 
-
 //home root
 app.get("/", (req, res) => {
     res.json({message: "Server started"});
