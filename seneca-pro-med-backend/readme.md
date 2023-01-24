@@ -12,8 +12,8 @@ server.js   -> users-controllers -> users-services<br>
 
 ## SenecaProMed MongoDB and Outlook account
 
-    User: senecapromed@outlook.com <br>
-    Password: senec@ProMed1234 <br>
-    MongoDB connection String: mongodb+srv://senecapromed:senec%40ProMed1234@senecapromeddb.xjhswji.mongodb.net/UsersDB?retryWrites=true&w=majority<br>
+    User: senecapromed@outlook.com 
+    Password: senec@ProMed1234 
+    MongoDB connection String: mongodb+srv://senecapromed:senec%40ProMed1234@senecapromeddb.xjhswji.mongodb.net/UsersDB?retryWrites=true&w=majority
       
 
