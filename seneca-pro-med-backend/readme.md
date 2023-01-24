@@ -6,7 +6,7 @@ using local path localhost:3000/client/signup <br>
 
 **Client model have firstName and lastName only** will be updated later 
 
-back-end server hierarchy<br>
+back-end server control flow<br>
 server.js   -> user model<br>
 server.js   -> users-controllers -> users-services<br>
 
