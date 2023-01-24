@@ -1,5 +1,5 @@
 
-const clientModel = require("../users-models/client-model");
+const clientModel = require("../models/client-model");
 
 //for Post
 exports.createClient = (req, res)=>{

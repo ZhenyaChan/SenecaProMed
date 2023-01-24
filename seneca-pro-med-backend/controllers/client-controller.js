@@ -6,7 +6,7 @@ Controllers(API request) -> Service(functions)
 const express = require('express');
 const router = express.Router();
 
-const clientService = require("../users-services/client-service");
+const clientService = require("../services/client-service");
 
 router.post("/signup",clientService.createClient);
 
