@@ -1,4 +1,4 @@
-/*service.js where we will right, the function that wil handle the api request*/
+/*service.js write functions that wil handle the api request*/
 const clientModel = require("../models/client-model");
 
 
