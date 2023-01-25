@@ -65,12 +65,12 @@ Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x
 ### Milestone 2
 
 - Create front-end header and footer layouts
-- Standadize fonts colors, graphics
+- Standardize fonts colors, graphics
 - Discuss about the application and sample layouts with professor
 
 ### Milestone 3
 
-- Begin to create user componets
+- Begin to create user components
   - Create administrator layouts
   - Create pharmacy layouts
   - Create client layouts
