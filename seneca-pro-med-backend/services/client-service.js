@@ -16,3 +16,22 @@ exports.createClient = (req, res)=>{
     });
 };
 
+<<<<<<< Updated upstream
+=======
+/*Things to do */
+//get
+
+//update client information
+
+//create order
+
+//get order
+
+//get all order(history)
+
+//get current order
+
+//update order
+
+//delete order
+>>>>>>> Stashed changes
