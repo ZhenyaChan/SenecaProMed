@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 //  creating schema
-const clientSchema = new Schema({ 
+const adminSchema = new Schema({ 
     firstName: { 
       type: String,
       required : true
@@ -16,7 +16,6 @@ const clientSchema = new Schema({
     required:true
   },
   email:{
-    //type: mongoose.SchemaTypes.Email 
     type:String,
     required:true,
   },
@@ -36,8 +35,7 @@ const clientSchema = new Schema({
     type: String,
     required: true,
   },
-
 });
 
-const client_User = mongoose.model('client_User', clientSchema);
-module.exports = client_User;
+const admin_User = mongoose.model('admin_User', adminSchema);
+module.exports = admin_User;

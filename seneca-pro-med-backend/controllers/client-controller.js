@@ -10,4 +10,9 @@ const clientService = require("../services/client-service");
 
 router.post("/signup",clientService.createClient);
 
+//get product
+
+
+
+
 module.exports = router;
