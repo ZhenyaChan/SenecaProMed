@@ -10,7 +10,32 @@ const clientSchema = new Schema({
   lastName:{
       type: String,
       required: true
-  }
+  },
+  phoneNumber:{
+    type: Array,
+    required:true
+  },
+  email:{
+    //type: mongoose.SchemaTypes.Email 
+    type:String,
+    required:true,
+  },
+  postalCode:{
+    type: String,
+    required:true,
+  },
+  city:{
+    type:String,
+    required: true,
+  },
+  province:{
+    type: String,
+    required: true,
+  },
+  country:{
+    type: String,
+    required: true,
+  },
 });
 
 const client_User = mongoose.model('client_User', clientSchema);
