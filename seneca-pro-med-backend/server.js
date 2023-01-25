@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const clientControllers = require("./controllers/client-controller.js");
 const adminControllers = require("./controllers/admin-controller.js");
+const driverControllers = require("./controllers/driver-controller.js");
+
 
 const PORT = 3000;
 const app = express();
@@ -12,6 +14,8 @@ mongoose.set("strictQuery", false);
 //api request
 app.use("/client", clientControllers);
 app.use("/admin", adminControllers);
+app.use("/driver",driverControllers);
+
 
 //home root
 app.get("/", (req, res) => {
