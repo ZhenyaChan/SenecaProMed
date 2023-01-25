@@ -1,5 +1,17 @@
 # Seneca Pro Med
 
+## Mockups
+
+Adobe XD has been used here to create UI mockups of the application. Each flow represents a collection of mockups for a certain user depending on their role.
+
+ Our application has four types of users and a landing page (Homepage). These mockups represent the blueprint of how the application might look like, before adding colors and other changes. Thus, this is not the final design and look of the application.
+
+1. [Homepage](https://xd.adobe.com/view/343930cf-ab5c-451e-aa17-e0ac4071861c-616a/)
+1. [Client](https://xd.adobe.com/view/33bf26c6-1252-4d8b-80f9-6a99be30fc8d-66ec/)
+1. [Pharmacist](https://xd.adobe.com/view/079bbeaa-73c8-4040-a888-17870540b3fc-52c8/)
+1. [Delivery Driver](https://xd.adobe.com/view/ea296ea4-4d17-4b8c-82ed-aec60e88d170-bf7a/)
+1. [Administrator](https://xd.adobe.com/view/bb46c2b8-6de5-478a-b666-3f23feeaa5d3-ee15/)
+
 ## Available Scripts
 
 In the project directory, you can run:
