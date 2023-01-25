@@ -8,9 +8,9 @@ const router = express.Router();
 
 const clientService = require("../services/client-service");
 
+//Create a route(API request), and call the function that will handle the API request
 router.post("/signup",clientService.createClient);
 
-//get product
 
 
 
