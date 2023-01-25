@@ -1,6 +1,4 @@
 ### SenecaProMed
-Run the following command to run in localhost: npm i <br>
-using nodemon: npm run dev <br>
 
 Server can create client user<br>
 
