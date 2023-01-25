@@ -5,11 +5,16 @@
 - [Overview](#overview)
 - [Background](#background)
 - [Weekly Deliverable Schedule](#weekly-deliverable-schedule)
-- [Suggested Tools](#suggested-tools)
-  - [UI/UXD - Wireframes/Mock-ups](#uiuxd---wireframesmock-ups)
-  - [Development Languages](#development-languages)
-  - [Development and Versioning Tools](#development-and-versioning-tools)
-- [Milestones](#Milestone-1)
+- [Tools](#tools)
+  - [UI/UXD - Mock-ups](#uiuxd---mock-ups)
+  - [Development Tools and Frameworks](#development-tools-and-frameworks)
+  - [IDEs, Documentation, and Hosting Services](#ides-documentation-and-hosting-services)
+- [Milestones](#milestones)
+  - [Milestone 1](#milestone-1)
+  - [Milestone 2](#milestone-2)
+  - [Milestone 3](#milestone-3)
+  - [Milestone 4](#milestone-4)
+  - [Milestone 5](#milestone-5)
 
 ## Overview
 
@@ -19,73 +24,75 @@ According to the Canadian Drugs and Substances Act (CDSA), medications need to b
 
 ## Background
 
-People who need prescription medication must physically go to a pharmacy with ID to purchase and pick up their medication or have a family member purchase and pick up the medication on their behalf. This may be a problem for those who are very sick or have mobility issues as well as the elderly. Today almost anything can be purchased online and delivered but not prescription medication. 
-Having a system to handle the interaction between the patients and the pharmacists would be appreciated. With the ideal system, time would be saved, fewer physical papers to document, and be extra safe. 
+People who need prescription medication must physically go to a pharmacy with ID to purchase and pick up their medication or have a family member purchase and pick up the medication on their behalf. This may be a problem for those who are very sick or have mobility issues as well as the elderly. Today almost anything can be purchased online and delivered but not prescription medication.
+Having a system to handle the interaction between the patients and the pharmacists would be appreciated. With the ideal system, time would be saved, fewer physical papers to document, and be extra safe.
 
 ## Weekly Deliverable Schedule
 
-Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x:/r/sites/2023WinterPRJ666NAAProjectImplementationcopy/_layouts/15/Doc.aspx?action=edit&sourcedoc=%7Bd1649f49-b9ef-4213-8a1b-b955fb3a7386%7D&wdOrigin=TEAMS-ELECTRON.teamsSdk.openFilePreview&wdExp=TEAMS-CONTROL&web=1) on the teams sharepoint. 
+Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x:/r/sites/2023WinterPRJ666NAAProjectImplementationcopy/_layouts/15/Doc.aspx?action=edit&sourcedoc=%7Bd1649f49-b9ef-4213-8a1b-b955fb3a7386%7D&wdOrigin=TEAMS-ELECTRON.teamsSdk.openFilePreview&wdExp=TEAMS-CONTROL&web=1) on the teams sharepoint.
 
-## Suggested Tools
+## Tools
 
-### UI/UXD - Wireframes/Mock-ups
+### UI/UXD - Mock-ups
 
 - [Adobe XD](https://www.adobe.com/ca/products/xd.html)
-- [Figma](https://www.figma.com/)
-- [Wireframe](https://wireframe.cc/)
 
-> A comprehensive list of different tools for UI/UX design can be found in this [article](https://webflow.com/blog/ui-ux-design-tools).  
+### Development Tools and Frameworks
 
-### Development Languages
+- [NodeJS](https://nodejs.org/en/)
+- [ReactJS](https://reactjs.org/)
+- [MongoDB](https://www.mongodb.com/)
+- [Git](https://git-scm.com/)
 
-- JavaScript
-- HTML/CSS
+### IDEs, Documentation, and Hosting Services
 
-### Development, Documentation, and Versioning Tools
-
-- IDEs
-  - VSCode
-- Git
-  - GitHub
-- Markdown
+- [VSCode](https://code.visualstudio.com/)
+- [GitHub](https://github.com/)
+- [Markdown](https://www.markdownguide.org/basic-syntax/)
   - [Markdown-ToC](https://luciopaiva.com/markdown-toc/): To quickly generate a Table of Contents in Markdown.
 
-## Milestone 1  
- - Configure cloud storage
- - Create database and add sample data
- - Connect web app to the database
- - Create user account
- - Start web app
- - Professor can create an account
+## Milestones
 
-## Milestone 2 
-  - Create front-end header and footer layouts
-  - Standadize fonts colors, graphics
-  - Discuss about the application and sample layouts with professor
+### Milestone 1  
 
-## Milestone 3
-  - Begin to create user componets
-      - Create administrator layouts
-      - Create pharmacy layouts
-      - Create client layouts
-      - Create driver layouts
-  - Access layouts for all user with professor
+- Configure cloud storage
+- Create database and add sample data
+- Connect web app to the database
+- Create user account
+- Start web app
+- Professor can create an account
 
-## Milestone 4
-   - Begin to cre API for users
-      - Create administrator API
-      - Create pharmacy API
-      - Create client API
-      - Create driver API
-   - Ability to navigate through layouts
-   - Check the app functionalities
+### Milestone 2
 
-## Milestone 5
-  - Create integration tests for API
-    - check for bugs
-    - Comment on necessary areas
-    - Change areas based on professor's suggestions
-  - Closing
-    - Closing meetings
+- Create front-end header and footer layouts
+- Standadize fonts colors, graphics
+- Discuss about the application and sample layouts with professor
+
+### Milestone 3
+
+- Begin to create user componets
+  - Create administrator layouts
+  - Create pharmacy layouts
+  - Create client layouts
+  - Create driver layouts
+- Access layouts for all user with professor
+
+### Milestone 4
+
+- Begin to cre API for users
+  - Create administrator API
+  - Create pharmacy API
+  - Create client API
+  - Create driver API
+- Ability to navigate through layouts
+- Check the app functionalities
+
+### Milestone 5
+
+- Create integration tests for API
+  - check for bugs
+  - Comment on necessary areas
+  - Change areas based on professor's suggestions
+- Closing
+  - Closing meetings
   
-    
