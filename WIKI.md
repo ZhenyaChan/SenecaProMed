@@ -2,55 +2,56 @@
 
 ## Git and GitHub
 
-### Git: The Basics
+### [Git: The Basics](https://git-scm.com/book/en/v2/Getting-Started-Getting-Help)
 
-Git is like a camera, you take a snapshot of the files that you have placed on the stage, and then name and date that shot.
+Git is like a camera, you take a snapshot of the files that you have placed on the stage, and then name and date that shot. Here are some of the most useful commands:
 
-The basic commands are:
+- You prepare the stage if you don't have one.
 
-```sh
-git init    # Create an empty Git repository or reinitialize an existing one
-            # ----------------------------
-            # SIMPLY PUT: You prepare the stage if you don't have one
+    ```sh
+    $ git init # Create an empty Git repository or reinitialize an existing one
+    ```
 
-git status  # Show the working tree status
-            # ----------------------------
-            # SIMPLY PUT: you check and compare the current items
-            # on your stage now, with the ones in the previous shot
+- You check the status of your items on your stage and also compare them with ones from the previous snapshot.
 
-git add item1 item2 # Add file contents to the index
-                    # ----------------------------
-                    # SIMPLY PUT: you add item(s) to your
-                    # stage - this is also called Staging
+    ```sh
+    $ git status  # Show the working tree status
+    ```
 
-git commit -m "message" # Record changes to the repository
-                        # ----------------------------
-                        # SIMPLY PUT: you take snap shot of your 
-                        # stage and write something on it
+- You add item(s) to your stage - this is also called Staging.
 
-git push origin main    # Update remote refs along with associated objects
-                        # ----------------------------
-                        # SIMPLY PUT: you replace the previous snapshot 
-                        # in 'main' with the one you just took
+    ```sh
+    $ git add item1 item2 # Add file contents to the index
+    ```
 
-git pull    # Fetch from and integrate with another repository or a local branch
-            # ----------------------------
-            # SIMPLY PUT: if someone has taken a snapshot, and 
-            # pushed it. you can issue this command to sync 
-            # changes he/she has made with yours. 
-```
+- You take the snapshot of your stage and label it.
 
-For more info just issue this line `git help` or want the whole list then issue `git help -a`.
+    ```sh
+    $ git commit -m "message" # Record changes to the repository
+    ```
+
+- You replace the previous snapshot in 'main' with the one you just took
+
+    ```sh
+    $ git push origin main # Update remote refs along with associated objects
+    ```
+
+- If someone took a snapshot, and pushed it to the repo. You can issue this command to sync the changes he/she made with yours.
+
+    ```sh
+    $ git pull # Fetch from and integrate with another repository or a local branch
+    ```
 
 ### GitHub
 
-This is meant to be a hub where you place your Git repos and then share them with others.
+This is meant to be a hub for Git repos, which we can share and collaborate on working with them.
+
 Similar services that might have different concepts:
 
 - [Azure Repos in Azure DevOps](https://azure.microsoft.com/en-us/products/devops/repos/)
 - [BitBucket](https://bitbucket.org/product/)
 
-### Branching
+### [Branching](https://www.atlassian.com/git/tutorials/using-branches#:~:text=In%20Git%2C%20branches%20are%20a,branch%20to%20encapsulate%20your%20changes.)
 
 It is preferred to keep the branch 'main' untouched when working with something. The way to do this is by creating another branch specific to the task at hand. When done you can issue a pull request to resolve conflicts before merging into main.
 
