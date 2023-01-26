@@ -1,6 +1,6 @@
 /*
-controllers will handle API request, POST, GET, UPDATE, and DELETE, 
-Controllers(API request) -> Service(functions)
+    Handling API Requests -> POST, GET, UPDATE, and DELETE
+    Controllers(API request) -> Service(functions)
 */
 
 const express = require('express');

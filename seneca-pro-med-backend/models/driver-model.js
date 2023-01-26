@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 //  creating schema
-const adminSchema = new Schema({ 
-    firstName: { 
+const driverSchema = new Schema({ 
+  firstName: { 
       type: String,
       required : true
   },
@@ -37,5 +37,5 @@ const adminSchema = new Schema({
   },
 });
 
-const driver_User = mongoose.model('driver_User', adminSchema);
+const driver_User = mongoose.model('driver_User', driverSchema);
 module.exports = driver_User;
