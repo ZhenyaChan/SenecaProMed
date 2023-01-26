@@ -21,6 +21,7 @@ app.use("/admin", adminControllers);
 app.use("/driver",driverControllers);
 app.use("/pharmacy", pharmaControllers);
 
+
 app.listen(PORT, () => {
     console.log(`REST API is up and running on PORT: ${PORT}`);
 
