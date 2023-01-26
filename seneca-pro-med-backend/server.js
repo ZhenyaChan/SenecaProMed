@@ -4,7 +4,6 @@ const clientControllers = require("./controllers/client-controller.js");
 const adminControllers = require("./controllers/admin-controller.js");
 const driverControllers = require("./controllers/driver-controller.js");
 
-
 const PORT = 3000;
 const app = express();
 app.use(express.json());
@@ -19,8 +18,6 @@ app.get("/", (req, res) => {
 app.use("/client", clientControllers);
 app.use("/admin", adminControllers);
 app.use("/driver",driverControllers);
-
-
 
 app.listen(PORT, () => {
     console.log(`REST API is up and running on PORT: ${PORT}`);
