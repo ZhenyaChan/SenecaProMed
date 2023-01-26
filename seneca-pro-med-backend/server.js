@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const clientControllers = require("./controllers/client-controller.js");
 const adminControllers = require("./controllers/admin-controller.js");
+const driverControllers = require("./controllers/driver-controller.js");
+
 
 const PORT = 3000;
 const app = express();
@@ -16,6 +18,8 @@ app.get("/", (req, res) => {
 //Routes 
 app.use("/client", clientControllers);
 app.use("/admin", adminControllers);
+app.use("/driver",driverControllers);
+
 
 
 app.listen(PORT, () => {

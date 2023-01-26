@@ -1,7 +1,21 @@
 
 
 const clientModel = require("../models/client-model");
+const adminModel = require("../models/admin-model");
 
+//creating new user
+exports.createAdmin = (req, res)=>{
+    const adminUser = new adminModel(req.body);
+    adminUser.save().then((newAdminUser)=>{
+        res.json({
+            message: "Admin user is created",
+            data : newAdminUser
+        })
+    })
+    .catch(err=>{
+        console.log(`error ${err}`);
+    });
+};
 
 exports.getAllClientUsers = (req,res)=>{
     clientModel.find().then(clientsData => {

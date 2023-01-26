@@ -16,6 +16,7 @@ exports.createClient = (req, res)=>{
     });
 };
 
+
 /*Things to do */
 //get
 
@@ -28,7 +29,6 @@ exports.createClient = (req, res)=>{
 //get all order(history)
 
 //get current order
-
 
 //update order
 
