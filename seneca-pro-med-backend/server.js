@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 //Routes 
 app.use("/client", clientControllers);
 app.use("/admin", adminControllers);
-app.use("/driver",driverControllers);
+app.use("/driver", driverControllers);
 
 app.listen(PORT, () => {
     console.log(`REST API is up and running on PORT: ${PORT}`);
