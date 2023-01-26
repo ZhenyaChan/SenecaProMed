@@ -6,13 +6,9 @@ Controllers(API request) -> Service(functions)
 const express = require('express');
 const router = express.Router();
 
-const clientService = require("../services/client-service");
+const driverService = require("../services/driver-service");
 
-//Create a route(API request), and call the function that will handle the API request
-router.post("/signup",clientService.createClient);
-
-
-
-
+// Create a route(API request), and call the function that will handle the API request
+router.post("/signup", driverService.createDriver);
 
 module.exports = router;

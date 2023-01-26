@@ -1,10 +1,10 @@
-
+/*service.js write functions that wil handle the api request*/
 const clientModel = require("../models/client-model");
 
-//for Post
+
+//creating new user
 exports.createClient = (req, res)=>{
     const clientUser = new clientModel(req.body);
-
     clientUser.save().then((newClientUser)=>{
         res.json({
             message: "client user is created",
@@ -16,8 +16,7 @@ exports.createClient = (req, res)=>{
     });
 };
 
-<<<<<<< Updated upstream
-=======
+
 /*Things to do */
 //get
 
@@ -34,4 +33,3 @@ exports.createClient = (req, res)=>{
 //update order
 
 //delete order
->>>>>>> Stashed changes

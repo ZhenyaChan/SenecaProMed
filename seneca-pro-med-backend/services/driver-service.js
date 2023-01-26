@@ -1,6 +1,6 @@
 const driverModel = require("../models/driver-model");
 
-// Creating new user
+// Creating new driver
 exports.createDriver = (req, res)=>{
     const driverUser = new driverModel(req.body);
     driverUser.save().then((newDriverUser)=>{

@@ -10,17 +10,17 @@ const app = express();
 app.use(express.json());
 mongoose.set("strictQuery", false);
 
+//Home
+app.get("/", (req, res) => {
+    res.json({message: "Server started"});
+});
 
-//api request
+//Routes 
 app.use("/client", clientControllers);
 app.use("/admin", adminControllers);
 app.use("/driver",driverControllers);
 
 
-//home root
-app.get("/", (req, res) => {
-    res.json({message: "Server started"});
-});
 
 app.listen(PORT, () => {
     console.log(`REST API is up and running on PORT: ${PORT}`);
