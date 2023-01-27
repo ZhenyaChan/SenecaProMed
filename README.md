@@ -32,6 +32,10 @@ Having a system to handle the interaction between the patients and the pharmacis
 
 Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x:/r/sites/2023WinterPRJ666NAAProjectImplementationcopy/_layouts/15/Doc.aspx?action=edit&sourcedoc=%7Bd1649f49-b9ef-4213-8a1b-b955fb3a7386%7D&wdOrigin=TEAMS-ELECTRON.teamsSdk.openFilePreview&wdExp=TEAMS-CONTROL&web=1) on the teams sharepoint.
 
+## Network Diagram
+
+Click to view the project's [Network Diagram](https://drive.google.com/file/d/1iKzuQmargB4slo9QLiJaS1f9VDVthZwb/view)
+
 ## Tools
 
 ### UI/UXD - Mock-ups
