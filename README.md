@@ -8,6 +8,7 @@
 - [Tools](#tools)
   - [UI/UXD - Mock-ups](#uiuxd---mock-ups)
   - [Development Tools and Frameworks](#development-tools-and-frameworks)
+  - [GitHub Development Process (remove later)](#github-development-process-remove-later)
   - [IDEs, Documentation, and Hosting Services](#ides-documentation-and-hosting-services)
 - [Milestones](#milestones)
   - [Milestone 1](#milestone-1)
