@@ -44,6 +44,18 @@ Click to view the [Weekly Deliverable Schedule](https://seneca.sharepoint.com/:x
 - [MongoDB](https://www.mongodb.com/)
 - [Git](https://git-scm.com/)
 
+### GitHub Development Process (remove later)
+1. `git checkout main` (move to main branch)
+2. `git pull origin`(pull the main code)
+3. `git checkout <test-branch>` (create and/or move to testing branch)
+4. write new code, add features etc.
+5. `git branch` (make sure ure on the right branch which is testing branch)
+6. `git add file1 file2`
+7. `git commit -m "Comment"`
+8. `git push origin`
+9. Merging Process: 
+    Go to github repo &rarr; pull requests &rarr; new pull request &rarr; base:main, compare: `<test-branch>` &rarr; create pull request &rarr; add comments if necessary &rarr; wait for comments, changes, or approval &rarr; merge
+
 ### IDEs, Documentation, and Hosting Services
 
 - [VSCode](https://code.visualstudio.com/)
