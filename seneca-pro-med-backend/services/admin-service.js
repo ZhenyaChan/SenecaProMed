@@ -28,7 +28,7 @@ exports.getAllClientUsers = (req,res)=>{
     })
 }
 
-exports.getAClient = (req,res) =>{ 
+exports.getAdminById = (req,res) =>{ 
     clientModel.findById (req.params.id).then(client =>{
         if(client){
             res.json({
