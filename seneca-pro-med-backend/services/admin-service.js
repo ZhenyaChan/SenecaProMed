@@ -17,16 +17,6 @@ exports.createAdmin = (req, res)=>{
     });
 };
 
-exports.getAllClientUsers = (req,res)=>{
-    clientModel.find().then(clientsData => {
-        if(clientsData.length > 0){
-            res.json({
-               message: ["All client users", clientsData.length],
-               data: clientsData
-            })
-        }
-    })
-}
 
 exports.getAdminById = (req,res) =>{ 
     clientModel.findById (req.params.id).then(client =>{
