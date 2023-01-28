@@ -26,13 +26,25 @@ exports.createPharmacy = async (req, res) => {
       req.body.password = hash;
       req.body.userName = req.body.email;
       
-
-      const pharmacyUser = new pharmaModel(req.body);
-      await pharmacyUser.save(); // does the same as .then above, only executes the next line if the save() was successful
-      res.status(201).json({
-         message: "Pharmacy user created",
-         data: pharmacyUser
-      });
+      pharmaModel.find({"userName": req.body.email}).then((userDB)=>{ 
+         if(userDB.length > 0){
+             res.json({
+                 message: "Username is already in DB",
+             })
+         }else {
+             const pharmacyUser = new pharmaModel(req.body);
+             pharmacyUser.save()
+             .then((newUser)=>{
+                 res.json({
+                     message: "Pharmacy user is created",
+                     data : newUser
+                 })
+             })
+             .catch(err=>{
+                 console.log(`error ${err}`);
+             });
+         }
+     });
    } catch (err) {
       res.status(500).json({ message: err }); // See error message in the browser
       console.log(`Error: ${err}`);
