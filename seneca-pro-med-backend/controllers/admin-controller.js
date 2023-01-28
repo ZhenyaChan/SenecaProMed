@@ -19,11 +19,13 @@ router.get("/client/all_clients", clientService.getAllClients);
 router.get('/driver/:id',driverService.getDriverById);
 router.get('/driver/all_drivers',driverService.getAllDrivers);
 router.post('/driver/signup', driverService.createDriver);
+router.put('/driver/:id', driverService.updateDriver)
 
 //Pharmacy
 router.get('/pharmacy/:id',pharmaService.getPharmacyById);
 router.get('/pharmacy/all_pharmacies', pharmaService.getAllPharmacyUsers);
 router.post('/pharmacy/signup', pharmaService.createPharmacy);
+router.put('/pharmacy/:id',pharmaService.updatePharmacyById)
 
 //Orders
 
