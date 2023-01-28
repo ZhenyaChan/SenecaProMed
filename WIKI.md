@@ -1,5 +1,15 @@
 # SenecaProMed - Wiki
 
+## Table of contents
+
+- [Git and GitHub](#git-and-github)
+  - [[Git: The Basics](https://git-scm.com/book/en/v2/Getting-Started-Getting-Help)](#git-the-basicshttpsgit-scmcombookenv2getting-started-getting-help)
+  - [GitHub](#github)
+  - [[Branching](https://www.atlassian.com/git/tutorials/using-branches#:~:text=In%20Git%2C%20branches%20are%20a,branch%20to%20encapsulate%20your%20changes.)](#branchinghttpswwwatlassiancomgittutorialsusing-branchestextin20git2c20branches20are20abranch20to20encapsulate20your20changes)
+- [Conventions and Standards](#conventions-and-standards)
+  - [Naming](#naming)
+  - [On GitHub](#on-github)
+
 ## Git and GitHub
 
 ### [Git: The Basics](https://git-scm.com/book/en/v2/Getting-Started-Getting-Help)
@@ -90,7 +100,7 @@ Your branch is up to date with 'origin/main'.
 
 ## Conventions and Standards
 
-### Naming 
+### Naming
 
 #### Standards
 
@@ -108,7 +118,8 @@ Your branch is up to date with 'origin/main'.
 ### On GitHub
 
 #### Branch Naming
-For branch names, use your initials at least for others to know who is the owner of the branch. For more details, when it's available, try to include task name, examples: 
+
+For branch names, use your initials at least for others to know who is the owner of the branch. For more details, when it's available, try to include task name, examples:
 
 - hb
 - hb-task_at_hand
@@ -120,6 +131,7 @@ Begin the commit message with the type of the commit followed by a : and brief d
 - `docs: update User API endpoints`
 
 Types of commits include:
+
 - `fix` - use if committed code is fixing a bug(broken code).
 - `feat` - stands for feature. This will likely be your most common type that you use. It should be used for any new functionality that is committed.
 - `test` - use if committed code is adding test functionality.
