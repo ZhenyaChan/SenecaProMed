@@ -52,10 +52,27 @@ exports.getClientById = (req, res) => {
     })
 }
 
-/*Things to do */
-//get
+exports.updateClientById = (req, res) => { 
+    clientModel.findByIdAndUpdate(req.params.id, req.body, {new: true }).then(client => {
+        if (client) {
+            res.json({
+                message: `Client with ID (${req.params.id}) has been updated successfully`,
+                data: client
+            })
+        }
+        else {
+            res.status(404).json ({
+                message: `Client with ID (${req.params.id}) is NOT found`
+            })
+        }
+    }).catch(err => {
+        res.status(500).json ({
+            message: err
+        });
+    });
+};
 
-//update client information
+/*Things to do */
 
 //create order
 
