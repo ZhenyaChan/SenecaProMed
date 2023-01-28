@@ -8,6 +8,10 @@ const Schema = mongoose.Schema;
 // created so far. We can always add it if we want it.
 
 const pharmacySchema = new Schema({
+   role: { 
+      type:String,
+      default: "pharmacy",
+  },
    userName: {
       type: String
     },
@@ -46,80 +50,9 @@ const pharmacySchema = new Schema({
 
    // Currently 4 products are required
    // to be added when adding a Pharmacy
-   productList: [
-      {
-         _id: {
-            type: String,
-            required: true
-         },
-         title: {
-            type: String,
-            required: true
-         },
-         description: {
-            type: String,
-            required: true
-         },
-         price: {
-            type: Number,
-            required: true
-         }
-      },
-      {
-         _id: {
-            type: String,
-            required: true
-         },
-         title: {
-            type: String,
-            required: true
-         },
-         description: {
-            type: String,
-            required: true
-         },
-         price: {
-            type: Number,
-            required: true
-         }
-      },
-      {
-         _id: {
-            type: String,
-            required: true
-         },
-         title: {
-            type: String,
-            required: true
-         },
-         description: {
-            type: String,
-            required: true
-         },
-         price: {
-            type: Number,
-            required: true
-         }
-      },
-      {
-         _id: {
-            type: String,
-            required: true
-         },
-         title: {
-            type: String,
-            required: true
-         },
-         description: {
-            type: String,
-            required: true
-         },
-         price: {
-            type: Number,
-            required: true
-         }
-      }
-   ]
+   productList: {
+      type: Array
+   }
 });
 
 const pharmaModel = mongoose.model("pharma_User", pharmacySchema);
