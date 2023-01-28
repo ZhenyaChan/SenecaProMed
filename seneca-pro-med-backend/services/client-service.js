@@ -1,11 +1,17 @@
 /*service.js write functions that wil handle the api request*/
 const clientModel = require("../models/client-model");
-
+const bcrypt = require('bcryptjs');
 
 //creating new user
 exports.createClient = (req, res)=>{
+    let salt = bcrypt.genSaltSync(10); //password encription 
+    let hash = bcrypt.hashSync(req.body.password, salt);
+    req.body.password = hash;
+    req.body.userName = req.body.email;
+    
     const clientUser = new clientModel(req.body);
-    clientUser.save().then((newClientUser)=>{
+    clientUser.save()
+    .then((newClientUser)=>{
         res.json({
             message: "client user is created",
             data : newClientUser
