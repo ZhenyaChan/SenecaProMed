@@ -47,9 +47,19 @@ module.exports = {
       colors: {
         headingColor: "#2e2e2e",
         textColor: "#515151",
-        cartNumBg: "#222222",
-        primary: "#FFFFFF",
+        cartNumBg: "#949494",
+        primary: "#ffffff",
       },
+      borderWidth: {
+        DEFAULT: '1px',
+        '0.5': '0.5px',
+        '0': '0',
+        '2': '2px',
+        '3': '3px',
+        '4': '4px',
+        '6': '6px',
+        '8': '8px',
+      }
     },
   },
   plugins: [],
