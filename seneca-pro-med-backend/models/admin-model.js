@@ -3,6 +3,13 @@ const { Schema } = mongoose;
 
 //  creating schema
 const adminSchema = new Schema({ 
+  userName: {
+    type: String
+  },
+  password: {
+      type: String,
+      required : true
+  },
     firstName: { 
       type: String,
       required : true

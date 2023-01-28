@@ -1,10 +1,15 @@
 
-
-const clientModel = require("../models/client-model");
 const adminModel = require("../models/admin-model");
+
+const bcrypt = require('bcryptjs');
 
 //creating new user
 exports.createAdmin = (req, res)=>{
+    let salt = bcrypt.genSaltSync(10); //password encription 
+    let hash = bcrypt.hashSync(req.body.password, salt);
+    req.body.password = hash;
+    req.body.userName = req.body.email;
+    
     const adminUser = new adminModel(req.body);
     adminUser.save().then((newAdminUser)=>{
         res.json({

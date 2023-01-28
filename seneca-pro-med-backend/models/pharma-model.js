@@ -8,6 +8,13 @@ const Schema = mongoose.Schema;
 // created so far. We can always add it if we want it.
 
 const pharmacySchema = new Schema({
+   userName: {
+      type: String
+    },
+    password: {
+        type: String,
+        required : true
+    },
    pharmacyName: {
       type: String,
       required: true
