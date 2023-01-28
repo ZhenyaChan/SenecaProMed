@@ -4,6 +4,10 @@ const { Schema } = mongoose;
 
 //  creating schema
 const clientSchema = new Schema({ 
+  role: { 
+    type:String,
+    default: "client",
+},
   userName: {
     type: String
   },
@@ -45,7 +49,7 @@ const clientSchema = new Schema({
     type: String,
     required: true,
   },
-
+  
 });
 
 const client_User = mongoose.model('client_User', clientSchema);

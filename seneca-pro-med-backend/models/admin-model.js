@@ -3,6 +3,11 @@ const { Schema } = mongoose;
 
 //  creating schema
 const adminSchema = new Schema({ 
+
+  role: { 
+      type:String,
+      default: "admin",
+  },
   userName: {
     type: String
   },
@@ -42,6 +47,9 @@ const adminSchema = new Schema({
     type: String,
     required: true,
   },
+    
+
+
 });
 
 const admin_User = mongoose.model('admin_User', adminSchema);
