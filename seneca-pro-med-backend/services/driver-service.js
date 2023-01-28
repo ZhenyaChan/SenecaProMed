@@ -8,7 +8,6 @@ const driverModel = require("../models/driver-model");
         - GET
             -> Get All   [Done]
             -> Get By ID [Done]
-
 */
 
 // Creating new driver user

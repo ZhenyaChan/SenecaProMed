@@ -4,6 +4,7 @@ const clientControllers = require("./controllers/client-controller.js");
 const adminControllers = require("./controllers/admin-controller.js");
 const driverControllers = require("./controllers/driver-controller.js");
 const pharmaControllers = require("./controllers/pharma-controller.js");
+const productControllers = require("./controllers/product-controller.js");
 
 const PORT = 3000;
 const app = express();
@@ -20,6 +21,7 @@ app.use("/client", clientControllers);
 app.use("/admin", adminControllers);
 app.use("/driver", driverControllers);
 app.use("/pharmacy", pharmaControllers);
+app.use("/product", productControllers)
 
 
 app.listen(PORT, () => {
