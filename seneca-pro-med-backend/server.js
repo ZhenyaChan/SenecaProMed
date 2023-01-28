@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const clientControllers = require("./controllers/client-controller.js");
 const adminControllers = require("./controllers/admin-controller.js");
 const driverControllers = require("./controllers/driver-controller.js");
+const pharmaControllers = require("./controllers/pharma-controller.js");
 
 const PORT = 3000;
 const app = express();
@@ -18,6 +19,8 @@ app.get("/", (req, res) => {
 app.use("/client", clientControllers);
 app.use("/admin", adminControllers);
 app.use("/driver", driverControllers);
+app.use("/pharmacy", pharmaControllers);
+
 
 app.listen(PORT, () => {
     console.log(`REST API is up and running on PORT: ${PORT}`);
