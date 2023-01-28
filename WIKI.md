@@ -3,9 +3,9 @@
 ## Table of contents
 
 - [Git and GitHub](#git-and-github)
-  - [[Git: The Basics](https://git-scm.com/book/en/v2/Getting-Started-Getting-Help)](#git-the-basicshttpsgit-scmcombookenv2getting-started-getting-help)
+  - [Git: The Basics](#git-the-basicshttpsgit-scmcombookenv2getting-started-getting-help)
   - [GitHub](#github)
-  - [[Branching](https://www.atlassian.com/git/tutorials/using-branches#:~:text=In%20Git%2C%20branches%20are%20a,branch%20to%20encapsulate%20your%20changes.)](#branchinghttpswwwatlassiancomgittutorialsusing-branchestextin20git2c20branches20are20abranch20to20encapsulate20your20changes)
+  - [Branching](#branchinghttpswwwatlassiancomgittutorialsusing-branchestextin20git2c20branches20are20abranch20to20encapsulate20your20changes)
 - [Conventions and Standards](#conventions-and-standards)
   - [Naming](#naming)
   - [On GitHub](#on-github)
