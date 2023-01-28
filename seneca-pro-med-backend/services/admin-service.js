@@ -1,6 +1,5 @@
 
 const adminModel = require("../models/admin-model");
-
 const bcrypt = require('bcryptjs');
 
 //creating new user
@@ -9,18 +8,28 @@ exports.createAdmin = (req, res)=>{
     let hash = bcrypt.hashSync(req.body.password, salt);
     req.body.password = hash;
     req.body.userName = req.body.email;
-    
-    const adminUser = new adminModel(req.body);
-    adminUser.save().then((newAdminUser)=>{
-        res.json({
-            message: "Admin user is created",
-            data : newAdminUser
-        })
-    })
-    .catch(err=>{
-        console.log(`error ${err}`);
+
+    adminModel.find({"userName": req.body.email}).then((userDB)=>{ 
+        if(userDB.length > 0){
+            res.json({
+                message: "Username is already in DB",
+            })
+        }else {
+            const adminUser = new clientModel(req.body);
+            adminUser.save()
+            .then((newUser)=>{
+                res.json({
+                    message: "client user is created",
+                    data : newUser
+                })
+            })
+            .catch(err=>{
+                console.log(`error ${err}`);
+            });
+        }
     });
 };
+
 
 
 exports.getAdminById = (req,res) =>{ 

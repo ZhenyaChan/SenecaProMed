@@ -17,10 +17,10 @@ exports.createClient = (req, res)=>{
         }else {
             const clientUser = new clientModel(req.body);
             clientUser.save()
-            .then((newClientUser)=>{
+            .then((newUser)=>{
                 res.json({
                     message: "client user is created",
-                    data : newClientUser
+                    data : newUser
                 })
             })
             .catch(err=>{
