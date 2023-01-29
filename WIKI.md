@@ -1,5 +1,15 @@
 # SenecaProMed - Wiki
 
+## Table of contents
+
+- [Git and GitHub](#git-and-github)
+  - [Git: The Basics](#git-the-basicshttpsgit-scmcombookenv2getting-started-getting-help)
+  - [GitHub](#github)
+  - [Branching](#branchinghttpswwwatlassiancomgittutorialsusing-branchestextin20git2c20branches20are20abranch20to20encapsulate20your20changes)
+- [Conventions and Standards](#conventions-and-standards)
+  - [Naming](#naming)
+  - [On GitHub](#on-github)
+
 ## Git and GitHub
 
 ### [Git: The Basics](https://git-scm.com/book/en/v2/Getting-Started-Getting-Help)
@@ -9,37 +19,37 @@ Git is like a camera, you take a snapshot of the files that you have placed on t
 - You prepare the stage if you don't have one.
 
     ```sh
-    $ git init # Create an empty Git repository or reinitialize an existing one
+    git init # Create an empty Git repository or reinitialize an existing one
     ```
 
 - You check the status of your items on your stage and also compare them with ones from the previous snapshot.
 
     ```sh
-    $ git status  # Show the working tree status
+    git status  # Show the working tree status
     ```
 
 - You add item(s) to your stage - this is also called Staging.
 
     ```sh
-    $ git add item1 item2 # Add file contents to the index
+    git add item1 item2 # Add file contents to the index
     ```
 
 - You take the snapshot of your stage and label it.
 
     ```sh
-    $ git commit -m "message" # Record changes to the repository
+    git commit -m "message" # Record changes to the repository
     ```
 
 - You replace the previous snapshot in 'main' with the one you just took
 
     ```sh
-    $ git push origin main # Update remote refs along with associated objects
+    git push origin main # Update remote refs along with associated objects
     ```
 
 - If someone took a snapshot, and pushed it to the repo. You can issue this command to sync the changes he/she made with yours.
 
     ```sh
-    $ git pull # Fetch from and integrate with another repository or a local branch
+    git pull # Fetch from and integrate with another repository or a local branch
     ```
 
 ### GitHub
@@ -92,12 +102,42 @@ Your branch is up to date with 'origin/main'.
 
 ### Naming
 
-### Variables
+#### Standards
 
-### Files
+- Use upper camel case for classes: `class StudentWriter`
+- Use lower camel case for variables: `const studentData`
+- Use `_` and upper case for environment variables: `USER_SECRET`
+
+#### Avoid
+
+- Avoid abbreviations.
+  - example: use `message` instead of `msg`
+- Avoid numerals
+  - example: `message1`, `message2`.
 
 ### On GitHub
 
 #### Branch Naming
 
+For branch names, use your initials at least for others to know who is the owner of the branch. For more details, when it's available, try to include task name, examples:
+
+- hb
+- hb-task_at_hand
+
 #### Commit Messages
+
+Begin the commit message with the type of the commit followed by a : and brief description.
+
+- `docs: update User API endpoints`
+
+Types of commits include:
+
+- `fix` - use if committed code is fixing a bug(broken code).
+- `feat` - stands for feature. This will likely be your most common type that you use. It should be used for any new functionality that is committed.
+- `test` - use if committed code is adding test functionality.
+- `refactor` - use if updating and/or removing existing code.
+- `docs` - use if updating your readme.
+Examples of good commit messages:
+- `fix`: broken calculation for percent high ranking cards
+- `feat`: add shuffle to deck
+- `test`: add test for shuffle

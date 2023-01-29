@@ -3,6 +3,17 @@ const { Schema } = mongoose;
 
 //  creating schema
 const driverSchema = new Schema({ 
+  role: { 
+    type:String,
+    default: "driver",
+},
+  userName: {
+    type: String
+  },
+  password: {
+      type: String,
+      required : true
+  },
   firstName: { 
       type: String,
       required : true

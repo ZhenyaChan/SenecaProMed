@@ -1,4 +1,5 @@
 const pharmaModel = require("../models/pharma-model");
+const bcrypt = require('bcryptjs');
 
 // POST Route - the code directly below this does the same
 // Add a Pharmacy to the database
@@ -20,12 +21,30 @@ const pharmaModel = require("../models/pharma-model");
 // Add a Pharmacy to the database
 exports.createPharmacy = async (req, res) => {
    try {
-      const pharmacyUser = new pharmaModel(req.body);
-      await pharmacyUser.save(); // does the same as .then above, only executes the next line if the save() was successful
-      res.status(201).json({
-         message: "Pharmacy user created",
-         data: pharmacyUser
-      });
+      let salt = bcrypt.genSaltSync(10); //password encription 
+      let hash = bcrypt.hashSync(req.body.password, salt);
+      req.body.password = hash;
+      req.body.userName = req.body.email;
+      
+      pharmaModel.find({"userName": req.body.email}).then((userDB)=>{ 
+         if(userDB.length > 0){
+             res.json({
+                 message: "Username is already in DB",
+             })
+         }else {
+             const pharmacyUser = new pharmaModel(req.body);
+             pharmacyUser.save()
+             .then((newUser)=>{
+                 res.json({
+                     message: "Pharmacy user is created",
+                     data : newUser
+                 })
+             })
+             .catch(err=>{
+                 console.log(`error ${err}`);
+             });
+         }
+     });
    } catch (err) {
       res.status(500).json({ message: err }); // See error message in the browser
       console.log(`Error: ${err}`);

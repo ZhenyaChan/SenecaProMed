@@ -1,5 +1,5 @@
 const driverModel = require("../models/driver-model");
-
+const bcrypt = require('bcryptjs');
 /*
     To Do:
         - CREATE (POST)  [Done] 
@@ -8,19 +8,34 @@ const driverModel = require("../models/driver-model");
         - GET
             -> Get All   [Done]
             -> Get By ID [Done]
-
 */
 
 // Creating new driver user
 exports.createDriver = (req, res) => {
-    const driverUser = new driverModel(req.body);
-    driverUser.save().then((newDriverUser) => {
-        res.json({
-            message: "Driver user is created",
-            data : newDriverUser
-        })
-    }).catch(err => {
-        console.log(`Error: ${err}`);
+    let salt = bcrypt.genSaltSync(10); //password encription 
+    let hash = bcrypt.hashSync(req.body.password, salt);
+    req.body.password = hash;
+    req.body.userName = req.body.email;
+    
+
+    driverModel.find({"userName": req.body.email}).then((userDB)=>{ 
+        if(userDB.length > 0){
+            res.json({
+                message: "Username is already in DB",
+            })
+        }else {
+            const driverUser = new driverModel(req.body);
+            driverUser.save()
+            .then((newUser)=>{
+                res.json({
+                    message: "client user is created",
+                    data : newUser
+                })
+            })
+            .catch(err=>{
+                console.log(`error ${err}`);
+            });
+        }
     });
 };
 
