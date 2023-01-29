@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/images/senecaProMed.png";
+import Logo from "../assets/images/SenecaProMed-Logo.svg";
 import {
   MdShoppingCart,
   MdNotificationsNone,
