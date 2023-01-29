@@ -31,19 +31,21 @@ const pharmacySchema = new Schema({
       type: String,
       required: true
    },
-   postal: {
+   postalCode: {
       type: String,
       required: true
    },
-   country: {
+
+   city: {
       type: String,
       required: true
    },
+
    province: {
       type: String,
       required: true
    },
-   city: {
+   country: {
       type: String,
       required: true
    },
