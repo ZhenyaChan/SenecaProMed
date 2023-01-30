@@ -1,11 +1,18 @@
 import React from "react";
-import Logo from "../assets/images/senecaProMed.png";
+import Logo from "../assets/images/SenecaProMed-Logo.svg";
+import { Fragment } from 'react'
+import { Menu } from '@headlessui/react'
 import {
   MdShoppingCart,
   MdNotificationsNone,
   MdOutlineMenu,
 } from "react-icons/md";
 
+const links = [
+  { href: '/login', label: 'login' },
+  { href: '/signup', label: 'Signup' },
+  { href: '/sign-out', label: 'Sign out' },
+]
 
 const Header = () => {
   return (
@@ -33,8 +40,27 @@ const Header = () => {
               <p className="text-xs text-white font-semibold">2</p>
             </div>
           </div>
-          <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-            <MdOutlineMenu className="text-textColor text-2xl" />
+          <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">      
+                <Menu>
+                  <Menu.Button>  <MdOutlineMenu className="text-textColor text-2xl" /></Menu.Button>
+                  <Menu.Items>
+                    {links.map((link) => (
+                      /* Use the `active` state to conditionally style the active item. */
+                      <Menu.Item key={link.href} as={Fragment}>
+                        {({ active }) => (
+                          <a
+                            href={link.href}
+                            className={`${
+                              active ? 'bg-gray-500 text-white' : 'bg-white text-black'
+                            }`}
+                          >
+                            {link.label}
+                          </a>
+                        )}
+                      </Menu.Item>
+                    ))}
+                  </Menu.Items>
+              </Menu>
           </li>
         </ul>
       </div>
