@@ -5,6 +5,7 @@
 - [Overview](#overview)
 - [Background](#background)
 - [Weekly Deliverable Schedule](#weekly-deliverable-schedule)
+- [Network Diagram](#network-diagram)
 - [Tools](#tools)
   - [UI/UXD - Mock-ups](#uiuxd---mock-ups)
   - [Development Tools and Frameworks](#development-tools-and-frameworks)
