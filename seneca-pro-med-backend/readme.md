@@ -17,7 +17,8 @@ Home: Localhost:3000
 ### User signup
 #### Note: No duplicate username in DB. Server will use user email as a username. Passowrd:will be replace by 10 bcrypt
 ```
-Create client  :localhost:3000/client/signup <br>
+Create client  :
+localhost:3000/client/signup
 {
   "password": "a",
   "password1": "a",
@@ -31,7 +32,8 @@ Create client  :localhost:3000/client/signup <br>
   "country": "CA"
 }
 
-Create Driver: localhost:3000/driver/signup <br>
+Create Driver: 
+localhost:3000/driver/signup
 {
   "password": "a",
   "password1": "a",
@@ -44,7 +46,9 @@ Create Driver: localhost:3000/driver/signup <br>
   "province": "Ontario",
   "country": "CA"
 }
-Creat Pharmacy: localhost:3000/pharmacy/signup
+
+Creat Pharmacy
+localhost:3000/pharmacy/signup
 {
   "password": "a",
   "password1": "a",
@@ -58,20 +62,23 @@ Creat Pharmacy: localhost:3000/pharmacy/signup
 }
 ```
 
-### Admin get all
+### Admin
 ```
+Get all
+
 Admin Get all Client: localhost:3000/admin/clients/all_clients
 Admin Get All Driver:  localhost:3000/admin/drivers/all_drivers
 Admin Get All Pharmacies: localhost:3000/admin/pharmacies/all_pharmacies
 
-byiD
+ByiD
+
 Admin Get a Client by id: localhost:3000/admin/client/63d58747619d1e7dd77c7ac3  
 Admin Get a Driver by id: localhost:3000/admin/driver/63d55c83f0b73682d19641a7  
 Admin Get a Pharmacies by id: localhost:3000/admin/pharmacy/63d2baacefeeb764469acecd  
 
 ```
 
-**__Back-end server control flow<br>
+**Back-end server control flow<br>
 server.js   -> controllers -> services -> user model<br>**
 
 
