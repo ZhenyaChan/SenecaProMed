@@ -14,17 +14,17 @@ router.post("/signup",validation.CreateUser,adminService.createAdmin);
 //Clients
 router.get("/client/:id", clientService.getClientById);
 router.get("/client/signup", clientService.createClient);
-router.get("/client/all_clients", clientService.getAllClients);
+router.get("/clients/all_clients", clientService.getAllClients);
 
 //Driver
 router.get('/driver/:id',driverService.getDriverById);
-router.get('/driver/all_drivers',driverService.getAllDrivers);
+router.get('/drivers/all_drivers',driverService.getAllDrivers);
 router.post('/driver/signup', validation.CreateUser,driverService.createDriver);
 router.put('/driver/:id', driverService.updateDriver)
 
 //Pharmacy
 router.get('/pharmacy/:id',pharmaService.getPharmacyById);
-router.get('/pharmacy/all_pharmacies', pharmaService.getAllPharmacyUsers);
+router.get('/pharmacies/all_pharmacies', pharmaService.getAllPharmacyUsers);
 router.post('/pharmacy/signup',validation.CreateUser, pharmaService.createPharmacy);
 router.put('/pharmacy/:id',pharmaService.updatePharmacyById)
 
