@@ -1,12 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// Differences from the SRS document:
-// Added a price attribute for each product
-// userType is not included in this Schema,
-// it's also not included in any of the other Schemas
-// created so far. We can always add it if we want it.
-
 const pharmacySchema = new Schema({
    role: { 
       type:String,
@@ -48,12 +42,6 @@ const pharmacySchema = new Schema({
    country: {
       type: String,
       required: true
-   },
-
-   // Currently 4 products are required
-   // to be added when adding a Pharmacy
-   productList: {
-      type: Array
    }
 });
 
