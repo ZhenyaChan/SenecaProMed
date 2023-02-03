@@ -1,22 +1,6 @@
 const pharmaModel = require("../models/pharma-model");
 const bcrypt = require('bcryptjs');
 
-// POST Route - the code directly below this does the same
-// Add a Pharmacy to the database
-/*exports.createPharmacy = (req, res) => {
-   const pharmacyUser = new pharmaModel(req.body);
-   pharmacyUser.save().then((newPharmaUser) => {
-         res.status(201).json({
-            message: "Pharmacy user created",
-            data: newPharmaUser
-         });
-      })
-      .catch((err) => {
-         res.status(500).json({ message: err }); // See error message in the browser
-         console.log(`Error: ${err}`);
-      });
-};*/
-
 // POST Route
 // Add a Pharmacy to the database
 exports.createPharmacy = async (req, res) => {
@@ -51,45 +35,6 @@ exports.createPharmacy = async (req, res) => {
    }
 };
 
-// This is the JSON you can use with Thunder Client/Postman to create a Pharamacy:
-
-/*
-{
-    "pharmacyName": "Some Pharmacy",
-    "phoneNumber": ["343-232-1831"],
-    "email": "get@gmail.com",
-    "postal": "M5H 1S4",
-    "country": "Canada",
-    "province": "Ontario",
-    "city": "Toronto",
-    "productList": [ 
-      { 
-        "_id": "1234567",
-        "title": "Tylenol",
-        "description": "Fast, effective relief of headaches, aches and pain, and fever.",
-        "price": 15.27
-      },
-      { 
-        "_id": "1234568",
-        "title": "Advil",
-        "description": "Fast-acting Advil Regular Strength Tablets provide effective pain relief from migraine, muscle and joint pain, period and menstrual pain, backaches, neckaches, toothaches, and pain from inflammation associated with arthritis or physical overexertion.",
-        "price": 11.97
-      },
-      { 
-        "_id": "1234569",
-        "title": "NyQuil",
-        "description": "All-in-one relief. Relieves cough, headache, fever, sore throat pain, minor aches and pains, sneezing, runny nose and cough.",
-        "price": 13.97
-      },
-      { 
-        "_id": "1234570",
-        "title": "Buckley's",
-        "description": "Provides fast-acting relief for headache, aches and pains, fever and chills, sore throat pain, coughs, and nasal and sinus congestion.",
-        "price": 19.99
-      }
-    ]
-  }
-*/
 
 // GET Routes
 exports.getAllPharmacyUsers = async (req, res) => {
