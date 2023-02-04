@@ -18,9 +18,9 @@ router.post("/signup",validation.CreateUser,adminService.createAdmin);
 
 //Clients 
 router.get("/client/:id", clientService.getClientById);
-router.get("/clients/all_clients", clientService.getAllClients);
+router.get("/clients/all_clients",  clientService.getAllClients);
 
-router.post("/client/signup", clientService.createClient);
+router.post("/client/signup", validation.CreateUser,clientService.createClient);
 
 //Driver
 router.get('/driver/:id',driverService.getDriverById);
