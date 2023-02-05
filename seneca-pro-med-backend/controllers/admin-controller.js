@@ -23,10 +23,10 @@ router.get("/clients/all_clients",  clientService.getAllClients);
 router.post("/client/signup", validation.CreateUser,clientService.createClient);
 
 //Driver
-router.get('/driver/:id',driverService.getDriverById);
-router.get('/drivers/all_drivers',driverService.getAllDrivers);
+router.get('/driver/:id', driverService.getDriverById);
+router.get('/drivers/all_drivers', driverService.getAllDrivers);
 
-router.post('/driver/signup', validation.CreateUser,driverService.createDriver);
+router.post('/driver/signup', validation.CreateUser, driverService.createDriver);
 
 router.put('/driver/:id', driverService.updateDriver)
 
