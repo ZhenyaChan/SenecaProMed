@@ -1,12 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import "./index.css";
+
 import App from "./App";
-import "../src/assets/css/index.css";
+import LandingPage from "./pages/landingPage/LandingPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
-  <Router>
-    <App />
-  </Router>
+  <React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/*" element={<App />} />
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>
 );
