@@ -1,0 +1,59 @@
+.FooterComponent {
+  border-top: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 75px;
+  background-color: gainsboro;
+}
+
+.FooterComponent > .information-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 30px 0;
+}
+
+.FooterComponent > .information-section h1 {
+  font-weight: bolder;
+  font-size: 1.2em;
+}
+
+.FooterComponent > .information-section > .account {
+  max-width: 25%;
+}
+
+.FooterComponent > .information-section > .about-us {
+  max-width: 25%;
+}
+
+.FooterComponent > .information-section > .help {
+  max-width: 25%;
+}
+
+.FooterComponent > .information-section > .follow-us {
+  max-width: 25%;
+}
+.FooterComponent > .information-section > .follow-us > .social-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  padding: 20px 0;
+  text-decoration: underline;
+}
+.FooterComponent > .bottom-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.FooterComponent > .bottom-section > .logo {
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+.FooterComponent > .bottom-section > .terms-and-policy {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  text-decoration: underline;
+}
