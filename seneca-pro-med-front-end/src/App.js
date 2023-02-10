@@ -5,6 +5,8 @@ import { AnimatePresence } from "framer-motion";
 import HeaderComponent from "./components/HeaderComponent";
 import MainComponent from "./components/MainComponent";
 import FooterComponent from "./components/FooterComponent";
+import PharmacyUsers from "./components/PharmacyUsers";
+import Pharmacy from "./components/Pharmacy";
 
 const App = () => {
   return (
@@ -15,6 +17,8 @@ const App = () => {
         <main className="mt-14 md:mt-20 px-4 md:px-16 py-4 w-full">
           <Routes>
             <Route path="/*" element={<MainComponent />} />
+            <Route path="/pharmacyUsers" element={<PharmacyUsers />} />
+            <Route path="/pharmacy/:id" element={<Pharmacy />} />
           </Routes>
         </main>
 
