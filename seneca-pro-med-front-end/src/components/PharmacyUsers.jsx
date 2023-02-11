@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-export function PharmacyUsers() {
+export default function PharmacyUsers() {
    const [users, setUsers] = useState();
    const [loading, setLoading] = useState(true); // Because sometimes Heroku sleeps
 
@@ -32,7 +31,9 @@ export function PharmacyUsers() {
             <br />
             <br />
             <br />
-            <h2 className="text-lg font-medium text-gray-900 px-2 py-2 text-left">Pharmacy Users</h2>
+            <h2 className="text-lg font-medium text-gray-900 px-2 py-2 text-left">
+               Pharmacy Users
+            </h2>
             <div className="flex flex-col">
                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                   <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -75,7 +76,9 @@ export function PharmacyUsers() {
                                           : "bg-gray-100 border-b transition duration-300 ease-in-out hover:bg-sky-200 cursor-pointer"
                                     }
                                     key={index}
-                                    onClick={() => {navigate(`/pharmacy/${user._id}`)}}
+                                    onClick={() => {
+                                       navigate(`/pharmacy/${user._id}`);
+                                    }}
                                  >
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                        {index + 1}
@@ -98,16 +101,15 @@ export function PharmacyUsers() {
                </div>
             </div>
             <div className="flex justify-end">
-            <button
-                           type="button"
-                           className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                           onClick={() => {
-                              navigate(`/pharmacyUsers`);
-                           }}
-                        >
-                           Add User
-                        </button>
-
+               <button
+                  type="button"
+                  className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                  onClick={() => {
+                     navigate(`/pharmacyUsers`);
+                  }}
+               >
+                  Add User
+               </button>
             </div>
             <br />
             <br />
@@ -116,5 +118,3 @@ export function PharmacyUsers() {
       );
    }
 }
-
-export default PharmacyUsers;

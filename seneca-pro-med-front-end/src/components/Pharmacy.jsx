@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-export function Pharmacy() {
+export default function Pharmacy() {
    const { id } = useParams();
 
    const [user, setUser] = useState();
@@ -115,5 +115,3 @@ export function Pharmacy() {
       }
    }
 }
-
-export default Pharmacy;
