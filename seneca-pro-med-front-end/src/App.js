@@ -5,14 +5,18 @@ import { AnimatePresence } from "framer-motion";
 import HeaderComponent from "./components/HeaderComponent";
 import MainComponent from "./components/MainComponent";
 import FooterComponent from "./components/FooterComponent";
+import ProductList from "./components/ProductList";
+
 
 const App = () => {
   return (
     <AnimatePresence>
-      <div className="w-screen h- auto flex flex-col bg-primary">
+      <div className="w-screen h-auto flex flex-col bg-primary">
         <HeaderComponent />
 
         <main className="mt-14 md:mt-20 px-4 md:px-16 py-4 w-full">
+          <ProductList />
+
           <Routes>
             <Route path="/*" element={<MainComponent />} />
           </Routes>

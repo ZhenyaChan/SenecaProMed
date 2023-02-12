@@ -45,7 +45,7 @@ const HeaderComponent = () => {
   const login = async () => {};
 
   return (
-    <header className="HeaderComponent fixed z-50 w-screen p-3 px-16 border-b-0.5 border-b-textColor">
+    <header className="fixed z-50 w-screen p-3 px-16 border-b-0.5 border-b-textColor bg-primary">
       {/* PC and tablet */}
       <div className="hidden md:flex w-full h-full">
         <Link to="/" className="flex items-center gap-2">

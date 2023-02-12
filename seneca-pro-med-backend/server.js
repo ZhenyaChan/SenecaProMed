@@ -6,7 +6,7 @@ const driverControllers = require("./controllers/driver-controller.js");
 const pharmaControllers = require("./controllers/pharma-controller.js");
 const productControllers = require("./controllers/product-controller.js");
 
-const PORT = 3000;
+const PORT = 8080;
 const app = express();
 app.use(express.json());
 mongoose.set("strictQuery", false);
