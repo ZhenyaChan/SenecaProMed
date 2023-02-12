@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 const Product = (props) => {
   return (
-    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-3xl shadow">
-      <Link to={`/products/${props.id}`}>
-        <img className="p-8 rounded-t-lg" src={props.productPhoto} alt="product" />
+    <div className="w-full max-w-xs bg-white border border-gray-200 rounded-3xl shadow">
+      <Link to={`/products/${props._id}`}>
+        <img className="p-8 rounded-t-lg" src={props.photo} alt="product" />
       </Link>
 
       <div className="px-5 pb-5">
@@ -22,8 +22,8 @@ const Product = (props) => {
             <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-3">5.0</span>
         </div>
         <div className="flex items-center justify-between">
-            <span className="text-3xl font-bold text-headingColor">${props.price}</span>
-            <Link to="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add to cart</Link>
+            <span className="text-xl font-bold text-headingColor">${props.price}</span>
+            <Link to="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center">Add to cart</Link>
         </div>
       </div>
     </div>

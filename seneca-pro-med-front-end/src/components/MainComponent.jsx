@@ -1,5 +1,4 @@
 import React from "react";
-
 import './MainComponent.css'
 
 const MainComponent = () => {
