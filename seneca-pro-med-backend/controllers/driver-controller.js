@@ -6,14 +6,14 @@
 const express = require('express');
 const router = express.Router();
 
-const driverService = require("../services/driver-service");
-const validation = require("../middleware/validation.js")
+const driverService = require('../services/driver-service');
+const validation = require('../middleware/validation.js');
 // Create a route(API request), and call the function that will handle the API request
 
 // Create
-router.post("/signup", validation.CreateUser, driverService.createDriver);
+router.post('/signup', validation.CreateUser, driverService.createDriver);
 
 // Delete
-router.delete("/:id", driverService.deleteDriver);
+router.delete('/:id', driverService.deleteDriver);
 
 module.exports = router;

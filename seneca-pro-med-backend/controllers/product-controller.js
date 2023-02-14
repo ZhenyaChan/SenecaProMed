@@ -6,15 +6,15 @@
 const express = require('express');
 const router = express.Router();
 
-const productService = require("../services/product-service");
+const productService = require('../services/product-service');
 
 // Create a route(API request), and call the function that will handle the API request
 
 // Create
-router.post("/Add_Product", productService.createProduct);
+router.post('/Add_Product', productService.createProduct);
 
 // Delete
-router.delete("/:id", productService.deleteProduct);
+router.delete('/:id', productService.deleteProduct);
 
 // Update (PUT)
 router.put('/:id', productService.updateProduct);
