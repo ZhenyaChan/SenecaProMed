@@ -1,11 +1,15 @@
-const pharmaModel = require('../models/pharma-model');
+// src/routes/services/pharma-service.js
+
+const pharmaModel = require('../../models/pharma-model');
 const bcrypt = require('bcryptjs');
 
 // POST Route
 // Add a Pharmacy to the database
-exports.createPharmacy = async (req, res) => {
+module.exports.createPharmacy = async (req, res) => {
   try {
-    let salt = bcrypt.genSaltSync(10); //password encription
+    // TODO: remove after implementing in frontend
+    //password encryption
+    let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(req.body.password, salt);
     req.body.password = hash;
     req.body.userName = req.body.email;
@@ -37,7 +41,7 @@ exports.createPharmacy = async (req, res) => {
 };
 
 // GET Routes
-exports.getAllPharmacyUsers = async (req, res) => {
+module.exports.getAllPharmacyUsers = async (req, res) => {
   try {
     const pharmaData = await pharmaModel.find();
     res.status(200).json({
@@ -49,7 +53,7 @@ exports.getAllPharmacyUsers = async (req, res) => {
   }
 };
 
-exports.getPharmacyById = async (req, res) => {
+module.exports.getPharmacyById = async (req, res) => {
   try {
     const pharmacy = await pharmaModel.findOne({ _id: req.params.id }).exec();
     res.status(200).json({
@@ -68,7 +72,7 @@ exports.getPharmacyById = async (req, res) => {
 };
 
 // PUT route
-exports.updatePharmacyById = async (req, res) => {
+module.exports.updatePharmacyById = async (req, res) => {
   try {
     await pharmaModel.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -84,7 +88,7 @@ exports.updatePharmacyById = async (req, res) => {
 };
 
 // DELETE Route
-exports.deletePharmacyById = async (req, res) => {
+module.exports.deletePharmacyById = async (req, res) => {
   try {
     await pharmaModel.deleteOne({ _id: req.params.id }).exec();
     res.status(204).json({

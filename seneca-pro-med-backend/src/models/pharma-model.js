@@ -1,11 +1,12 @@
+// src/models/pharma-model.js
+
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-//  creating schema
-const adminSchema = new Schema({
+const pharmacySchema = new Schema({
   role: {
     type: String,
-    default: 'admin',
+    default: 'pharmacy',
   },
   userName: {
     type: String,
@@ -14,11 +15,7 @@ const adminSchema = new Schema({
     type: String,
     required: true,
   },
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: {
+  pharmacyName: {
     type: String,
     required: true,
   },
@@ -34,10 +31,12 @@ const adminSchema = new Schema({
     type: String,
     required: true,
   },
+
   city: {
     type: String,
     required: true,
   },
+
   province: {
     type: String,
     required: true,
@@ -48,5 +47,5 @@ const adminSchema = new Schema({
   },
 });
 
-const admin_User = mongoose.model('admin_User', adminSchema);
-module.exports = admin_User;
+const pharma_user = mongoose.model('pharma_User', pharmacySchema);
+module.exports = pharma_user;

@@ -1,9 +1,13 @@
-const adminModel = require('../models/admin-model');
+// src/routes/services/admin-service.js
+
+const adminModel = require('../../models/admin-model');
 const bcrypt = require('bcryptjs');
 
-//creating new user
-exports.createAdmin = (req, res) => {
-  let salt = bcrypt.genSaltSync(10); //password encription
+// creating new user
+module.exports.createAdmin = (req, res) => {
+  // TODO: remove after implementing in frontend
+  //password encryption
+  let salt = bcrypt.genSaltSync(10);
   let hash = bcrypt.hashSync(req.body.password, salt);
   req.body.password = hash;
   req.body.userName = req.body.email;
@@ -30,7 +34,7 @@ exports.createAdmin = (req, res) => {
   });
 };
 
-exports.getAdminById = (req, res) => {
+module.exports.getAdminById = (req, res) => {
   adminModel
     .findById(req.params.id)
     .then((users) => {

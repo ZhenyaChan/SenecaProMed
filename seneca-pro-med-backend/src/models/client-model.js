@@ -1,10 +1,13 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// src/models/client-model.js
 
-const pharmacySchema = new Schema({
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
+//  creating schema
+const clientSchema = new Schema({
   role: {
     type: String,
-    default: 'pharmacy',
+    default: 'client',
   },
   userName: {
     type: String,
@@ -13,7 +16,12 @@ const pharmacySchema = new Schema({
     type: String,
     required: true,
   },
-  pharmacyName: {
+
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
     type: String,
     required: true,
   },
@@ -22,6 +30,7 @@ const pharmacySchema = new Schema({
     required: true,
   },
   email: {
+    //type: mongoose.SchemaTypes.Email
     type: String,
     required: true,
   },
@@ -29,12 +38,10 @@ const pharmacySchema = new Schema({
     type: String,
     required: true,
   },
-
   city: {
     type: String,
     required: true,
   },
-
   province: {
     type: String,
     required: true,
@@ -45,5 +52,5 @@ const pharmacySchema = new Schema({
   },
 });
 
-const pharmaModel = mongoose.model('pharma_User', pharmacySchema);
-module.exports = pharmaModel;
+const client_User = mongoose.model('client_User', clientSchema);
+module.exports = client_User;

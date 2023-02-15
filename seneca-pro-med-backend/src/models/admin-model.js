@@ -1,11 +1,13 @@
+// src/models/admin-model.js
+
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 //  creating schema
-const driverSchema = new Schema({
+const adminSchema = new Schema({
   role: {
     type: String,
-    default: 'driver',
+    default: 'admin',
   },
   userName: {
     type: String,
@@ -48,5 +50,5 @@ const driverSchema = new Schema({
   },
 });
 
-const driver_User = mongoose.model('driver_User', driverSchema);
-module.exports = driver_User;
+const admin_User = mongoose.model('admin_User', adminSchema);
+module.exports = admin_User;
