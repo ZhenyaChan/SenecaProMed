@@ -3,7 +3,7 @@
 const productModel = require('../../models/product-model');
 
 // Creating new product item
-exports.createProduct = (req, res) => {
+module.exports.createProduct = (req, res) => {
   const product = new productModel(req.body);
   product
     .save()
@@ -19,7 +19,7 @@ exports.createProduct = (req, res) => {
 };
 
 // Deleting a product
-exports.deleteProduct = (req, res) => {
+module.exports.deleteProduct = (req, res) => {
   productModel
     .findByIdAndRemove(req.params.id)
     .then(() => {
@@ -35,7 +35,7 @@ exports.deleteProduct = (req, res) => {
 };
 
 // Updating product information
-exports.updateProduct = (req, res) => {
+module.exports.updateProduct = (req, res) => {
   productModel
     .findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((product) => {
@@ -61,7 +61,7 @@ exports.updateProduct = (req, res) => {
 };
 
 // GET all products
-exports.getAllProducts = (req, res) => {
+module.exports.getAllProducts = (req, res) => {
   productModel
     .find()
     .then((productData) => {
@@ -78,7 +78,7 @@ exports.getAllProducts = (req, res) => {
 };
 
 // GET a specific product (using ID)
-exports.getProductById = (req, res) => {
+module.exports.getProductById = (req, res) => {
   productModel
     .findById(req.params.id)
     .then((productData) => {
