@@ -14,7 +14,7 @@ const ProductList = () => {
   ]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACKEND}/product/All_Products`)
+    fetch(`${process.env.REACT_APP_BACKEND}/product/all_products`)
     .then(response => response.json())
     .then(json => {
       console.log(json.data);
