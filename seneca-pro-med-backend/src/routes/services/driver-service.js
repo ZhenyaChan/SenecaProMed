@@ -1,8 +1,11 @@
-const driverModel = require('../models/driver-model');
+// src/routes/services/driver-service.js
+
+const driverModel = require('../../models/driver-model');
 const bcrypt = require('bcryptjs');
 
 // Creating new driver user
-exports.createDriver = (req, res) => {
+module.exports.createDriver = (req, res) => {
+  // TODO: remove after implementing in frontend
   //password encryption
   let salt = bcrypt.genSaltSync(10);
   let hash = bcrypt.hashSync(req.body.password, salt);
@@ -32,7 +35,7 @@ exports.createDriver = (req, res) => {
 };
 
 // Deleting a driver user
-exports.deleteDriver = (req, res) => {
+module.exports.deleteDriver = (req, res) => {
   driverModel
     .findByIdAndRemove(req.params.id)
     .then(() => {
@@ -48,7 +51,7 @@ exports.deleteDriver = (req, res) => {
 };
 
 // Updating driver user
-exports.updateDriver = (req, res) => {
+module.exports.updateDriver = (req, res) => {
   driverModel
     .findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((driver) => {
@@ -74,7 +77,7 @@ exports.updateDriver = (req, res) => {
 };
 
 // GET all driver users
-exports.getAllDrivers = (req, res) => {
+module.exports.getAllDrivers = (req, res) => {
   driverModel
     .find()
     .then((driverData) => {
@@ -89,7 +92,7 @@ exports.getAllDrivers = (req, res) => {
 };
 
 // GET a specific driver (using ID)
-exports.getDriverById = (req, res) => {
+module.exports.getDriverById = (req, res) => {
   driverModel
     .findById(req.params.id)
     .then((driverData) => {

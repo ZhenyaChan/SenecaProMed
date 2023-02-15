@@ -1,11 +1,13 @@
+// src/models/driver-model.js
+
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 //  creating schema
-const clientSchema = new Schema({
+const driverSchema = new Schema({
   role: {
     type: String,
-    default: 'client',
+    default: 'driver',
   },
   userName: {
     type: String,
@@ -14,7 +16,6 @@ const clientSchema = new Schema({
     type: String,
     required: true,
   },
-
   firstName: {
     type: String,
     required: true,
@@ -28,7 +29,6 @@ const clientSchema = new Schema({
     required: true,
   },
   email: {
-    //type: mongoose.SchemaTypes.Email
     type: String,
     required: true,
   },
@@ -50,5 +50,5 @@ const clientSchema = new Schema({
   },
 });
 
-const client_User = mongoose.model('client_User', clientSchema);
-module.exports = client_User;
+const driver_User = mongoose.model('driver_User', driverSchema);
+module.exports = driver_User;

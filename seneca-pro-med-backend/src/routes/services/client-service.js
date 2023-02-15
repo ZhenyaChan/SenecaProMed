@@ -1,10 +1,13 @@
-/*service.js write functions that wil handle the api request*/
-const clientModel = require('../models/client-model');
+// src/routes/services/client-service.js
+
+const clientModel = require('../../models/client-model');
 const bcrypt = require('bcryptjs');
 
 //creating new user
-exports.createClient = (req, res) => {
-  let salt = bcrypt.genSaltSync(10); //password encription
+module.exports.createClient = (req, res) => {
+  // TODO: remove after implementing in frontend
+  //password encryption
+  let salt = bcrypt.genSaltSync(10);
   let hash = bcrypt.hashSync(req.body.password, salt);
   req.body.password = hash;
   req.body.userName = req.body.email;
@@ -31,7 +34,7 @@ exports.createClient = (req, res) => {
   });
 };
 
-exports.getAllClients = (req, res) => {
+module.exports.getAllClients = (req, res) => {
   clientModel.find().then((clientsData) => {
     if (clientsData.length > 0) {
       res.json({
@@ -42,7 +45,7 @@ exports.getAllClients = (req, res) => {
   });
 };
 
-exports.getClientById = (req, res) => {
+module.exports.getClientById = (req, res) => {
   clientModel
     .findById(req.params.id)
     .then((client) => {
@@ -70,7 +73,7 @@ exports.getClientById = (req, res) => {
     });
 };
 
-exports.updateClientById = (req, res) => {
+module.exports.updateClientById = (req, res) => {
   clientModel
     .findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((client) => {

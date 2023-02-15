@@ -1,14 +1,6 @@
-const productModel = require('../models/product-model');
+// src/routes/services/product-service.js
 
-/*
-    To Do:
-        - CREATE (POST)  [Done] 
-        - DELETE         [Done]
-        - UPDATE (PUT)   [Done]
-        - GET
-            -> Get All   [Done]
-            -> Get By ID [Done]
-*/
+const productModel = require('../../models/product-model');
 
 // Creating new product item
 exports.createProduct = (req, res) => {
@@ -73,10 +65,12 @@ exports.getAllProducts = (req, res) => {
   productModel
     .find()
     .then((productData) => {
-      res.json({
-        message: `Product data successfully found (total of ${productData.length} data)`,
-        data: productData,
-      });
+      if (productData.length > 0) {
+        res.json({
+          message: `Product data successfully found (total of ${productData.length} data)`,
+          data: productData,
+        });
+      }
     })
     .catch((err) => {
       console.log(`Error: ${err}`);
