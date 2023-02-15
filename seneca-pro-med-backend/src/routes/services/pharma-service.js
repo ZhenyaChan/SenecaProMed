@@ -17,7 +17,7 @@ module.exports.createPharmacy = async (req, res) => {
     pharmaModel.find({ userName: req.body.email }).then((userDB) => {
       if (userDB.length > 0) {
         res.json({
-          message: 'Username is already in DB',
+          message: 'An account with this email address already exists',
         });
       } else {
         const pharmacyUser = new pharmaModel(req.body);
@@ -73,18 +73,28 @@ module.exports.getPharmacyById = async (req, res) => {
 
 // PUT route
 module.exports.updatePharmacyById = async (req, res) => {
-  try {
-    await pharmaModel.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
+  pharmaModel
+    .findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then((pharmacy) => {
+      // if pharmacy was found
+      if (pharmacy) {
+        res.status(200).json({
+          message: `Updated Phramacy with id: ${req.params.id}.`,
+          data: pharmacy,
+        });
+      }
+      // if not found
+      else {
+        res.status(404).json({
+          message: `Pharmacy with id: ${req.params.id} could not be found.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: err,
+      });
     });
-    res.status(200).json({
-      message: `Updated Phramacy with id: ${req.params.id}.`,
-    });
-  } catch (err) {
-    res.status(404).json({
-      message: `Pharmacy with id: ${req.params.id} could not be found.`,
-    });
-  }
 };
 
 // DELETE Route
