@@ -12,31 +12,88 @@ describe('/client endpoints', () => {
   let createdClientIds = [];
 
   const clientData = {
-    firstName: 'jestClient',
-    lastName: 'jestClient',
+    firstName: 'testClient',
+    lastName: 'testClient',
     password: 'password',
     phoneNumber: '4371231234',
-    email: 'jestClient.jestClient@email.com',
+    email: 'testClient@email.com',
     postalCode: 'L4L 4L4',
     city: 'Toronto',
     province: 'Ontario',
     country: 'Canada',
   };
 
-  // connect to db before all tests
+  const wrongClientData = {
+    firstName: 'wrongClient',
+    lastName: 'wrongClient',
+    password: 123,
+    phoneNumber: '4371231234',
+    email: 'wrongClient@email.com',
+    postalCode: 'L4L 4L4',
+    city: 'Toronto',
+    province: 'Ontario',
+    country: 'Canada',
+  };
+
+  // Connect to db before all tests
   beforeAll(async () => {
     await mongoose.connect(
       'mongodb+srv://senecapromed:senec%40ProMed1234@senecapromeddb.xjhswji.mongodb.net/UsersDB?retryWrites=true&w=majority'
     );
   });
 
-  // close connection to db after all tests are done
+  // Close connection to db after all tests are done
   afterAll(async () => {
     // Delete all items that were created during the tests
-    await clientModel.deleteMany({ _id: { $in: createdClientIds } });
+    // await clientModel.deleteMany({ _id: { $in: createdClientIds } });
     await mongoose.connection.close();
   });
 
-  // TODO
-  test('', () => {});
+  // Testing whether client POST successfully works
+  test('POST /client/signup => Successful register', async () => {
+    const res = await request(app)
+      .post('/client/signup')
+      .set('Content-Type', 'application/json')
+      .send(clientData);
+    
+    createdClientIds.push(res.body.data._id);
+    
+    expect(res.statusCode).toBe(200);
+    expect(res.body.message).toBeDefined;
+  });
+
+  // Testing whether client POST catches an error if there is already a user with same email
+  test('POST /client/signup => Unsuccessful register (Same email already exists)', async () => {
+    const res = await request(app)
+      .post('/client/signup')
+      .set('Content-Type', 'application/json')
+      .send(clientData);
+  
+    expect(res.statusCode).toBe(200);
+    expect(res.body.message).toEqual('An account with this email address already exists');
+  });
+
+  // Testing whether client POST catches an error with wrong type of input
+  test('POST /client/signup => Error with wrong type of input', async () => {
+    const res = await request(app)
+      .post('/client/signup')
+      .set('Content-Type', 'application/json')
+      .send(wrongClientData);
+    
+    expect(res.statusCode).toBe(500);
+  });
+
+  // Testing whether client DELETE is successful
+  test('DELETE /client/:id => Successful Delete', async () => {
+    const res = await request(app).delete(`/client/${createdClientIds[0]}`);
+    
+    expect(res.statusCode).toBe(200);
+  });
+
+  // Testing whether driver DELETE is not successful (wrong id)
+  test('DELETE /client/:id => Unsuccessful delete with wrong ID', async () => {
+    const res = await request(app).delete('/client/1234');
+    
+    expect(res.statusCode).toBe(500);
+  });
 });

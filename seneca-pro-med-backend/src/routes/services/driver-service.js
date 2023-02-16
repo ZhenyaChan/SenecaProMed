@@ -3,7 +3,7 @@
 const driverModel = require('../../models/driver-model');
 const bcrypt = require('bcryptjs');
 
-// Creating new driver user
+// POST Route - Creating new driver user
 module.exports.createDriver = (req, res) => {
   // TODO: remove after implementing in frontend
   //password encryption
@@ -28,29 +28,45 @@ module.exports.createDriver = (req, res) => {
           });
         })
         .catch((err) => {
-          console.log(`error ${err}`);
+          console.log(`Error: ${err}`);
         });
     }
   });
 };
 
-// Deleting a driver user
-module.exports.deleteDriver = (req, res) => {
+// GET Route - Get all drivers' information
+module.exports.getAllDrivers = (req, res) => {
   driverModel
-    .findByIdAndRemove(req.params.id)
-    .then(() => {
+    .find()
+    .then((driverData) => {
       res.json({
-        message: `Driver with ID (${req.params.id}) has been deleted successfully`,
+        message: `Driver data successfully found (total of ${driverData.length} data)`,
+        data: driverData,
       });
     })
     .catch((err) => {
-      res.status(500).json({
-        message: err,
+      console.log(`Error: ${err}`);
+    });
+};
+
+// GET Route - Get a specific driver's information (using ID)
+module.exports.getDriverById = (req, res) => {
+  driverModel
+    .findById(req.params.id)
+    .then((driverData) => {
+      res.json({
+        message: `Data of a driver with ID (${req.params.id}) successfully found`,
+        data: driverData,
+      });
+    })
+    .catch((err) => {
+      res.status(404).json({
+        message: `There are no drivers with an ID of ${req.params.id} `,
       });
     });
 };
 
-// Updating driver user
+// PUT Route - Updating driver's information
 module.exports.updateDriver = (req, res) => {
   driverModel
     .findByIdAndUpdate(req.params.id, req.body, { new: true })
@@ -76,34 +92,18 @@ module.exports.updateDriver = (req, res) => {
     });
 };
 
-// GET all driver users
-module.exports.getAllDrivers = (req, res) => {
+// DELETE Route - Deleting a driver by ID
+module.exports.deleteDriver = (req, res) => {
   driverModel
-    .find()
-    .then((driverData) => {
+    .findByIdAndRemove(req.params.id)
+    .then(() => {
       res.json({
-        message: `Driver data successfully found (total of ${driverData.length} data)`,
-        data: driverData,
+        message: `Driver with ID (${req.params.id}) has been deleted successfully`,
       });
     })
     .catch((err) => {
-      console.log(`Error: ${err}`);
-    });
-};
-
-// GET a specific driver (using ID)
-module.exports.getDriverById = (req, res) => {
-  driverModel
-    .findById(req.params.id)
-    .then((driverData) => {
-      res.json({
-        message: `Data of a driver with ID (${req.params.id}) successfully found`,
-        data: driverData,
-      });
-    })
-    .catch((err) => {
-      res.status(404).json({
-        message: `There are no drivers with an ID of ${req.params.id} `,
+      res.status(500).json({
+        message: err,
       });
     });
 };

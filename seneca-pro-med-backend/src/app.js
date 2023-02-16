@@ -32,9 +32,9 @@ app.use((err, req, res, next) => {
   const errMessage = err.message || 'unable to process the request';
 
   // log something if this is a server error
-  if (errStatus > 499) {
-    console.error(`Error ${errStatus}: failed to process the request`);
-  }
+  // if (errStatus > 499) {
+  //   console.error(`Error ${errStatus}: failed to process the request`);
+  // }
 
   // TODO: maybe replace with an error page
   res.status(errStatus).json(newFailedResponse(errMessage));

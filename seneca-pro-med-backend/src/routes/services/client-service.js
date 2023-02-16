@@ -34,6 +34,7 @@ module.exports.createClient = (req, res) => {
   });
 };
 
+// Getting all clients
 module.exports.getAllClients = (req, res) => {
   clientModel.find().then((clientsData) => {
     if (clientsData.length > 0) {
@@ -45,6 +46,7 @@ module.exports.getAllClients = (req, res) => {
   });
 };
 
+// Getting client by ID
 module.exports.getClientById = (req, res) => {
   clientModel
     .findById(req.params.id)
@@ -73,6 +75,7 @@ module.exports.getClientById = (req, res) => {
     });
 };
 
+// PUT Route - Updating client's data by ID
 module.exports.updateClientById = (req, res) => {
   clientModel
     .findByIdAndUpdate(req.params.id, req.body, { new: true })
@@ -95,16 +98,29 @@ module.exports.updateClientById = (req, res) => {
     });
 };
 
-/*Things to do */
+// DELETE Route - Deleting clients by ID
+module.exports.deleteClient = (req, res) => {
+  clientModel
+    .findByIdAndRemove(req.params.id)
+    .then(() => {
+      res.json({
+        message: `Client with ID (${req.params.id}) has been deleted successfully`,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: err,
+      });
+    });
+};
 
-//create order
 
-//get order
-
-//get all order(history)
-
-//get current order
-
-//update order
-
-//delete order
+/*
+  TODO: 
+    - Create order            []
+    - Get order               []
+    - Get all order (history) []
+    - Get current order       []
+    - Update order            []
+    - Delete order            []
+*/
