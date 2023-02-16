@@ -9,7 +9,7 @@ const ProductList = () => {
       title: "",
       description: "",
       price: 0,
-      photo: null,
+      photo: "",
     }
   ]);
 

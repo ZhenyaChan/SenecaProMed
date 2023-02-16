@@ -3,9 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import HeaderComponent from "./components/HeaderComponent";
-import MainComponent from "./components/MainComponent";
 import FooterComponent from "./components/FooterComponent";
-import ProductList from "./components/ProductList";
+// import ProductList from "./components/ProductList";
+import MainComponent from "./components/MainComponent";
+import ProductForm from "./components/pharmacy/ProductForm";
 
 
 const App = () => {
@@ -15,10 +16,11 @@ const App = () => {
         <HeaderComponent />
 
         <main className="mt-14 md:mt-20 px-4 md:px-16 py-4 w-full">
-          <ProductList />
-
           <Routes>
-            <Route path="/*" element={<MainComponent />} />
+            <Route path="/home" element={<MainComponent />} />
+            {/* <Route path="/products" element={<ProductList />} /> */}
+            <Route path="/productForm" element={<ProductForm />} />
+            {/* <Route path="*" element={<PageNotFound />} /> */}
           </Routes>
         </main>
 

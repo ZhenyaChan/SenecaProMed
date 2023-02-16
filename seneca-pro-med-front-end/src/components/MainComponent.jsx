@@ -1,10 +1,11 @@
 import React from "react";
-import './MainComponent.css'
+import "./MainComponent.css";
+import ProductList from "./ProductList";
 
 const MainComponent = () => {
   return (
     <div className="MainComponent">
-      <h1>This is MainComponent</h1>
+      <ProductList />
     </div>
   );
 };
