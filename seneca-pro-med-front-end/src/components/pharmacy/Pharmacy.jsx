@@ -12,7 +12,7 @@ export default function Pharmacy() {
    useEffect(() => {
       setLoading(true);
 
-      fetch(`https://promed-api.herokuapp.com/pharmacy/${id}`)
+      fetch(/*`https://promed-api.herokuapp.com/pharmacy/${id}`*/`http://localhost:8080/pharma/${id}`)
          .then((res) => res.json())
          .then((result) => {
             setUser(result.data);
