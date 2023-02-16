@@ -10,7 +10,7 @@ export default function PharmacyUsers() {
    useEffect(() => {
       setLoading(true);
 
-      fetch(`https://promed-api.herokuapp.com/pharmacy/All_Pharmacies`)
+      fetch(/*`https://promed-api.herokuapp.com/pharmacy/All_Pharmacies`*/`http://localhost:8080/pharma/all_pharmacies`)
          .then((res) => res.json())
          .then((result) => {
             setUsers(result.data);
