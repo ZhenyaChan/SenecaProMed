@@ -34,7 +34,8 @@ export default function CreatePharmacy() {
       e.preventDefault()
 
       fetch(
-         `https://promed-api.herokuapp.com/pharmacy/signup`,
+         /*`https://promed-api.herokuapp.com/pharmacy/signup`*/
+         `http://localhost:8080/pharma/signup`,
          {
             method: "POST",
             body: JSON.stringify(user),
