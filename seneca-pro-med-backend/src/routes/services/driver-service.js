@@ -15,7 +15,7 @@ module.exports.createDriver = (req, res) => {
   driverModel.find({ userName: req.body.email }).then((userDB) => {
     if (userDB.length > 0) {
       res.json({
-        message: 'Username is already in DB',
+        message: 'An account with this email address already exists',
       });
     } else {
       const driverUser = new driverModel(req.body);
