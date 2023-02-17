@@ -19,7 +19,7 @@ const App = () => {
           <Routes>
             <Route path="/home" element={<MainComponent />} />
             {/* <Route path="/products" element={<ProductList />} /> */}
-            <Route path="/productForm" element={<ProductForm />} />
+            <Route path="/addProduct" element={<ProductForm />} />
             {/* <Route path="*" element={<PageNotFound />} /> */}
           </Routes>
         </main>
