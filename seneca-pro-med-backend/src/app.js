@@ -2,7 +2,6 @@
 
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 
 // functions to create a success or failure json response
 // use example: res.status(200).json(newSuccessResponse(message))
@@ -31,12 +30,6 @@ app.use((err, req, res, next) => {
   const errStatus = err.status || 500;
   const errMessage = err.message || 'unable to process the request';
 
-  // // log something if this is a server error
-  // if (errStatus > 499) {
-  //   console.err(`Error ${errStatus}: failed to process the request`);
-  // }
-
-  // TODO: maybe replace with an error page
   res.status(errStatus).json(newFailedResponse(errMessage));
 });
 
