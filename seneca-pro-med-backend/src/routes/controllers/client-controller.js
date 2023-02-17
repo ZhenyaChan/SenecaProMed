@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router();
 
+const { createUser } = require('../middleware/validator');
+
 const clientService = require('../services/client-service');
 
 // **************************
@@ -15,7 +17,7 @@ const clientService = require('../services/client-service');
  * @description Client endpoints
  * @summary POST, DELETE
  */
-router.post('/signup', clientService.createClient);
+router.post('/signup', createUser, clientService.createClient);
 router.delete('/:id', clientService.deleteClient);
 
 module.exports = router;

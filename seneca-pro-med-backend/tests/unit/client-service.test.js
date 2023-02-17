@@ -15,6 +15,7 @@ describe('/client endpoints', () => {
     firstName: 'testClient',
     lastName: 'testClient',
     password: 'password',
+    password1: 'password',
     phoneNumber: '4371231234',
     email: 'testClient@email.com',
     postalCode: 'L4L 4L4',
@@ -27,6 +28,7 @@ describe('/client endpoints', () => {
     firstName: 'wrongClient',
     lastName: 'wrongClient',
     password: 123,
+    password1: 123,
     phoneNumber: '4371231234',
     email: 'wrongClient@email.com',
     postalCode: 'L4L 4L4',
@@ -55,9 +57,9 @@ describe('/client endpoints', () => {
       .post('/client/signup')
       .set('Content-Type', 'application/json')
       .send(clientData);
-    
+
     createdClientIds.push(res.body.data._id);
-    
+
     expect(res.statusCode).toBe(200);
     expect(res.body.message).toBeDefined;
   });
@@ -68,7 +70,7 @@ describe('/client endpoints', () => {
       .post('/client/signup')
       .set('Content-Type', 'application/json')
       .send(clientData);
-  
+
     expect(res.statusCode).toBe(200);
     expect(res.body.message).toEqual('An account with this email address already exists');
   });
@@ -79,21 +81,21 @@ describe('/client endpoints', () => {
       .post('/client/signup')
       .set('Content-Type', 'application/json')
       .send(wrongClientData);
-    
+
     expect(res.statusCode).toBe(500);
   });
 
   // Testing whether client DELETE is successful
   test('DELETE /client/:id => Successful Delete', async () => {
     const res = await request(app).delete(`/client/${createdClientIds[0]}`);
-    
+
     expect(res.statusCode).toBe(200);
   });
 
   // Testing whether driver DELETE is not successful (wrong id)
   test('DELETE /client/:id => Unsuccessful delete with wrong ID', async () => {
     const res = await request(app).delete('/client/1234');
-    
+
     expect(res.statusCode).toBe(500);
   });
 });

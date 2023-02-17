@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router();
 
+const { createUser } = require('../middleware/validator');
+
 const driverService = require('../services/driver-service');
 
 // **************************
@@ -15,7 +17,7 @@ const driverService = require('../services/driver-service');
  * @description Driver endpoints
  * @summary POST, DELETE
  */
-router.post('/signup', driverService.createDriver);
+router.post('/signup', createUser, driverService.createDriver);
 router.delete('/:id', driverService.deleteDriver);
 
 module.exports = router;

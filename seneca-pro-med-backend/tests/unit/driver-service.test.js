@@ -15,25 +15,27 @@ describe('/driver endpoints', () => {
     firstName: 'testDriver',
     lastName: 'testDriver',
     password: 'password',
+    password1: 'password',
     phoneNumber: '4371231234',
     email: 'testDriver.testDriver@email.com',
     postalCode: 'L4L 4L4',
     city: 'Toronto',
     province: 'Ontario',
-    country: 'Canada'
+    country: 'Canada',
   };
 
   const wrongDriverData = {
     firstName: 'wrongDriver',
     lastName: 'wrongDriver',
     password: 123,
+    password1: 123,
     phoneNumber: '4371231234',
     email: 'wrongDriver.wrongDriver@email.com',
     postalCode: 'L4L 4L4',
     city: 'Toronto',
     province: 'Ontario',
-    country: 'Canada'
-  }
+    country: 'Canada',
+  };
 
   // Connect to db before all tests
   beforeAll(async () => {
@@ -55,9 +57,9 @@ describe('/driver endpoints', () => {
       .post('/driver/signup')
       .set('Content-Type', 'application/json')
       .send(driverData);
-    
+
     createdDriverIds.push(res.body.data._id);
-    
+
     expect(res.statusCode).toBe(200);
     expect(res.body.message).toBeDefined;
   });
@@ -68,7 +70,7 @@ describe('/driver endpoints', () => {
       .post('/driver/signup')
       .set('Content-Type', 'application/json')
       .send(driverData);
-    
+
     // createdDriverIds.push(res.body.data._id);
     expect(res.statusCode).toBe(200);
     expect(res.body.message).toEqual('An account with this email address already exists');
@@ -80,21 +82,21 @@ describe('/driver endpoints', () => {
       .post('/driver/signup')
       .set('Content-Type', 'application/json')
       .send(wrongDriverData);
-    
+
     expect(res.statusCode).toBe(500);
   });
 
   // Testing whether driver DELETE is successful
   test('DELETE /driver/:id => Successful Delete', async () => {
     const res = await request(app).delete(`/driver/${createdDriverIds[0]}`);
-    
+
     expect(res.statusCode).toBe(200);
   });
 
   // Testing whether driver DELETE is not successful (wrong id)
   test('DELETE /driver/:id => Unsuccessful delete with wrong ID', async () => {
     const res = await request(app).delete('/driver/1234');
-    
+
     expect(res.statusCode).toBe(500);
   });
 });
