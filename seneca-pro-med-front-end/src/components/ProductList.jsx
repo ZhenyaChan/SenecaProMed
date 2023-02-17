@@ -25,8 +25,8 @@ const ProductList = () => {
 
   
   return (
-    <section>
-      <div className="">
+    <section className="w-full my-6">
+      <div>
         <h1 className="text-3xl font-bold text-headingColor text-center">
           Our Products
         </h1>

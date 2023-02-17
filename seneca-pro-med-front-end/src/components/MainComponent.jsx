@@ -4,7 +4,7 @@ import ProductList from "./ProductList";
 
 const MainComponent = () => {
   return (
-    <div className="MainComponent">
+    <div className="w-full h-auto flex flex-col items-center justify-center">
       <ProductList />
     </div>
   );
