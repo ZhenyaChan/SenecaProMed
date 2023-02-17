@@ -22,15 +22,19 @@
 
 ## API Endpoints
 
-Base: <http://localhost:8080/>
+API-Base: <http://localhost:8080/>
 
 ### User signup
 
-> Note: No duplicate username in DB. Server will use user email as a username. Passowrd:will be replace by 10 bcrypt
+> Note:
+>
+> - No duplicate usernames in DB.
+> - Server will use user email as a username.
+> - Password will be secured by 10 bcrypt.
 
 ``` JSON
 // Create client  :
-localhost:3000/client/signup
+// localhost:8080/client/signup
 {
   "password": "a",
   "password1": "a",
@@ -45,7 +49,7 @@ localhost:3000/client/signup
 }
 
 // Create Driver: 
-localhost:3000/driver/signup
+// localhost:8080/driver/signup
 {
   "password": "a",
   "password1": "a",
@@ -60,7 +64,7 @@ localhost:3000/driver/signup
 }
 
 // Create Pharmacy
-localhost:3000/pharmacy/signup
+// localhost:3000/pharmacy/signup
 {
   "password": "a",
   "password1": "a",
