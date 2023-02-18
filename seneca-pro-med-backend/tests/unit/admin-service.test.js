@@ -11,6 +11,7 @@ const pharmaModel = require('../../src/models/pharma-model');
 
 mongoose.set('strictQuery', false);
 
+
 describe('/admin endpoints', () => {
   let createdAdminIds = [];
 
@@ -19,9 +20,10 @@ describe('/admin endpoints', () => {
     lastName: 'jestAdmin',
     password: 'password',
     password1: 'password',
-    phoneNumber: '4371231234',
+    phoneNumber: '1234567890',
     email: 'jestAdmin.jestAdmin@email.com',
     postalCode: 'L4L 4L4',
+    street: "456 Elm St",
     city: 'Toronto',
     province: 'Ontario',
     country: 'Canada',
@@ -41,15 +43,16 @@ describe('/admin endpoints', () => {
     await mongoose.connection.close();
   });
 
+  
   test('POST /admin/signup => creates a new Admin', async () => {
     const res = await request(app)
       .post('/admin/signup')
       .set('Content-Type', 'application/json')
       .send(adminData);
-
+   
     createdAdminIds.push(res.body.data._id);
 
-    expect(res.statusCode).toBe(200);
+    expect(res.statusCode).toBe(201);
     expect(res.body.message).toEqual('A new admin has been created');
   });
 
@@ -59,7 +62,7 @@ describe('/admin endpoints', () => {
       .set('Content-Type', 'application/json')
       .send(adminData);
 
-    expect(res.statusCode).toBe(200);
+    expect(res.statusCode).toBe(400);
     expect(res.body.message).toEqual('An account with this email address already exists');
   });
 
@@ -67,6 +70,7 @@ describe('/admin endpoints', () => {
     const res = await request(app).get(`/admin/${createdAdminIds[0]}`);
 
     expect(res.statusCode).toBe(200);
+    
     expect(res.body.data.userName).toBe('jestAdmin.jestAdmin@email.com');
   });
 
