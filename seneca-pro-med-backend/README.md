@@ -33,6 +33,22 @@ API-Base: <http://localhost:8080/>
 > - Password will be secured by 10 bcrypt.
 
 ``` JSON
+// Create Admin :
+// localhost:8080/admin/signup
+{
+  "firstName": "William",
+  "lastName": "Brown",
+  "password": "mysecurepassword",
+  "password1": "mysecurepassword",
+  "phoneNumber": "905-555-5678",
+  "email": "williambrown@example.com",
+  "postalCode": "L6Y 4R2",
+  "street": "10 Peel Centre Dr",
+  "city": "Brampton",
+  "province": "Ontario",
+  "country": "Canada"
+}
+
 // Create client  :
 // localhost:8080/client/signup
 {
