@@ -18,10 +18,13 @@ const pharmaService = require('../services/pharma-service.js');
 /**
  * @name Admin
  * @description Admin endpoints
- * @summary GET, POST
+ * @summary GET, GET(ALL) POST, PUT
  */
 router.get('/:id', adminService.getAdminById);
+router.get('/all/admins', adminService.getAllAdmins);
 router.post('/signup', createUser, adminService.createAdmin);
+router.put('/:id', adminService.UpdateAdminById);
+router.delete('/:id',adminService.deleteAdmin);
 
 /**
  * @name Admin/Client
