@@ -5,13 +5,16 @@ import { useNavigate } from "react-router-dom";
 const ProductForm = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState();
+  const [errorTitle, setErrorTitle] = useState("");
+  const [errorDescription, setErrorDescription] = useState("");
+  const [errorPrice, setErrorPrice] = useState("");
 
   useEffect(() => {
     setProduct({
       title: "",
       description: "",
       price: 0,
-      photo: "",
+      photo: "https://images.unsplash.com/photo-1664786908056-347b222e53df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2500&q=80",
     });
   }, []);
 
@@ -31,28 +34,55 @@ const ProductForm = () => {
       description: "",
       price: 0,
       photo:
-        "https://images.unsplash.com/photo-1670850756988-a1943aa0e554?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1384&q=80",
+        "https://images.unsplash.com/photo-1664786908056-347b222e53df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2500&q=80",
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND}/product/add_product`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(product),
-      }
-    );
-
-    const created = await response.json();
-    resetForm();
-    if (created) {
+    if (validateForm()){
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND}/product/add_product`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(product),
+        }
+      );
+  
+      const created = await response.json();
       console.log(created);
-      navigate("/home");
+      resetForm();
     }
   };
+
+  const validateForm = () => {
+    let isValidated = true;
+
+    if (product.title === "") {
+      setErrorTitle("Error: You must enter a title!");
+      isValidated = false;
+    } else {
+      setErrorTitle("");
+    }
+
+    if (product.description === "") {
+      setErrorDescription("Error: You must enter a description!");
+      isValidated = false;
+    } else {
+      setErrorDescription("");
+    }
+
+    if (product.price === 0 || product.price === "" || isNaN(product.price)) {
+      setErrorPrice("Error: You must enter a price!");
+      isValidated = false;
+    } else {
+      setErrorPrice("");
+    }
+    
+    return isValidated;
+  };
+
 
   if (product) {
     return (
@@ -74,6 +104,9 @@ const ProductForm = () => {
                 onChange={handleChange}
                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               />
+              { errorTitle? (<div className="p-4 mb-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                <span className="font-medium">{errorTitle}</span>
+              </div>) : null}
             </div>
             <div className="form-group mb-6">
               <label htmlFor="price">Price:</label>
@@ -86,6 +119,9 @@ const ProductForm = () => {
                 onChange={handleChange}
                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               />
+              { errorPrice? (<div className="p-4 mb-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                <span className="font-medium">{errorPrice}</span>
+              </div>) : null}
             </div>
             <div className="form-group mb-6">
               <label htmlFor="description">Description:</label>
@@ -97,6 +133,9 @@ const ProductForm = () => {
                 onChange={handleChange}
                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               ></textarea>
+              { errorDescription? (<div className="p-4 mb-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                <span className="font-medium">{errorDescription}</span>
+              </div>) : null}
             </div>
             <div className="grid grid-cols-2 gap-4">
               <button
@@ -106,8 +145,7 @@ const ProductForm = () => {
                   navigate(`/home`);
                 }}
               >
-                {" "}
-                Cancel{" "}
+                Return
               </button>
               <button
                 type="submit"
