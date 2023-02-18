@@ -43,7 +43,10 @@ module.exports.createPharmacy = async (req, res) => {
 // GET Routes
 module.exports.getAllPharmacyUsers = async (req, res) => {
   try {
-    const pharmaData = await pharmaModel.find();
+    const pharmaData = await pharmaModel.find().lean();
+    pharmaData.forEach(
+      (pharmacy) => delete pharmacy.password // We do not Pass back the password
+    );
     res.status(200).json({
       message: [`There are ${pharmaData.length} Pharmacy users.`],
       data: pharmaData,
@@ -55,7 +58,8 @@ module.exports.getAllPharmacyUsers = async (req, res) => {
 
 module.exports.getPharmacyById = async (req, res) => {
   try {
-    const pharmacy = await pharmaModel.findOne({ _id: req.params.id }).exec();
+    const pharmacy = await pharmaModel.findOne({ _id: req.params.id }).lean().exec();
+    delete pharmacy.password; // We do not Pass back the password
     res.status(200).json({
       message: `Pharmacy user with the id: ${req.params.id} found.`,
       data: pharmacy,
