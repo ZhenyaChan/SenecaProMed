@@ -25,7 +25,7 @@ const driverSchema = new Schema({
     required: true,
   },
   phoneNumber: {
-    type: Array,
+    type: String,
     required: true,
   },
   email: {
