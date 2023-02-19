@@ -11,6 +11,7 @@ import PharmacyList from "./components/pharmacy/PharmacyList";
 import ListPharmacy from "./components/pharmacy/ListPharmacy";
 import AddPharmacy from "./components/pharmacy/AddPharmacy";
 import UpdatePharmacy from "./components/pharmacy/UpdatePharmacy";
+import NotFoundPage from "./pages/NotFoundPage";
 
 
 const App = () => {
@@ -21,10 +22,11 @@ const App = () => {
 
         <main className="mt-14 md:mt-20 px-4 md:px-16 py-4 w-full">
           <Routes>
+            <Route path="/" element={<MainComponent />} />
             <Route path="/home" element={<MainComponent />} />
+            <Route path='/*' element = {<NotFoundPage/>}/>
             {/* <Route path="/products" element={<ProductList />} /> */}
             <Route path="/addProduct" element={<ProductForm />} />
-            {/* <Route path="*" element={<PageNotFound />} /> */}
             <Route path="/admin/pharmacies/all_pharmacies" element={<PharmacyList />} />
             <Route path="/admin/pharmacy/:id" element={<ListPharmacy />} />
             <Route path="/admin/pharmacy/signup" element={<AddPharmacy />} />
