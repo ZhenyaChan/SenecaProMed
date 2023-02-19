@@ -36,7 +36,9 @@ const SidePanelComponent = () => {
                      active:bg-blue-800 active:shadow-lg
                      transition
                      duration-150
-                     ease-in-out"
+                     ease-in-out
+                     mb-10"
+                     
             onClick={() => {
               navigate("/login");
             }}
