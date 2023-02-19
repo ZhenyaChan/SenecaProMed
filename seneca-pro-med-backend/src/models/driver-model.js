@@ -7,32 +7,50 @@ const { Schema } = mongoose;
 const driverSchema = new Schema({
   role: {
     type: String,
-    default: 'driver',
+    default: 'Driver'
   },
   userName: {
-    type: String,
+    type: String
   },
   password: {
     type: String,
-    required: true,
+    required: true
   },
   firstName: {
     type: String,
-    required: true,
+    required: true
   },
   lastName: {
     type: String,
-    required: true,
+    required: true
   },
   phoneNumber: {
-    type: Array,
+    type: String,
     required: true,
+    validate: {
+      validator: function(v) {
+        return /^(?:\d{3}|\(\d{3}\))[- ]?\d{3}[- ]?\d{4}$/.test(v);
+      },
+      message: props => `${props.value} is not a valid phone number!`
+    }
   },
   email: {
     type: String,
     required: true,
+    unique: true,
+    trim: true,
+    lowercase: true,
+    match: [/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, 'Please enter a valid email address']
   },
   postalCode: {
+    type: String,
+    required: true,
+  },
+  licensePlate: {
+    type: String,
+    required: true,
+  },
+  vehicleModel: {
     type: String,
     required: true,
   },
