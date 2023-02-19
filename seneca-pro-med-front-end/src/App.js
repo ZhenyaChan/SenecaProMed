@@ -7,6 +7,10 @@ import FooterComponent from "./components/FooterComponent";
 // import ProductList from "./components/ProductList";
 import MainComponent from "./components/MainComponent";
 import ProductForm from "./components/pharmacy/ProductForm";
+import PharmacyList from "./components/pharmacy/PharmacyList";
+import ListPharmacy from "./components/pharmacy/ListPharmacy";
+import AddPharmacy from "./components/pharmacy/AddPharmacy";
+import UpdatePharmacy from "./components/pharmacy/UpdatePharmacy";
 
 
 const App = () => {
@@ -21,6 +25,10 @@ const App = () => {
             {/* <Route path="/products" element={<ProductList />} /> */}
             <Route path="/addProduct" element={<ProductForm />} />
             {/* <Route path="*" element={<PageNotFound />} /> */}
+            <Route path="/admin/pharmacies/all_pharmacies" element={<PharmacyList />} />
+            <Route path="/admin/pharmacy/:id" element={<ListPharmacy />} />
+            <Route path="/admin/pharmacy/signup" element={<AddPharmacy />} />
+            <Route path="/admin/pharmacy/update_pharmacy/:id" element={<UpdatePharmacy />} />
           </Routes>
         </main>
 

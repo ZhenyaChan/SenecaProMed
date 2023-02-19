@@ -15,8 +15,11 @@ const pharmaService = require('../services/pharma-service');
  * @description Pharmacy endpoints
  * @summary GET, GET all, POST, PUT, DELETE
  */
-router.get('/all_pharmacies', pharmaService.getAllPharmacyUsers);
-router.get('/:id', pharmaService.getPharmacyById);
+
+// These first two should only be accesible if you are an admin
+//router.get('/all_pharmacies', pharmaService.getAllPharmacyUsers);
+//router.get('/:id', pharmaService.getPharmacyById);
+
 router.post('/signup', pharmaService.createPharmacy);
 router.put('/:id', pharmaService.updatePharmacyById);
 router.delete('/:id', pharmaService.deletePharmacyById);
