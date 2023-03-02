@@ -34,6 +34,7 @@ router.delete('/:id',adminService.deleteAdmin);
 router.get('/clients/all_clients', clientService.getAllClients);
 router.get('/client/:id', clientService.getClientById);
 router.post('/client/signup', createUser, clientService.createClient);
+router.put('/client/:id', clientService.updateClientById); 
 
 /**
  * @name Admin/Driver
