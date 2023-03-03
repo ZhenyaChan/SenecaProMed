@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/images/SenecaProMed-Logo.svg";
 
-const SidePanelComponent = () => {
+const SidePanelComponent = ({ path }) => {
   const navigate = useNavigate();
 
   return (
@@ -13,14 +13,15 @@ const SidePanelComponent = () => {
           width="500px"
           className=" mt-10 pt-20 pb-10 px-20"
         />
-
-        <p className="text-center p-20 text-black font-bold text-[16px]">
-          Already have an Account?
-        </p>
-        <div className="w-full px-40">
-          <button
-            type="button"
-            className="w-full
+        {path === "sign-up" ? (
+          <div>
+            <p className="text-center p-20 text-black font-bold text-[16px]">
+              Already have an Account?
+            </p>
+            <div className="w-full px-40">
+              <button
+                type="button"
+                className="w-full
                      px-6
                      py-2.5
                      bg-blue-600
@@ -38,14 +39,49 @@ const SidePanelComponent = () => {
                      duration-150
                      ease-in-out
                      mb-10"
-                     
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            Login
-          </button>
-        </div>
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
+                Login
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <p className="text-center p-20 text-black font-bold text-[16px]">
+              Don't have an account?
+            </p>
+            <div className="w-full px-40">
+              <button
+                type="button"
+                className="w-full
+                       px-6
+                       py-2.5
+                       bg-blue-600
+                       text-white
+                       font-medium
+                       text-xs
+                       leading-tight
+                       uppercase
+                       rounded
+                       shadow-md
+                       hover:bg-blue-700 hover:shadow-lg
+                       focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                       active:bg-blue-800 active:shadow-lg
+                       transition
+                       duration-150
+                       ease-in-out
+                       mb-10"
+                onClick={() => {
+                  navigate("/sign-up");
+                }}
+              >
+                Sign Up
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
