@@ -1,6 +1,6 @@
 import React from "react";
 import "./MainComponent.css";
-import ProductList from "./ProductList";
+import ProductList from "./product/ProductList";
 
 const MainComponent = () => {
   return (
