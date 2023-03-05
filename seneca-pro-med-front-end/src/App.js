@@ -4,11 +4,12 @@ import { AnimatePresence } from "framer-motion";
 
 import HeaderComponent from "./components/HeaderComponent";
 import FooterComponent from "./components/FooterComponent";
-// import ProductList from "./components/ProductList";
 import MainComponent from "./components/MainComponent";
 
+import AddProduct from "./components/product/AddProduct";
+import ProductDescriptionPage from "./pages/ProductDescriptionPage";
+
 // admin/Pharmacy
-import ProductForm from "./components/pharmacy/ProductForm";
 import PharmacyList from "./components/pharmacy/PharmacyList";
 import ListPharmacy from "./components/pharmacy/ListPharmacy";
 import AddPharmacy from "./components/pharmacy/AddPharmacy";
@@ -40,10 +41,11 @@ const App = () => {
             <Route path="/" element={<MainComponent />} />
             <Route path="/home" element={<MainComponent />} />
             <Route path='/*' element = {<NotFoundPage/>}/>
-            {/* <Route path="/products" element={<ProductList />} /> */}
+
+            <Route path="/products/addProduct" element={<AddProduct />} />
+            <Route path="/products/product/:id" element={<ProductDescriptionPage />} />
 
             {/* ADMIN/PHARMACY ROUTE*/}
-            <Route path="/addProduct" element={<ProductForm />} />
             <Route path="/admin/pharmacies/all_pharmacies" element={<PharmacyList />} />
             <Route path="/admin/pharmacy/:id" element={<ListPharmacy />} />
             <Route path="/admin/pharmacy/signup" element={<AddPharmacy />} />
