@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LoginComponent = () => {
+<<<<<<< Updated upstream
   const navigate = useNavigate();
 
   const [formDetails, setFormDetails] = useState("");
@@ -74,11 +75,20 @@ const LoginComponent = () => {
         console.error(err);
         setIsError(true);
       });
+=======
+  const handleChange = () => {
+    console.log("handleChange clicked");
+  };
+  
+  const handleSubmit = () => {
+    console.log("handleChange clicked");
+>>>>>>> Stashed changes
   };
 
   return (
     <div className="LoginComponent pt-10 pb-10 flex justify-center my-2">
       <div className="over block p-6 rounded-lg shadow-lg bg-white max-w-md">
+<<<<<<< Updated upstream
         {isError ? (
           <p className="text-xl font-bold text-red-500 px-2 py-2 text-center m-6 ">
             Failed to submit form
@@ -91,11 +101,18 @@ const LoginComponent = () => {
 
         <form className="w-96" onSubmit={handleSubmit}>
           {/* Role */}
+=======
+        <h1 className="text-xl font-bold text-gray-900 px-2 py-2 text-center m-6">
+          Login to SenecaProMed
+        </h1>
+        <form className="w-96" onSubmit={handleSubmit}>
+>>>>>>> Stashed changes
           <select
             name="role"
             id="role"
             onChange={handleChange}
             required
+<<<<<<< Updated upstream
             className="form-group mb-6 form-control block
                           w-full
                           px-3
@@ -110,6 +127,9 @@ const LoginComponent = () => {
                           ease-in-out
                           m-0
                           focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+=======
+            className="input-field mb-6"
+>>>>>>> Stashed changes
           >
             <option value="">Select Role</option>
             <option value="admin">Admin</option>
@@ -118,6 +138,7 @@ const LoginComponent = () => {
             <option value="driver">Delivery Driver</option>
           </select>
 
+<<<<<<< Updated upstream
           {/* Username */}
           <div className="form-group mb-6">
             <input
@@ -219,6 +240,29 @@ const LoginComponent = () => {
               Login
             </button>
           </div>
+=======
+          <input
+            type="text"
+            placeholder="Username"
+            name="username"
+            onChange={handleChange}
+            className="input-field"
+            required
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            onChange={handleChange}
+            className="input-field"
+            required
+          />
+
+          <button type="submit" className="btn btn-primary">
+            Login
+          </button>
+>>>>>>> Stashed changes
         </form>
       </div>
     </div>

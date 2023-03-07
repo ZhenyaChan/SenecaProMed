@@ -5,20 +5,55 @@
 @tailwind utilities;
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Poppins", sans-serif, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-        sans-serif;
+  font-family: "Poppins", sans-serif, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
 }
 
 html,
 body {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
+.input-field {
+  @apply block w-full px-3 py-1.5 mb-6
+    text-base
+    font-normal
+    text-gray-700
+    bg-white bg-clip-padding
+    border border-solid border-gray-300 rounded 
+    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+    transition ease-in-out;
+}
+
+.btn {
+  @apply w-full px-6 py-2.5
+    text-xs text-white font-medium uppercase
+    leading-tight rounded shadow-md
+    bg-gray-500
+    hover:bg-gray-700 hover:shadow-lg    
+    focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 
+    active:bg-gray-800 active:shadow-lg
+    transition duration-150 ease-in-out;
+}
+
+.btn-primary {
+  @apply bg-blue-600
+    hover:bg-blue-700 hover:shadow-lg
+    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+    active:bg-blue-800 active:shadow-lg;
+}
+
+.btn-secondary {
+  @apply bg-red-600 
+    hover:bg-red-700 hover:shadow-lg
+    focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0
+    active:bg-red-800 active:shadow-lg;
+}
