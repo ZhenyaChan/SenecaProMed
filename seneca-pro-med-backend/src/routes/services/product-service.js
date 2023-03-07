@@ -14,6 +14,9 @@ module.exports.createProduct = (req, res) => {
       });
     })
     .catch((err) => {
+      res.status(500).json({
+        message: err,
+      });
       console.log(`Error: ${err}`);
     });
 };
@@ -81,15 +84,19 @@ module.exports.getAllProducts = (req, res) => {
 module.exports.getProductById = (req, res) => {
   productModel
     .findById(req.params.id)
-    .then((productData) => {
-      res.json({
-        message: `Data of a product with ID (${req.params.id}) successfully found`,
-        data: productData,
-      });
+    .then((product) => {
+      if (product) {
+        res.json({
+          message: `product with ID ${req.params.id} was successfully found`,
+          data: product,
+        });
+      } else {
+        throw new Error();
+      }
     })
     .catch((err) => {
       res.status(404).json({
-        message: `There are no products with an ID of ${req.params.id} `,
+        message: `there is no product with id ${req.params.id} in the database`,
       });
     });
 };
