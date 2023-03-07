@@ -3,6 +3,9 @@
 // to gracefully shutdown the server
 const stoppable = require('stoppable');
 
+// Read environment variables from an .env file (if present)
+require('dotenv').config();
+
 // express app instance
 const app = require('./app');
 
