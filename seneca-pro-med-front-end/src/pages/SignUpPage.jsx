@@ -4,7 +4,7 @@ import SidePanelComponent from "../components/forms/SidePanelComponent";
 const SignUpPage = () => {
   return (
     <div className="SingUpPage flex justify-center">
-      <SidePanelComponent />
+      <SidePanelComponent/>
       <SignUpComponent />
     </div>
   );
