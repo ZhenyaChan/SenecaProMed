@@ -49,6 +49,9 @@ module.exports = {
         textColor: "#515151",
         cartNumBg: "#949494",
         primary: "#ffffff",
+        cartBg: "#282a2c",
+        cartItem: "#2e3033",
+        cartTotal: "#343739",
       },
       borderWidth: {
         DEFAULT: '1px',
