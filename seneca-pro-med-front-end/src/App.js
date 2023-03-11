@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -29,12 +29,17 @@ import AddClient from "./components/client/AddClient";
 
 import NotFoundPage from "./pages/NotFoundPage";
 
+import { useStateValue } from "./context/stateProvider";
+import CartContainer from "./components/cart/CartContainer";
 
 const App = () => {
+  const [{cartShow}, dispatch] = useStateValue();
+  useEffect(() => {}, [cartShow]);
   return (
     <AnimatePresence>
       <div className="w-screen h-auto flex flex-col bg-primary">
         <HeaderComponent />
+        {cartShow && <CartContainer />}
 
         <main className="mt-14 md:mt-20 px-4 md:px-16 py-4 w-full">
           <Routes>
