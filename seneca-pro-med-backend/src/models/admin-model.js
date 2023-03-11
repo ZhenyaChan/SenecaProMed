@@ -53,12 +53,6 @@ const adminSchema = new Schema({
     type: String,
     required: true,
     uppercase: true,
-    validate: {
-      validator: function(v) {
-        return /^[A-Z]\d[A-Z] \d[A-Z]\d$/.test(v);
-      },
-      message: props => `${props.value} is not a valid postal code!`
-    }
   },
   street: {
     type: String,
