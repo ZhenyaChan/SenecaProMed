@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useStateValue } from "../context/stateProvider";
+import { actionType } from "../context/reducer";
 
 const ProductDescriptionPage = () => {
+  const [{cartItems}, dispatch] = useStateValue();
+  const [items, setItems] = useState([]);
+
   const [product, setProduct] = useState({
     _id: 0,
     title: "",
@@ -12,6 +18,14 @@ const ProductDescriptionPage = () => {
 
   const { id } = useParams();
 
+  const addToCart = (item) => {
+    dispatch({
+      type: actionType.SET_CART_ITEMS,
+      cartItems: items,
+    });
+    localStorage.setItem("cartItems", JSON.stringify(items));
+  }
+
   useEffect(() => {
     fetch(`${process.env.REACT_APP_BACKEND}/product/${id}`)
       .then((response) => response.json())
@@ -20,6 +34,10 @@ const ProductDescriptionPage = () => {
       })
       .catch((err) => console.log(err));
   }, [id]);
+
+  useEffect(() => {
+    addToCart();
+  }, [items]);
 
   
   return (
@@ -97,9 +115,9 @@ const ProductDescriptionPage = () => {
               <span className="title-font font-medium text-2xl text-textColor">
                 ${product.price}
               </span>
-              <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 hover:shadow-lg leading-tight uppercase shadow-md focus:shadow-lg focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out rounded">
+              <motion.button onClick={() => setItems([...cartItems, product])} className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 hover:shadow-lg leading-tight uppercase shadow-md focus:shadow-lg focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out rounded">
                 Add to Cart
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>

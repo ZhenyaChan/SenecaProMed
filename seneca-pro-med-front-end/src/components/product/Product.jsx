@@ -1,17 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useStateValue } from "../../context/stateProvider";
+import { actionType } from "../../context/reducer";
 
 
 const Product = (props) => {
+  const [{cartItems}, dispatch] = useStateValue();
+  const [items, setItems] = useState([]);
+  
+  const addToCart = () => {
+    dispatch({
+      type: actionType.SET_CART_ITEMS,
+      cartItems: items,
+    });
+    localStorage.setItem("cartItems", JSON.stringify(items));
+  };
+
+  useEffect(() => {
+    addToCart();
+  }, [items]);
+
   return (
-    <motion.div whileTap={{ scale: 0.85 }} className="w-full max-w-xs bg-white border border-gray-200 rounded-3xl shadow">
+    <motion.div className="w-full max-w-xs bg-white border border-gray-200 rounded-3xl shadow">
       <Link to={`/products/product/${props.id}`}>
         <img className="p-8 rounded-t-lg" src={props.photo} alt="product" />
       </Link>
 
       <div className="px-5 pb-5">
-        <Link to="#">
+        <Link to={`/products/product/${props.id}`}>
           <h5 className="text-xl font-semibold tracking-tight text-headingColor">
             {props.title}
           </h5>
@@ -75,12 +92,13 @@ const Product = (props) => {
           <span className="text-xl font-bold text-headingColor">
             ${props.price}
           </span>
-          <Link
-            to="#"
+          <motion.button
+            whileTap={{scale: 0.9}}
             className="px-2.5 py-2.5 bg-red-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-600 hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out"
+            onClick={() => setItems([...cartItems, props])}
           >
             Add to cart
-          </Link>
+          </motion.button>
         </div>
       </div>
     </motion.div>
