@@ -135,7 +135,6 @@ export default function AddPharmacy() {
    function handleSubmit(e) {
       e.preventDefault();
 
-      console.log("Valid:", validateForm())
       if (validateForm()) {
          fetch(`${process.env.REACT_APP_BACKEND}/admin/pharmacy/signup`, {
             method: "POST",
@@ -294,7 +293,7 @@ export default function AddPharmacy() {
                   </div>
                   { errorStreet
                   ? (<div className="p-4 mb-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-                     <span className="font-medium">{errorEmail}</span></div>)
+                     <span className="font-medium">{errorStreet}</span></div>)
                   : null }
 
                   <div className="form-group mb-6">
