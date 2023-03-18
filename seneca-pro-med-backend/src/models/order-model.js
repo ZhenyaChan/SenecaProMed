@@ -34,6 +34,10 @@ const orderSchema = new Schema({
     type: String,
     required: false
   },
+  dateDelivered: {
+    type: String,
+    required: false
+  },
 
   pharmacyId: {
     type: String,
