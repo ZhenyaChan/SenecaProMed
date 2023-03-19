@@ -22,10 +22,20 @@ const pharmacySchema = new Schema({
   phoneNumber: {
     type: String,
     required: true,
+    validate: {
+      validator: function(v) {
+        return /^(?:\d{3}|\(\d{3}\))[- ]?\d{3}[- ]?\d{4}$/.test(v);
+      },
+      message: props => `${props.value} is not a valid phone number!`
+    }
   },
   email: {
     type: String,
     required: true,
+    unique: true,
+    trim: true,
+    lowercase: true,
+    match: [/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, 'Please fill a valid email address']
   },
   street: {
     type: String,
@@ -34,6 +44,12 @@ const pharmacySchema = new Schema({
   postalCode: {
     type: String,
     required: true,
+    validate: {
+      validator: function(v) {
+        return /^[A-Z]\d[A-Z] \d[A-Z]\d$/.test(v);
+      },
+      message: props => `${props.value} is not a valid postal code!`
+    }
   },
   city: {
     type: String,

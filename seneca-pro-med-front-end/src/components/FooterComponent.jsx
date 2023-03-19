@@ -14,7 +14,7 @@ const FooterComponent = () => {
           <ul>
             <li>
               {/* eslint-disable-next-line */}
-              <a href="#">Login</a>
+              <a href="/login">Login</a>
             </li>
             <li>
               {/* eslint-disable-next-line */}
