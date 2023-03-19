@@ -21,7 +21,7 @@ const CartContainer = () => {
   };
 
   useEffect(() => {
-    let totalPrice = cartItems.reduce(function (accumulator, item) {
+    let totalPrice = cartItems.reduce(function (accumulator,item) {
       return accumulator + item.qty * item.price;
     }, 0);
     setTot(totalPrice);
@@ -65,7 +65,7 @@ const CartContainer = () => {
           <div className="w-full h-600 px-6 py-6 flex flex-col gap-3 overflow-y-scroll scrollbar-none">
             {/* Cart Item */}
             {cartItems &&
-              cartItems.map((item) => (<CartItem key={item.id} id={item.id} item={item} setFlag={setFlag} flag={flag} />))}
+              cartItems.map((item, i) => (<CartItem key={i} id={item.id} item={item} setFlag={setFlag} flag={flag} />))}
           </div>
 
           {/* Totals Section */}
@@ -97,7 +97,7 @@ const CartContainer = () => {
         </div>
       ) : (
         <div className="w-full h-full flex flex-col items-center justify-center gap-6">
-          <img src={EmptyCart} className="w-300" alt="" />
+          <img src={EmptyCart} className="w-300" alt="empty-cart" />
           <p className="text-xl text-textColor font-semibold">
             Add some items to your cart
           </p>
