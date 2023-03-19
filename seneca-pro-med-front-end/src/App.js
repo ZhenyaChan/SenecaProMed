@@ -6,8 +6,13 @@ import HeaderComponent from "./components/HeaderComponent";
 import FooterComponent from "./components/FooterComponent";
 import MainComponent from "./components/MainComponent";
 
+// Cart
+import CartContainer from "./components/cart/CartContainer";
+
+// products
 import AddProduct from "./components/product/AddProduct";
 import ProductDescriptionPage from "./pages/ProductDescriptionPage";
+import ManageProduct from "./components/product/ManageProduct";
 
 // admin/Pharmacy
 import PharmacyList from "./components/pharmacy/PharmacyList";
@@ -30,7 +35,6 @@ import AddClient from "./components/client/AddClient";
 import NotFoundPage from "./pages/NotFoundPage";
 
 import { useStateValue } from "./context/stateProvider";
-import CartContainer from "./components/cart/CartContainer";
 
 const App = () => {
   const [{cartShow}, dispatch] = useStateValue();
@@ -49,6 +53,7 @@ const App = () => {
 
             <Route path="/products/addProduct" element={<AddProduct />} />
             <Route path="/products/product/:id" element={<ProductDescriptionPage />} />
+            <Route path="/pharmacy/products/all_products" element={< ManageProduct/>} />
 
             {/* ADMIN/PHARMACY ROUTE*/}
             <Route path="/admin/pharmacies/all_pharmacies" element={<PharmacyList />} />
