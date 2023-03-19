@@ -13,6 +13,8 @@ import CartContainer from "./components/cart/CartContainer";
 import AddProduct from "./components/product/AddProduct";
 import ProductDescriptionPage from "./pages/ProductDescriptionPage";
 import ManageProduct from "./components/product/ManageProduct";
+import ListProduct from "./components/product/ListProduct";
+import UpdateProduct from "./components/product/UpdateProduct";
 
 // admin/Pharmacy
 import PharmacyList from "./components/pharmacy/PharmacyList";
@@ -54,6 +56,9 @@ const App = () => {
             <Route path="/products/addProduct" element={<AddProduct />} />
             <Route path="/products/product/:id" element={<ProductDescriptionPage />} />
             <Route path="/pharmacy/products/all_products" element={< ManageProduct/>} />
+            <Route path="/pharmacy/products/product/:id" element={< ListProduct/>} />
+            <Route path="/pharmacy/product/update_product/:id" element={< UpdateProduct/>} />
+
 
             {/* ADMIN/PHARMACY ROUTE*/}
             <Route path="/admin/pharmacies/all_pharmacies" element={<PharmacyList />} />

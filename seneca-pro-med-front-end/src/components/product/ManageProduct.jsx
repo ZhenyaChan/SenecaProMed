@@ -58,6 +58,12 @@ export default function ManageProduct() {
                       >
                         Price
                       </th>
+                      <th
+                        scope="col"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      >
+                        Description
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -70,7 +76,7 @@ export default function ManageProduct() {
                         }
                         key={index}
                         onClick={() => {
-                          navigate(`/products/product/${product._id}`);
+                          navigate(`/pharmacy/products/product/${product._id}`);
                         }}
                       >
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -83,36 +89,7 @@ export default function ManageProduct() {
                           {product.price}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <button
-                            type="button"
-                            className=" inline-block 
-                           px-6 
-                           py-2.5 
-                           bg-red-600 
-                           text-white 
-                           font-medium 
-                           text-xs 
-                           leading-tight 
-                           uppercase 
-                           rounded 
-                           shadow-md 
-                           hover:bg-red-700 hover:shadow-lg 
-                           focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 
-                           active:bg-red-800 active:shadow-lg 
-                           transition duration-150 ease-in-out"
-                            onClick={() => {
-                              fetch(
-                                `${process.env.REACT_APP_BACKEND}/product/${product._id}`,
-                                {
-                                  method: "DELETE",
-                                }
-                              ).then(() => {
-                                navigate(`/pharmacy/products/all_products`);
-                              });
-                            }}
-                          >
-                            Delete
-                          </button>
+                          {product.description}
                         </td>
                       </tr>
                     ))}
