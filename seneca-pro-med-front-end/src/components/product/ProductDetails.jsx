@@ -1,58 +1,55 @@
-import React, { useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useStateValue } from "../context/stateProvider";
-import { actionType } from "../context/reducer";
+import CartContext from "../../contexts/CartContext";
 
-const ProductDescriptionPage = () => {
-  const [{cartItems}, dispatch] = useStateValue();
-  const [items, setItems] = useState([]);
-
-  const [product, setProduct] = useState({
-    _id: 0,
-    title: "",
-    description: "",
-    price: 0,
-    photo: "",
-  });
-
+const ProductDetails = () => {
   const { id } = useParams();
+  const [productDetails, setProductDetails] = useState([]);
 
-  const addToCart = (item) => {
-    dispatch({
-      type: actionType.SET_CART_ITEMS,
-      cartItems: items,
-    });
-    localStorage.setItem("cartItems", JSON.stringify(items));
-  }
+  const { addToCart } = useContext(CartContext);
 
+  const handleAddToCart = (evt) => {
+    evt.preventDefault();
+    addToCart(productDetails);
+  };
+
+  // retrieves the product details using provided id in the parameter
   useEffect(() => {
     fetch(`${process.env.REACT_APP_BACKEND}/product/${id}`)
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((json) => {
-        setProduct(json.data);
+        console.log("productById", json.data);
+
+        setProductDetails({
+          id: json.data._id,
+          title: json.data.title,
+          description: json.data.description,
+          photo: json.data.photo,
+          price: json.data.price,
+        });
       })
       .catch((err) => console.log(err));
+
+    console.log(productDetails);
+    // eslint-disable-next-line
   }, [id]);
 
-  useEffect(() => {
-    addToCart();
-  }, [items]);
-
-  
   return (
-    <section className="text-gray-700 body-font overflow-hidden bg-primary">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="lg:w-full mx-auto flex flex-wrap">
-          <img
-            src={product.photo}
-            alt="product"
-            className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
-          />
-          <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-            <h1 className="text-headingColor text-3xl font-medium mb-1">
-              {product.title}
-            </h1>
+    <div>
+      <h1 className="text-3xl font-bold text-headingColor text-center">Product Details</h1>
+
+      <div className="flex gap-8 items-center mx-[150px] my-8 p-8 border border rounded-lg justify-around">
+        {productDetails.length === 0 && <h2 className="text-center py-8">Loading...</h2>}
+
+        <img src={productDetails.photo} alt={productDetails.title} className="w-1/3 rounded-lg" />
+
+        <div className="flex flex-col gap-8 w-full">
+          <div>
+            <h1 className="font-bold">{productDetails.title}</h1>
+
+            <p className="">{productDetails.description}</p>
+
+            {/* Rating */}
             <div className="flex items-center mt-2.5 mb-5">
               <svg
                 aria-hidden="true"
@@ -108,22 +105,20 @@ const ProductDescriptionPage = () => {
                 5.0
               </span>
             </div>
-            <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
-                <p className="leading-relaxed">{product.description}</p>
-            </div>
-            <div className="flex">
-              <span className="title-font font-medium text-2xl text-textColor">
-                ${product.price}
-              </span>
-              <motion.button onClick={() => setItems([...cartItems, product])} className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 hover:shadow-lg leading-tight uppercase shadow-md focus:shadow-lg focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out rounded">
-                Add to Cart
-              </motion.button>
-            </div>
+
+            <hr />
+          </div>
+
+          <div className="flex justify-between items-center">
+            <h2 className="">Price: ${productDetails.price}</h2>
+
+            <button className="btn btn-secondary p-2" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
-
-export default ProductDescriptionPage;
+export default ProductDetails;

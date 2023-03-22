@@ -26,42 +26,25 @@ export default function ManageProduct() {
     );
   } else {
     return (
-      <>
-        <br />
-        <br />
-        <br />
-        <h2 className="text-lg font-medium text-gray-900 px-2 py-2 text-left">
-          Products
-        </h2>
-        <div className="flex flex-col">
+      <div>
+        <h1 className="text-3xl font-bold text-headingColor text-center">Products</h1>
+        <div className="flex flex-col my-8 border rounded">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overflow-hidden">
                 <table className="min-w-full">
                   <thead className="bg-white border-b">
                     <tr>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                      >
+                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                         #
                       </th>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                      >
+                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                         Product Title
                       </th>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                      >
+                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                         Price
                       </th>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                      >
+                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                         Description
                       </th>
                     </tr>
@@ -79,9 +62,7 @@ export default function ManageProduct() {
                           navigate(`/pharmacy/products/product/${product._id}`);
                         }}
                       >
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {index + 1}
-                        </td>
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{index + 1}</td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                           {product.title}
                         </td>
@@ -110,10 +91,7 @@ export default function ManageProduct() {
             Add Product
           </button>
         </div>
-        <br />
-        <br />
-        <br />
-      </>
+      </div>
     );
   }
 }
