@@ -23,12 +23,7 @@ module.exports.getAdminById = (req, res) => {
       if (user) {
         res.json({
           message: `admin with the id: ${req.params.id}`,
-          data: {
-            userName: user.userName,
-            name: `${user.firstName} ${user.lastName}`,
-            contact: `${user.email} ${user.phoneNumber}`,
-            address: `${user.postalCode} ${user.street} ${user.province} ${user.country}`,
-          },
+          data: user,
         });
         // If no admin user is found, return a 404 error.
       } else {
