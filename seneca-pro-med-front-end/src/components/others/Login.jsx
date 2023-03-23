@@ -35,15 +35,15 @@ const Login = () => {
       <h1 className="text-3xl font-bold text-headingColor text-center">Login to SenecaProMed</h1>
 
       {/* Side panel */}
-      <div className="flex items-center justify-center gap-1 p-6 my-8 border rounded-lg shadow-lg bg-white w-3/4">
+      <div className="flex items-start justify-center gap-1 p-6 my-8 border rounded-lg shadow-lg bg-white w-3/4">
         <div className="flex flex-col gap-8 items-center border-r px-10 py-20 w-1/2">
           <img src={logo} alt="Logo" width="1000px" className="w-full" />
 
           <div className="flex flex-col justify-center items-center gap-4">
             <h2 className="text-lg">Don't have an account yet?</h2>
 
-            <Link to={"/signUp"} className="btn btn-secondary p-2">
-              Sing Up
+            <Link to={"/signUp"} className="btn btn-secondary px-3 py-2">
+              Sign Up
             </Link>
           </div>
         </div>
