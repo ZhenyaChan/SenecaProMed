@@ -47,30 +47,59 @@ module.exports.getAllOrders = async (req, res) => {
 
 // Get order by clientId
 // For client users to see their orders (and order status)
-module.exports.getOrderByClientId = async (req, res) = {
-
+module.exports.getOrdersByClientId = async (req, res) => {
+  try {
+    const orderData = await orderModel.find({ clientId: req.params.clientId }).exec()
+    res.status(200).json({
+      message: [`There are ${orderData.length} orders for client: ${clientId}.`],
+      data: orderData,
+    });
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
 }
 
 // Get order by pharmacyId
 // For pharmacy users to see their orders (and order status)
-module.exports.getOrderByPharmacyId = async (req, res) = {
-
+module.exports.getOrdersByPharmacyId = async (req, res) => {
+  try {
+    const orderData = await orderModel.find({ pharmacyId: req.params.pharmacyId }).exec()
+    res.status(200).json({
+      message: [`There are ${orderData.length} orders for pharmacy: ${pharmacyId}.`],
+      data: orderData,
+    });
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
 }
 
 // Get order by driverId
 // For driver users to see their orders (and order status)
-module.exports.getOrderByDriverId = async (req, res) = {
-
+module.exports.getOrdersByDriverId = async (req, res) => {
+  try {
+    const orderData = await orderModel.find({ driverId: req.params.driverId }).exec()
+    res.status(200).json({
+      message: [`There are ${orderData.length} orders for driver: ${driverId}.`],
+      data: orderData,
+    });
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
 }
 
 // Get order by role "order_ready_for_pickup"
 // For driver users to see orders they can choose to deliver
-module.exports.getOrdersReadyForPickup = async (req, res) = {
-
+module.exports.getOrdersReadyForPickup = async (req, res) => {
+  try {
+    const orderData = await orderModel.find({ role: "order_ready_for_pickup" }).exec()
+    res.status(200).json({
+      message: [`There are ${orderData.length} orders ready for pickup.`],
+      data: orderData,
+    });
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
 }
-
-
-
 
 // Get order by Id
 module.exports.getOrderById = async (req, res) => {
