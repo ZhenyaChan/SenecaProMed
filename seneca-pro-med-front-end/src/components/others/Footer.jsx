@@ -72,8 +72,8 @@ const Footer = () => {
       </div>
 
       <div className="grid grid-cols-3 place-items-center">
-        <Link className="link" to={"#"}>
-          <h1 className="text-xl font-bold">SenecaProMed</h1>
+        <Link to={"/"} className="link text-2xl flex justify-start">
+          Seneca<span className="font-bold">ProMed</span>
         </Link>
 
         <p>&copy; SenecaProMed, 123 Street St., North York, Ontario L4L 4L4</p>
