@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import CartContext from "../contexts/CartContext";
 
 const CartProvider = ({ children }) => {
-  const initialCartItems = JSON.parse(localStorage.getItem("senecaProMedCart")) || [];
-  const initialItemsCount = initialCartItems.reduce((acc, item) => acc + item.quantity, 0);
-  const initialIsCartOpen = false;
-  const initialSubTotal = 0;
+  const initCartItems = JSON.parse(localStorage.getItem("senecaProMedCart")) || [];
+  const initItemsCount = initCartItems.reduce((acc, item) => acc + item.quantity, 0);
+  const initIsCartOpen = false;
+  const initSubTotal = 0;
 
-  const [cartItems, setCartItems] = useState(initialCartItems);
-  const [totalItemsCount, setTotalItemsCount] = useState(initialItemsCount);
-  const [isCartOpen, setIsCartOpen] = useState(initialIsCartOpen);
-  const [subTotal, setSubTotal] = useState(initialSubTotal);
+  const [cartItems, setCartItems] = useState(initCartItems);
+  const [totalItemsCount, setTotalItemsCount] = useState(initItemsCount);
+  const [isCartOpen, setIsCartOpen] = useState(initIsCartOpen);
+  const [subTotal, setSubTotal] = useState(initSubTotal);
 
   useEffect(() => {
     // re-set cart items with what's in there

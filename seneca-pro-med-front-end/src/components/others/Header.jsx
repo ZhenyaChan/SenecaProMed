@@ -5,9 +5,12 @@ import { motion } from "framer-motion";
 import Avatar from "../../assets/images/avatar.png";
 import CartContext from "../../contexts/CartContext";
 import Cart from "../cart/Cart";
+import AuthContext from "../../contexts/AuthContext";
 
 const Header = () => {
   const { totalItemsCount, isCartOpen, displayCart } = useContext(CartContext);
+  const { isLoggedIn, logOut } = useContext(AuthContext);
+
   const [displayAccountBox, setDisplayAccountBox] = useState(false);
 
   const handleSearch = () => {
@@ -95,19 +98,21 @@ const Header = () => {
                 My Account
               </Link>
 
-              <Link
-                to={"/login"}
-                className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out  text-base"
-              >
-                <MdLogin /> Sign In
-              </Link>
-
-              <Link
-                to={"/sign-up"}
-                className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out  text-base"
-              >
-                <MdLogout /> Sign up
-              </Link>
+              {isLoggedIn ? (
+                <p
+                  className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out  text-base"
+                  onClick={() => logOut()}
+                >
+                  <MdLogout /> Sign Out
+                </p>
+              ) : (
+                <Link
+                  to={"/login"}
+                  className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out  text-base"
+                >
+                  <MdLogin /> Sign In
+                </Link>
+              )}
             </div>
           )}
         </li>
