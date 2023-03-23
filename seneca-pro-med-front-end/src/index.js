@@ -32,9 +32,12 @@ import App from "./App";
 import Header from "./components/others/Header";
 import Footer from "./components/others/Footer";
 import NotFound from "./components/others/NotFound";
+import Login from "./components/others/Login";
+import SignUp from "./components/others/SignUp";
 
 // Providers
 import CartProvider from "./providers/CartProvider";
+import AuthProvider from "./providers/AuthProvider";
 
 import "./index.css";
 
@@ -42,45 +45,49 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <BrowserRouter>
-    <CartProvider>
-      <div className="w-screen flex flex-col min-h-screen">
-        <Header />
-        <main className="my-8 w-3/4 flex flex-col mx-auto flex-grow">
-          <Routes>
-            <Route path="/" element={<App />} />
+    <AuthProvider>
+      <CartProvider>
+        <div className="w-screen flex flex-col min-h-screen">
+          <Header />
+          <main className="my-8 w-3/4 flex flex-col mx-auto flex-grow">
+            <Routes>
+              <Route path="/" element={<App />} />
 
-            {/* Login and Sign out */}
+              {/* Login and Sign Up */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
 
-            {/* Client */}
-            <Route path="/admin/client/signup" element={<AddClient />} />
-            <Route path="/admin/clients/all_clients" element={<ClientList />} />
-            <Route path="/admin/client/:id" element={<ListClient />} />
-            <Route path="/admin/client/update_client/:id" element={<UpdateClient />} />
+              {/* Client */}
+              <Route path="/admin/client/signup" element={<AddClient />} />
+              <Route path="/admin/clients/all_clients" element={<ClientList />} />
+              <Route path="/admin/client/:id" element={<ListClient />} />
+              <Route path="/admin/client/update_client/:id" element={<UpdateClient />} />
 
-            {/* Product */}
-            <Route path="/products/product/:id" element={<ProductDetails />} />
-            <Route path="/products/addProduct" element={<AddProduct />} />
-            <Route path="/pharmacy/products/product/:id" element={<ListProduct />} />
-            <Route path="/pharmacy/products/all_products" element={<ManageProduct />} />
-            <Route path="/pharmacy/product/update_product/:id" element={<UpdateProduct />} />
+              {/* Product */}
+              <Route path="/products/product/:id" element={<ProductDetails />} />
+              <Route path="/products/addProduct" element={<AddProduct />} />
+              <Route path="/pharmacy/products/product/:id" element={<ListProduct />} />
+              <Route path="/pharmacy/products/all_products" element={<ManageProduct />} />
+              <Route path="/pharmacy/product/update_product/:id" element={<UpdateProduct />} />
 
-            {/* Pharmacy */}
-            <Route path="/admin/pharmacy/signup" element={<AddPharmacy />} />
-            <Route path="/admin/pharmacy/:id" element={<ListPharmacy />} />
-            <Route path="/admin/pharmacies/all_pharmacies" element={<PharmacyList />} />
-            <Route path="/admin/pharmacy/update_pharmacy/:id" element={<UpdatePharmacy />} />
+              {/* Pharmacy */}
+              <Route path="/admin/pharmacy/signup" element={<AddPharmacy />} />
+              <Route path="/admin/pharmacy/:id" element={<ListPharmacy />} />
+              <Route path="/admin/pharmacies/all_pharmacies" element={<PharmacyList />} />
+              <Route path="/admin/pharmacy/update_pharmacy/:id" element={<UpdatePharmacy />} />
 
-            {/* Driver */}
-            <Route path="/admin/driver/signup" element={<AddDriver />} />
-            <Route path="/admin/drivers/all_drivers" element={<DriverList />} />
-            <Route path="/admin/driver/:id" element={<ListDriver />} />
-            <Route path="/admin/driver/update_driver/:id" element={<UpdateDriver />} />
+              {/* Driver */}
+              <Route path="/admin/driver/signup" element={<AddDriver />} />
+              <Route path="/admin/drivers/all_drivers" element={<DriverList />} />
+              <Route path="/admin/driver/:id" element={<ListDriver />} />
+              <Route path="/admin/driver/update_driver/:id" element={<UpdateDriver />} />
 
-            <Route path="/*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </CartProvider>
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </CartProvider>
+    </AuthProvider>
   </BrowserRouter>
 );
