@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CartContext from "../contexts/CartContext";
 
+const LOCAL_STORAGE_KEY = "senecaProMedCart";
+
 const CartProvider = ({ children }) => {
-  const initCartItems = JSON.parse(localStorage.getItem("senecaProMedCart")) || [];
+  const initCartItems = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
   const initItemsCount = initCartItems.reduce((acc, item) => acc + item.quantity, 0);
   const initIsCartOpen = false;
   const initSubTotal = 0;
@@ -14,7 +16,7 @@ const CartProvider = ({ children }) => {
 
   useEffect(() => {
     // re-set cart items with what's in there
-    localStorage.setItem("senecaProMedCart", JSON.stringify(cartItems));
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cartItems));
 
     // update items count
     setTotalItemsCount(cartItems.reduce((acc, item) => acc + item.quantity, 0));
@@ -77,7 +79,7 @@ const CartProvider = ({ children }) => {
   };
 
   const removeAllItems = () => {
-    localStorage.removeItem("senecaProMed");
+    localStorage.removeItem(LOCAL_STORAGE_KEY);
     setCartItems([]);
     setTotalItemsCount(0);
     setSubTotal(0);
