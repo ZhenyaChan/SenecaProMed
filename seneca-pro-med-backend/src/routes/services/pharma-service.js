@@ -136,11 +136,16 @@ module.exports.pharmacyLogin = async (req, res) => {
 
   // create token
   const expiryDate = { expiresIn: '6 h' };
-  const token = jwt.sign(
-    { id: pharmaUser._id, userName: pharmaUser.userName, role: pharmaUser.role },
-    process.env.SECRET_KEY,
-    expiryDate
-  );
+
+  // Create a new userData object that excludes password, and replace _id with id
+  const userData = { ...pharmaUser._doc };
+  userData.id = pharmaUser.id;
+
+  delete userData._id;
+  delete userData.password;
+
+  // Generate the JWT token using the userData object
+  const token = jwt.sign(userData, process.env.SECRET_KEY, expiryDate);
 
   res.status(200).json(token);
 };
