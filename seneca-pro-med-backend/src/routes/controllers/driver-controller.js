@@ -16,11 +16,11 @@ const orderService = require('../services/order-service.js');
 /**
  * @name Driver
  * @description Driver endpoints
- * @summary POST, DELETE
+ * @summary POST, PUT, DELETE
  */
 router.get('/:driverId', orderService.getOrdersByDriverId)
 router.post('/signup', createUser, driverService.createDriver);
-router.put('/order/:id', orderService.updateOrderById)
+router.put('/:id', orderService.updateOrderById)
 router.delete('/:id', driverService.deleteDriver);
 
 module.exports = router;

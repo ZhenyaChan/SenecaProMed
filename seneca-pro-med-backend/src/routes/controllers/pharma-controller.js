@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 const pharmaService = require('../services/pharma-service');
+const orderService = require('../services/order-service.js');
 
 // **************************
 // NOTE: PLEASE KNOW THE ORDER OF THE ROUTES WITH THE SAME REST METHOD MATTER,
@@ -20,8 +21,10 @@ const pharmaService = require('../services/pharma-service');
 //router.get('/all_pharmacies', pharmaService.getAllPharmacyUsers);
 //router.get('/:id', pharmaService.getPharmacyById);
 
+router.get('/:pharmacyId', orderService.getOrdersByPharmacyId)
 router.post('/signup', pharmaService.createPharmacy);
 router.put('/:id', pharmaService.updatePharmacyById);
+router.put('/order/:id', orderService.updateOrderById)
 router.delete('/:id', pharmaService.deletePharmacyById);
 
 module.exports = router;

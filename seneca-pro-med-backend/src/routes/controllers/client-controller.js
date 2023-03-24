@@ -16,7 +16,7 @@ const orderService = require('../services/order-service.js');
 /**
  * @name Client
  * @description Client endpoints
- * @summary POST, DELETE
+ * @summary GET, POST, DELETE
  */
 router.get('/:clientId', orderService.getOrdersByClientId)
 router.post('/signup', createUser, clientService.createClient);
