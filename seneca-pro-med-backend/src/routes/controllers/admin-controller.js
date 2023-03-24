@@ -9,7 +9,7 @@ const adminService = require('../services/admin-service.js');
 const clientService = require('../services/client-service.js');
 const driverService = require('../services/driver-service.js');
 const pharmaService = require('../services/pharma-service.js');
-const pharmaService = require('../services/order-service.js');
+const orderService = require('../services/order-service.js');
 
 // **************************
 // NOTE: PLEASE KNOW THE ORDER OF THE ROUTES WITH THE SAME REST METHOD MATTER,
