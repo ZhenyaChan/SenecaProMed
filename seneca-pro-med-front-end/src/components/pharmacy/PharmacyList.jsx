@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useRoleCheck from "../../useRoleCheck.js";
+
 
 export default function PharmacyList() {
+   useRoleCheck(["admin"]);
+   
    const [users, setUsers] = useState();
    const [loading, setLoading] = useState(true); // Because sometimes Heroku sleeps
 

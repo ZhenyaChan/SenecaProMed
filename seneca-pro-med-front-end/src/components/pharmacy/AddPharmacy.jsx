@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useRoleCheck from "../../useRoleCheck.js";
+
 
 export default function AddPharmacy() {
+   useRoleCheck(["admin"]);
+   
    const navigate = useNavigate();
    const [user, setUser] = useState();
    const [errorPharmacyName, setErrorPharmacyName] = useState();
