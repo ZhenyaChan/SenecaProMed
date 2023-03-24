@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from "react";
 import AuthContext from "../contexts/AuthContext";
+import jwt_decode from "jwt-decode";
+
+const LOCAL_STORAGE_KEY = "senecaProMedCart_accessToken";
+const BASE_URL = process.env.REACT_APP_BACKEND;
 
 const AuthProvider = ({ children }) => {
-  const initUserData = {};
-  const initToken = localStorage.getItem("senecaProMedCart_accessToken") || "";
-  const initIsLoggedIn = false;
-  const initErrorMsg = "";
-
-  const [userData, setUserData] = useState(initUserData);
-  const [token, setToken] = useState(initToken);
-  const [isLoggedIn, setIsLoggedIn] = useState(initIsLoggedIn);
-  const [errorMsg, setErrorMsg] = useState(initErrorMsg);
+  const [token, setToken] = useState(localStorage.getItem(LOCAL_STORAGE_KEY) || "");
+  const [userData, setUserData] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("senecaProMedCart_accessToken", initToken);
+    // TODO: validate if token has been expired and remove if yes and refresh if not
+    localStorage.setItem(LOCAL_STORAGE_KEY, token);
 
-    if (initToken !== "") {
+    // if token is not expired, re-set user data as user refresh the page
+    if (token !== "") {
+      // set the current user data
+      const decoded_token = jwt_decode(token);
+      setUserData(decoded_token);
+
+      // set current user logged in status to true
       setIsLoggedIn(true);
-      setToken(initToken);
     }
   }, []);
 
@@ -26,56 +31,53 @@ const AuthProvider = ({ children }) => {
     const username = formData.username;
     const password = formData.password;
 
-    console.log(`Calling POST ${process.env.REACT_APP_BACKEND}/${role}/login`);
+    // request parameters
+    const endpoint = role === "pharmacy" ? "/pharma/login" : `/${role}/login`;
+    const method = "POST";
+    const contentType = { "Content-Type": "application/json" };
+    const body = { username: username, password: password, role: role };
 
     try {
-      const res = await fetch(`${process.env.REACT_APP_BACKEND}/${role}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-          role: role,
-        }),
+      console.log(`Calling ${method} ${BASE_URL}${endpoint}`);
+
+      const res = await fetch(`${BASE_URL}${endpoint}`, {
+        method: method,
+        headers: contentType,
+        body: JSON.stringify(body),
       });
 
-      if (res.ok) {
-        const data = await res.json();
-
-        localStorage.setItem("senecaProMedCart_accessToken", data);
-        setToken(data);
-        setIsLoggedIn(true);
-        // TODO
-        setUserData({ TODO: "TODO" });
-      } else {
-        throw new Error((await res.text()) || "Something went wrong");
+      if (!res.ok) {
+        throw new Error((await res.text()) || { message: "Something went wrong" });
       }
+
+      // this return a token
+      const token = await res.json();
+
+      // save token to local storage
+      localStorage.setItem(LOCAL_STORAGE_KEY, token);
+
+      // set token, isLoggedIn, and userData
+      const decoded_token = jwt_decode(token);
+      setUserData(decoded_token);
+      setToken(token);
+      setIsLoggedIn(true);
     } catch (err) {
-      const parsedError = JSON.parse(err.message);
-
-      if (parsedError === "Something went wrong") {
-        setErrorMsg(parsedError);
-      } else {
-        // capitalize and set
-        setErrorMsg(parsedError.message.charAt(0).toUpperCase() + parsedError.message.slice(1));
-      }
+      const currError = JSON.parse(err.message);
+      setErrorMsg(currError.message);
     }
   };
 
   const logOut = () => {
     try {
-      localStorage.removeItem("senecaProMedCart_accessToken");
+      localStorage.removeItem(LOCAL_STORAGE_KEY);
       setUserData({});
       setToken("");
       setIsLoggedIn(false);
     } catch (err) {
+      setErrorMsg(`unable to sign user out: ${err}`);
       throw new Error(`unable to sign user out: ${err}`);
     }
   };
-
-  const getUserData = ()=>{
-    // TODO
-  }
 
   return (
     <AuthContext.Provider

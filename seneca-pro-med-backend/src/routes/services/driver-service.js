@@ -131,11 +131,16 @@ module.exports.driverLogin = async (req, res) => {
 
   // create token
   const expiryDate = { expiresIn: '6 h' };
-  const token = jwt.sign(
-    { id: driverUser._id, userName: driverUser.userName, role: driverUser.role },
-    process.env.SECRET_KEY,
-    expiryDate
-  );
+
+  // Create a new userData object that excludes password, and replace _id with id
+  const userData = { ...driverUser._doc };
+  userData.id = driverUser.id;
+
+  delete userData._id;
+  delete userData.password;
+
+  // Generate the JWT token using the userData object
+  const token = jwt.sign(userData, process.env.SECRET_KEY, expiryDate);
 
   res.status(200).json(token);
 };

@@ -137,11 +137,16 @@ module.exports.clientLogin = async (req, res) => {
 
   // create token
   const expiryDate = { expiresIn: '6 h' };
-  const token = jwt.sign(
-    { id: clientUser._id, userName: clientUser.userName, role: clientUser.role },
-    process.env.SECRET_KEY,
-    expiryDate
-  );
+
+  // Create a new userData object that excludes password, and replace _id with id
+  const userData = { ...clientUser._doc };
+  userData.id = clientUser.id;
+
+  delete userData._id;
+  delete userData.password;
+
+  // Generate the JWT token using the userData object
+  const token = jwt.sign(userData, process.env.SECRET_KEY, expiryDate);
 
   res.status(200).json(token);
 };
