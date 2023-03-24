@@ -5,13 +5,6 @@ const bcrypt = require('bcryptjs');
 // Add an Order to the database
 module.exports.createOrder = async (req, res) => {
   try {
-    // TODO: remove after implementing in frontend
-    //password encryption
-    let salt = bcrypt.genSaltSync(10);
-    let hash = bcrypt.hashSync(req.body.password, salt);
-    req.body.password = hash;
-    req.body.userName = req.body.email;
-
     const order = new orderModel(req.body);
         order
           .save()
