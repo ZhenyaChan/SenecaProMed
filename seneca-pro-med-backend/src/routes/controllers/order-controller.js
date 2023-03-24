@@ -21,7 +21,7 @@ const orderService = require('../services/order-service');
 // "Users" can create a new user or update a user
 // But an order is not created by an order, it is created and updated by a user
 // Maybe just have delete here for now
-// And place all the API requests in the respective controllers (will do this today)
+// And place all the API requests in the respective controllers
 
 router.delete('/:id', orderService.deleteOrderById);
 

@@ -9,6 +9,7 @@ const adminService = require('../services/admin-service.js');
 const clientService = require('../services/client-service.js');
 const driverService = require('../services/driver-service.js');
 const pharmaService = require('../services/pharma-service.js');
+const pharmaService = require('../services/order-service.js');
 
 // **************************
 // NOTE: PLEASE KNOW THE ORDER OF THE ROUTES WITH THE SAME REST METHOD MATTER,
@@ -60,8 +61,16 @@ router.put('/pharmacy/:id', pharmaService.updatePharmacyById);
 /**
  * @name Admin/Order
  * @description Admin endpoints for orders
- * @summary TODO
+ * @summary GET, GET (all), POST, PUT
  */
-// TODO
+router.get('/orders/all_orders', orderService.getAllOrders)
+router.get('/orders/ready_for_pickup', orderService.getOrdersReadyForPickup)
+router.get('/orders/:clientId', orderService.getOrdersByClientId)
+router.get('/orders/:pharmacyId', orderService.getOrdersByPharmacyId)
+router.get('/orders/:driverId', orderService.getOrdersByDriverId)
+router.get('/order/:id', orderService.getOrderById)
+router.post('/order/create_order', orderService.createOrder)
+router.put('/order/:id', orderService.updateOrderById)
+
 
 module.exports = router;
