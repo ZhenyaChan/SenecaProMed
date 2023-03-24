@@ -2,6 +2,7 @@
 
 const clientModel = require('../../models/client-model');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 //creating new user
 module.exports.createClient = (req, res) => {
@@ -114,6 +115,36 @@ module.exports.deleteClient = (req, res) => {
     });
 };
 
+module.exports.clientLogin = async (req, res) => {
+  console.log(`Calling POST ${req.headers.host}/client/login`);
+
+  const { username, password, role } = req.body;
+  const clientUser = await clientModel.findOne({ userName: username, role: role });
+
+  if (!clientUser) {
+    return res.status(401).json({ message: 'invalid username or password' });
+  } else {
+    console.log('username is valid');
+  }
+
+  const isPasswordValid = await bcrypt.compare(password, clientUser.password);
+
+  if (!isPasswordValid) {
+    return res.status(401).json({ message: 'invalid username or password' });
+  } else {
+    console.log('password matches');
+  }
+
+  // create token
+  const expiryDate = { expiresIn: '6 h' };
+  const token = jwt.sign(
+    { id: clientUser._id, userName: clientUser.userName, role: clientUser.role },
+    process.env.SECRET_KEY,
+    expiryDate
+  );
+
+  res.status(200).json(token);
+};
 
 /*
   TODO: 

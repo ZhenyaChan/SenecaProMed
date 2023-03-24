@@ -17,6 +17,8 @@ const clientService = require('../services/client-service');
  * @description Client endpoints
  * @summary POST, DELETE
  */
+
+router.post('/login', clientService.clientLogin);
 router.post('/signup', createUser, clientService.createClient);
 router.delete('/:id', clientService.deleteClient);
 

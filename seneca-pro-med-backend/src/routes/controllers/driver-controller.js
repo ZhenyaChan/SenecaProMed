@@ -17,6 +17,7 @@ const driverService = require('../services/driver-service');
  * @description Driver endpoints
  * @summary POST, DELETE
  */
+router.post('/login', driverService.driverLogin);
 router.post('/signup', createUser, driverService.createDriver);
 router.delete('/:id', driverService.deleteDriver);
 

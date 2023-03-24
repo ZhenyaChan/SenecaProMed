@@ -2,6 +2,7 @@
 
 const driverModel = require('../../models/driver-model');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 // POST Route - Creating new driver user
 module.exports.createDriver = (req, res) => {
@@ -106,4 +107,35 @@ module.exports.deleteDriver = (req, res) => {
         message: err,
       });
     });
+};
+
+module.exports.driverLogin = async (req, res) => {
+  console.log(`Calling POST ${req.headers.host}/driver/login`);
+
+  const { username, password, role } = req.body;
+  const driverUser = await driverModel.findOne({ userName: username, role: role });
+
+  if (!driverUser) {
+    return res.status(401).json({ message: 'invalid username or password' });
+  } else {
+    console.log('username is valid');
+  }
+
+  const isPasswordValid = await bcrypt.compare(password, driverUser.password);
+
+  if (!isPasswordValid) {
+    return res.status(401).json({ message: 'invalid username or password' });
+  } else {
+    console.log('password matches');
+  }
+
+  // create token
+  const expiryDate = { expiresIn: '6 h' };
+  const token = jwt.sign(
+    { id: driverUser._id, userName: driverUser.userName, role: driverUser.role },
+    process.env.SECRET_KEY,
+    expiryDate
+  );
+
+  res.status(200).json(token);
 };

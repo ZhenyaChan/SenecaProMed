@@ -173,7 +173,7 @@ module.exports.adminLogin = async (req, res) => {
   // create token
   const expiryDate = { expiresIn: '6 h' };
   const token = jwt.sign(
-    { userName: adminUser.userName, role: adminUser.role },
+    { id: adminUser._id, userName: adminUser.userName, role: adminUser.role },
     process.env.SECRET_KEY,
     expiryDate
   );

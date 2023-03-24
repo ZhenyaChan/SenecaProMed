@@ -20,6 +20,7 @@ const pharmaService = require('../services/pharma-service');
 //router.get('/all_pharmacies', pharmaService.getAllPharmacyUsers);
 //router.get('/:id', pharmaService.getPharmacyById);
 
+router.post('/login', pharmaService.pharmacyLogin);
 router.post('/signup', pharmaService.createPharmacy);
 router.put('/:id', pharmaService.updatePharmacyById);
 router.delete('/:id', pharmaService.deletePharmacyById);
