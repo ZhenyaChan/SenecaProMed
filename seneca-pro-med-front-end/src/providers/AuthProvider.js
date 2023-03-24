@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
       // set current user logged in status to true
       setIsLoggedIn(true);
     }
-  }, []);
+  }, [token]);
 
   const login = async (formData) => {
     const role = formData.role;

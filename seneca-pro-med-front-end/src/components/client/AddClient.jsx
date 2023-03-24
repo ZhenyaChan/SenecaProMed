@@ -1,73 +1,70 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useRoleCheck from "../../useRoleCheck.js";
 
 export default function AddClient() {
-    
-   const [user, setUser] = useState()
-   const navigate = useNavigate();
-    
-   useEffect(() => {
-      setUser({
-        firstName: "",
-        lastName: "",
-        password: "",
-        password1: "",
-        email: "",
-        phoneNumber: "",
-        postalCode: "",
-        city: "",
-        province: "",
-        country: ""
-      })
-   }, [])
+  useRoleCheck(["admin"]);
 
-   function handleChange(e) {
-      const target = e.target
-      let value = target.value
-      const name = target.name
-      
-      setUser((currentUser) => {
-         return { ...currentUser, [name]: value }
-      })
-   }
-   
-   function handleSubmit(e) {
-      e.preventDefault()
+  const [user, setUser] = useState();
+  const navigate = useNavigate();
 
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/client/signup`,
-         {
-            method: "POST",
-            body: JSON.stringify(user),
-            headers: {
-            "content-type": "application/json"
-            }
-         }
-      ).then(() => {
-        navigate(`../admin/clients/all_clients`);
-      })
-   }
-    
-   return (
-      <>
-         <br />
-         <br />
-         <br />
+  useEffect(() => {
+    setUser({
+      firstName: "",
+      lastName: "",
+      password: "",
+      password1: "",
+      email: "",
+      phoneNumber: "",
+      postalCode: "",
+      city: "",
+      province: "",
+      country: "",
+    });
+  }, []);
 
-         <div className="flex justify-center">
-            <div className="over block p-6 rounded-lg shadow-lg bg-white max-w-md">
-               <h2 className="text-lg font-medium text-gray-900 px-2 py-2 text-center">
-                  Create New Client
-               </h2>
-               <br />
-               <form className="w-96" onSubmit={handleSubmit}>
+  function handleChange(e) {
+    const target = e.target;
+    let value = target.value;
+    const name = target.name;
 
-               <div className="form-group mb-6">
-                     <input
-                        type="text"
-                        placeholder="First Name"
-                        name="firstName"
-                        onChange={handleChange}
-                        className="form-control block
+    setUser((currentUser) => {
+      return { ...currentUser, [name]: value };
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    fetch(`${process.env.REACT_APP_BACKEND}/admin/client/signup`, {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "content-type": "application/json",
+      },
+    }).then(() => {
+      navigate(`../admin/clients/all_clients`);
+    });
+  }
+
+  return (
+    <>
+      <br />
+      <br />
+      <br />
+
+      <div className="flex justify-center">
+        <div className="over block p-6 rounded-lg shadow-lg bg-white max-w-md">
+          <h2 className="text-lg font-medium text-gray-900 px-2 py-2 text-center">Create New Client</h2>
+          <br />
+          <form className="w-96" onSubmit={handleSubmit}>
+            <div className="form-group mb-6">
+              <input
+                type="text"
+                placeholder="First Name"
+                name="firstName"
+                onChange={handleChange}
+                className="form-control block
                         w-full
                         px-3
                         py-1.5
@@ -81,16 +78,16 @@ export default function AddClient() {
                         ease-in-out
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                     />
-                  </div>
-                  
-                  <div className="form-group mb-6">
-                     <input
-                        type="text"
-                        placeholder="Last Name"
-                        name="lastName"
-                        onChange={handleChange}
-                        className="form-control block
+              />
+            </div>
+
+            <div className="form-group mb-6">
+              <input
+                type="text"
+                placeholder="Last Name"
+                name="lastName"
+                onChange={handleChange}
+                className="form-control block
                         w-full
                         px-3
                         py-1.5
@@ -104,16 +101,16 @@ export default function AddClient() {
                         ease-in-out
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                     />
-                  </div>
+              />
+            </div>
 
-                  <div className="form-group mb-6">
-                     <input
-                        type="text"
-                        placeholder="Password"
-                        name="password"
-                        onChange={handleChange}
-                        className="form-control block
+            <div className="form-group mb-6">
+              <input
+                type="text"
+                placeholder="Password"
+                name="password"
+                onChange={handleChange}
+                className="form-control block
                         w-full
                         px-3
                         py-1.5
@@ -127,16 +124,16 @@ export default function AddClient() {
                         ease-in-out
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                     />
-                  </div>
+              />
+            </div>
 
-                  <div className="form-group mb-6">
-                     <input
-                        type="text"
-                        placeholder="Confirm password"
-                        name="password1"
-                        onChange={handleChange}
-                        className="form-control block
+            <div className="form-group mb-6">
+              <input
+                type="text"
+                placeholder="Confirm password"
+                name="password1"
+                onChange={handleChange}
+                className="form-control block
                         w-full
                         px-3
                         py-1.5
@@ -150,16 +147,16 @@ export default function AddClient() {
                         ease-in-out
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                     />
-                  </div>
+              />
+            </div>
 
-                  <div className="form-group mb-6">
-                     <input
-                        type="text"
-                        placeholder="Email Address"
-                        name="email"
-                        onChange={handleChange}
-                        className="form-control block
+            <div className="form-group mb-6">
+              <input
+                type="text"
+                placeholder="Email Address"
+                name="email"
+                onChange={handleChange}
+                className="form-control block
                         w-full
                         px-3
                         py-1.5
@@ -173,16 +170,16 @@ export default function AddClient() {
                         ease-in-out
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                     />
-                  </div>
+              />
+            </div>
 
-                  <div className="form-group mb-6">
-                     <input
-                        type="text"
-                        placeholder="Phone number"
-                        name="phoneNumber"
-                        onChange={handleChange}
-                        className="form-control block
+            <div className="form-group mb-6">
+              <input
+                type="text"
+                placeholder="Phone number"
+                name="phoneNumber"
+                onChange={handleChange}
+                className="form-control block
                         w-full
                         px-3
                         py-1.5
@@ -196,16 +193,16 @@ export default function AddClient() {
                         ease-in-out
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                     />
-                  </div>
+              />
+            </div>
 
-                  <div className="form-group mb-6">
-                     <input
-                        type="text"
-                        placeholder="Postal Code"
-                        name="postalCode"
-                        onChange={handleChange}
-                        className="form-control block
+            <div className="form-group mb-6">
+              <input
+                type="text"
+                placeholder="Postal Code"
+                name="postalCode"
+                onChange={handleChange}
+                className="form-control block
                         w-full
                         px-3
                         py-1.5
@@ -219,16 +216,16 @@ export default function AddClient() {
                         ease-in-out
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                     />
-                  </div>
+              />
+            </div>
 
-                  <div className="form-group mb-6">
-                     <input
-                        type="text"
-                        placeholder="City"
-                        name="city"
-                        onChange={handleChange}
-                        className="form-control block
+            <div className="form-group mb-6">
+              <input
+                type="text"
+                placeholder="City"
+                name="city"
+                onChange={handleChange}
+                className="form-control block
                         w-full
                         px-3
                         py-1.5
@@ -242,16 +239,16 @@ export default function AddClient() {
                         ease-in-out
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                     />
-                  </div>
+              />
+            </div>
 
-                  <div className="form-group mb-6">
-                     <input
-                        type="text"
-                        placeholder="Province"
-                        name="province"
-                        onChange={handleChange}
-                        className="form-control block
+            <div className="form-group mb-6">
+              <input
+                type="text"
+                placeholder="Province"
+                name="province"
+                onChange={handleChange}
+                className="form-control block
                         w-full
                         px-3
                         py-1.5
@@ -265,16 +262,16 @@ export default function AddClient() {
                         ease-in-out
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                     />
-                  </div>
+              />
+            </div>
 
-                  <div className="form-group mb-6">
-                     <input
-                        type="text"
-                        placeholder="Country"
-                        name="country"
-                        onChange={handleChange}
-                        className="form-control block
+            <div className="form-group mb-6">
+              <input
+                type="text"
+                placeholder="Country"
+                name="country"
+                onChange={handleChange}
+                className="form-control block
                         w-full
                         px-3
                         py-1.5
@@ -288,13 +285,13 @@ export default function AddClient() {
                         ease-in-out
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                     />
-                  </div>
+              />
+            </div>
 
-                  <div className="grid grid-cols-2 gap-4">
-                     <button
-                        type="button"
-                        className="
+            <div className="grid grid-cols-2 gap-4">
+              <button
+                type="button"
+                className="
                         w-full
                         px-6
                         py-2.5
@@ -312,16 +309,16 @@ export default function AddClient() {
                         transition
                         duration-150
                         ease-in-out"
-                        onClick={() => {
-                            navigate(`../admin/clients/all_clients`);
-                        }}
-                     >
-                        Back
-                     </button>
-                     
-                     <button
-                        type="submit"
-                        className="
+                onClick={() => {
+                  navigate(`../admin/clients/all_clients`);
+                }}
+              >
+                Back
+              </button>
+
+              <button
+                type="submit"
+                className="
                         w-full
                         px-6
                         py-2.5
@@ -339,16 +336,16 @@ export default function AddClient() {
                         transition
                         duration-150
                         ease-in-out"
-                     >
-                        Sign up
-                     </button>
-                  </div>
-               </form>
+              >
+                Sign up
+              </button>
             </div>
-         </div>
-         <br />
-         <br />
-         <br />
-      </>
-   );
+          </form>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+    </>
+  );
 }

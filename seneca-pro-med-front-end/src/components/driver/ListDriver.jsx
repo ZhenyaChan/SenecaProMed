@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import useRoleCheck from "../../useRoleCheck.js";
+
 
 export default function ListDriver() {
+   useRoleCheck(["admin"]);
+   
    const { id } = useParams();
 
    const [user, setUser] = useState();
