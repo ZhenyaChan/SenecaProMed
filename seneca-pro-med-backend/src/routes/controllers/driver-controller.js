@@ -6,6 +6,7 @@ const router = express.Router();
 const { createUser } = require('../middleware/validator');
 
 const driverService = require('../services/driver-service');
+const orderService = require('../services/order-service.js');
 
 // **************************
 // NOTE: PLEASE KNOW THE ORDER OF THE ROUTES WITH THE SAME REST METHOD MATTER,
@@ -17,7 +18,9 @@ const driverService = require('../services/driver-service');
  * @description Driver endpoints
  * @summary POST, DELETE
  */
+router.get('/:driverId', orderService.getOrdersByDriverId)
 router.post('/signup', createUser, driverService.createDriver);
+router.put('/order/:id', orderService.updateOrderById)
 router.delete('/:id', driverService.deleteDriver);
 
 module.exports = router;
