@@ -48,32 +48,15 @@ module.exports.getAdminById = (req, res) => {
     });
 };
 
-module.exports.getAllAdmins = async (req, res) => {
-  try {
-    const userData = await adminModel.find();
-    if (userData.length > 0) {
-      const usersData = userData.map((user) => {
-        return {
-          userName: user.userName,
-          name: `${user.firstName} ${user.lastName}`,
-          contact: `${user.email} ${user.phoneNumber}`,
-          address: `${user.postalCode} ${user.street} ${user.province} ${user.country}`,
-        };
-      });
-      res.status(200).json({
-        message: ['All admin users', usersData.length],
-        data: usersData,
-      });
-    } else {
-      res.status(404).json({
-        message: 'No admin users found',
+module.exports.getAllAdmins = (req, res) => {
+  adminModel.find().then((user) => {
+    if (user.length > 0) {
+      res.json({
+        message: ['All Admin users', user.length],
+        data: user,
       });
     }
-  } catch (error) {
-    res.status(500).json({
-      message: `Error finding admin users: ${error}`,
-    });
-  }
+  });
 };
 
 module.exports.createAdmin = async (req, res) => {
