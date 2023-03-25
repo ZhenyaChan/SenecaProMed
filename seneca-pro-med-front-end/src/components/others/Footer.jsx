@@ -28,6 +28,9 @@ const Footer = () => {
             <Link className="link" to={"#"}>
               Our Story
             </Link>
+            <Link className="link" to={"/pharmacy/locations"}>
+              Our Locations
+            </Link>
             <Link className="link" to={"#"}>
               Careers
             </Link>
