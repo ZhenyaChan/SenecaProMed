@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const orderSchema = new Schema({
-  role: {
+  order_status: {
     type: String,
-    default: 'order_placed', // When customer places an order
+    default: 'order_placed',     // When customer places an order
     // 'order_ready_for_pickup', // Pharmacy has order ready for driver to pick up
     // 'order_driver_accepted',  // Driver has selected this order
     // 'order_driver_pickedup,   // Driver has picked up order

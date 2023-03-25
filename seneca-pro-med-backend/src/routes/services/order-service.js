@@ -119,20 +119,24 @@ module.exports.updateOrderById = async (req, res) => {
     .findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((order) => {
       // if order was found
+      console.log("aaa")
       if (order) {
+      console.log("bbb")
         res.status(200).json({
           message: `Updated Order with id: ${req.params.id}.`,
-          data: pharmacy,
+          data: order,
         });
       }
       // if not found
       else {
+        console.log("ccc")
         res.status(404).json({
           message: `Order with id: ${req.params.id} could not be found.`,
         });
       }
     })
     .catch((err) => {
+      console.log("ddd")
       res.status(500).json({
         message: err,
       });
