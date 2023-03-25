@@ -27,7 +27,8 @@ When we display the date (as part of displaying an order) we can pull out the su
 
 Unless we want to make substrings for year, month, day, time and save those separately when we POST an order.
 
-Fake data is added as: 2023-03-25T14:23  // Same as new Date().toISOString()  but with everything after (and including) ‘:seconds’ removed
+Fake data is added as: 2023-03-25T14:23  
+Same as above but with everything after (and including) ‘:seconds’ removed
 */
 
   datePlaced: {
