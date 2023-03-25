@@ -2,6 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+//admin
+import AddAdmin from "./components/admin/AddAdmin";
+import AdminList from "./components/admin/AdminList";
+import ListAdmin from "./components/admin/ListAdmin";
+import UpdateAdmin from "./components/admin/UpdateAdmin"
+
 // Product Components
 import ProductDetails from "./components/product/ProductDetails";
 import AddProduct from "./components/product/AddProduct";
@@ -57,7 +63,14 @@ root.render(
               {/* Login and Sign Up */}
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
-
+              
+              {/* Admin */}
+              <Route path="/admin/signup" element={<AddAdmin />} />
+              <Route path="/admin/all/admins" element={<AdminList />} />
+              <Route path="/admin/:id" element={<ListAdmin />} />
+              <Route path="/admin/update_admin/:id" element ={<UpdateAdmin/>} />
+              
+              
               {/* Client */}
               <Route path="/admin/client/signup" element={<AddClient />} />
               <Route path="/admin/clients/all_clients" element={<ClientList />} />
