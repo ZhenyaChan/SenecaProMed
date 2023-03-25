@@ -38,7 +38,7 @@ const ProductDetails = () => {
     <div>
       <h1 className="text-3xl font-bold text-headingColor text-center">Product Details</h1>
 
-      <div className="flex gap-8 items-center mx-[150px] my-8 p-8 border border rounded-lg justify-around">
+      <div className="flex gap-8 items-center mx-[150px] my-8 p-8 border rounded-lg justify-around">
         {productDetails.length === 0 && <h2 className="text-center py-8">Loading...</h2>}
 
         <img src={productDetails.photo} alt={productDetails.title} className="w-1/3 rounded-lg" />
