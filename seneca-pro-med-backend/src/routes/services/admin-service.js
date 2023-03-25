@@ -16,7 +16,6 @@ module.exports.getAdminById = (req, res) => {
   adminModel
     .findById(
       req.params.id,
-      'role userName firstName lastName email postalCode street city province country'
     )
     .then((user) => {
       // If an admin user is found, return a JSON response with the user data.
@@ -93,33 +92,29 @@ module.exports.createAdmin = async (req, res) => {
 
 module.exports.UpdateAdminById = (req, res) => {
   adminModel
-    .findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then((user) => {
-      if (user) {
-        res.json({
-          message: `Admin with ID (${req.params.id}) has been updated successfully`,
-          Username: user.userName,
-          Name: `${user.firstName} ${user.lastName}`,
-          Contact_info: `${user.email} ${user.phoneNumber}`,
-          Address: `${user.postalCode} ${user.street} ${user.province} ${user.country}`,
-          Updated_at: now,
-        });
-      } else {
-        res.status(404).json({
-          message: `Admin with ID (${req.params.id}) is NOT found`,
-        });
-      }
-    })
-    .catch((err) => {
-      res.status(500).json({
-        message: err,
+  .findByIdAndUpdate(req.params.id, req.body, { new: true })
+  .then((user) => {
+    if (user) {
+      res.json({
+        message: `user with ID (${req.params.id}) has been updated successfully`,
+        data: user,
       });
+    } else {
+      res.status(404).json({
+        message: `user with ID (${req.params.id}) is NOT found`,
+      });
+    }
+  })
+  .catch((err) => {
+    res.status(500).json({
+      message: err,
     });
+  });
 };
 
 // DELETE Route - Deleting clients by ID
 module.exports.deleteAdmin = (req, res) => {
-  clientModel
+  adminModel
     .findByIdAndRemove(req.params.id)
     .then(() => {
       res.json({

@@ -12,7 +12,7 @@ const Footer = () => {
             <Link className="link" to={"/login"}>
               Login
             </Link>
-            <Link className="link" to={"/sign-up#"}>
+            <Link className="link" to={"/signUp"}>
               Register
             </Link>
             <Link className="link" to={"#"}>
