@@ -13,11 +13,23 @@ const orderSchema = new Schema({
     // 'order_delivered',        // Client has confirmed order delivery
   },
 
-  // Chose string for Date because:
-  // https://mongoosejs.com/docs/tutorials/dates.html
-  // It does not look like the time would be included by default
-  // Thinking to save date as string in this format:
-  // '2023-03-17-0942' -> 'YYYY-MM-DD-hhmm' (hh in 24H format)
+/*
+Date
+When creating an order, thinking to save the date as a string like this:
+let date = new Date().toISOString()
+
+The saved string will look like this: 2023-03-25T14:23:51.793Z
+
+This above is: March 25, 2023  14:23
+// this is 4 hours ahead of our time….it’s currently 10:23am
+
+When we display the date (as part of displaying an order) we can pull out the substrings.
+
+Unless we want to make substrings for year, month, day, time and save those separately when we POST an order.
+
+Fake data is added as: 2023-03-25T14:23  // Same as new Date().toISOString()  but with everything after (and including) ‘:seconds’ removed
+*/
+
   datePlaced: {
     type: String,
     required: true
