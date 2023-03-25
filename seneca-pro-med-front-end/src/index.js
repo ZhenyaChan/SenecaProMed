@@ -38,6 +38,7 @@ import SignUp from "./components/others/SignUp";
 // Providers
 import CartProvider from "./providers/CartProvider";
 import AuthProvider from "./providers/AuthProvider";
+import Map from "./components/map/Map";
 
 import "./index.css";
 
@@ -81,6 +82,9 @@ root.render(
               <Route path="/admin/drivers/all_drivers" element={<DriverList />} />
               <Route path="/admin/driver/:id" element={<ListDriver />} />
               <Route path="/admin/driver/update_driver/:id" element={<UpdateDriver />} />
+
+              {/* Map for Pharmacy locations */}
+              <Route path="/pharmacy/locations" element={<Map />} />
 
               <Route path="/*" element={<NotFound />} />
             </Routes>
