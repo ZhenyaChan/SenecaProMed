@@ -14,6 +14,7 @@ router.use('/client', require('./controllers/client-controller'));
 router.use('/driver', require('./controllers/driver-controller'));
 router.use('/pharma', require('./controllers/pharma-controller'));
 router.use('/product', require('./controllers/product-controller'));
+router.use('/order', require('./controllers/order-controller'));
 
 // Server Status Route
 router.get('/', (req, res) => {
