@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useRoleCheck from "../../useRoleCheck.js";
 
 
-export default function ListPharmacy() {
+export default function ListAdmin() {
    useRoleCheck(["admin"]);
    
    const { id } = useParams();
@@ -16,9 +16,10 @@ export default function ListPharmacy() {
    useEffect(() => {
       setLoading(true);
 
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/pharmacy/${id}`)
+      fetch(`${process.env.REACT_APP_BACKEND}/admin/${id}`)
          .then((res) => res.json())
          .then((result) => {
+            console.log(result.data)
             setUser(result.data);
             setLoading(false);
          });
@@ -40,7 +41,7 @@ export default function ListPharmacy() {
                <div className="flex justify-center">
                   <div className="block p-6 rounded-lg shadow-lg bg-white max-w-prose">
                      <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">
-                        Pharmacy: {user.pharmacyName}
+                        Admin: {user.firstName + " " + user.lastName}
                      </h5>
                      <br />
                      <ul className="bg-white rounded-lg text-gray-900">
@@ -55,10 +56,7 @@ export default function ListPharmacy() {
                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                            Email: &nbsp;&nbsp;{user.email}
                         </li>
-                        <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Street: &nbsp;&nbsp;{user.street}
-                        </li>
+    
                         <li className="px-6 py-2 border-b border-gray-200 w-full">
                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                            City: &nbsp;&nbsp;{user.city}
@@ -95,11 +93,12 @@ export default function ListPharmacy() {
                            active:bg-blue-800 active:shadow-lg 
                            transition duration-150 ease-in-out"
                            onClick={() => {
-                              navigate(`../admin/pharmacies/all_pharmacies`);
+                              navigate(`../admin/all/admins`);
                            }}
                         >
                            Back
                         </button>
+
                         &nbsp;&nbsp;&nbsp;
                         <button
                            type="button"
@@ -118,7 +117,7 @@ export default function ListPharmacy() {
                            active:bg-green-800 active:shadow-lg 
                            transition duration-150 ease-in-out"
                            onClick={() => {
-                              navigate(`../admin/pharmacy/update_pharmacy/${user._id}`);
+                              navigate(`../admin/update_admin/${user._id}`);
                            }}
                         >
                            Edit
@@ -142,10 +141,10 @@ export default function ListPharmacy() {
                            active:bg-red-800 active:shadow-lg 
                            transition duration-150 ease-in-out"
                            onClick={() => {
-                            fetch(`${process.env.REACT_APP_BACKEND}/pharma/${id}`, {
+                            fetch(`${process.env.REACT_APP_BACKEND}/admin/${id}`, {
                                 method: "DELETE"
                              }).then(() => {
-                                navigate(`../admin/pharmacies/all_pharmacies`);
+                                navigate(`../admin/all/admins`);
                              });
                            }}
                         >

@@ -2,6 +2,7 @@
 
 const clientModel = require('../../models/client-model');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 //creating new user
 module.exports.createClient = (req, res) => {
@@ -114,6 +115,41 @@ module.exports.deleteClient = (req, res) => {
     });
 };
 
+module.exports.clientLogin = async (req, res) => {
+  console.log(`Calling POST ${req.headers.host}/client/login`);
+
+  const { username, password, role } = req.body;
+  const clientUser = await clientModel.findOne({ userName: username, role: role });
+
+  if (!clientUser) {
+    return res.status(401).json({ message: 'invalid username or password' });
+  } else {
+    console.log('username is valid');
+  }
+
+  const isPasswordValid = await bcrypt.compare(password, clientUser.password);
+
+  if (!isPasswordValid) {
+    return res.status(401).json({ message: 'invalid username or password' });
+  } else {
+    console.log('password matches');
+  }
+
+  // create token
+  const expiryDate = { expiresIn: '6 h' };
+
+  // Create a new userData object that excludes password, and replace _id with id
+  const userData = { ...clientUser._doc };
+  userData.id = clientUser.id;
+
+  delete userData._id;
+  delete userData.password;
+
+  // Generate the JWT token using the userData object
+  const token = jwt.sign(userData, process.env.SECRET_KEY, expiryDate);
+
+  res.status(200).json(token);
+};
 
 /*
   TODO: 

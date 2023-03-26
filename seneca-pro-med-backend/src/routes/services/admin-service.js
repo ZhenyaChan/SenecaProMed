@@ -16,19 +16,13 @@ module.exports.getAdminById = (req, res) => {
   adminModel
     .findById(
       req.params.id,
-      'role userName firstName lastName email postalCode street city province country'
     )
     .then((user) => {
       // If an admin user is found, return a JSON response with the user data.
       if (user) {
         res.json({
           message: `admin with the id: ${req.params.id}`,
-          data: {
-            userName: user.userName,
-            name: `${user.firstName} ${user.lastName}`,
-            contact: `${user.email} ${user.phoneNumber}`,
-            address: `${user.postalCode} ${user.street} ${user.province} ${user.country}`,
-          },
+          data: user,
         });
         // If no admin user is found, return a 404 error.
       } else {
@@ -53,32 +47,15 @@ module.exports.getAdminById = (req, res) => {
     });
 };
 
-module.exports.getAllAdmins = async (req, res) => {
-  try {
-    const userData = await adminModel.find();
-    if (userData.length > 0) {
-      const usersData = userData.map((user) => {
-        return {
-          userName: user.userName,
-          name: `${user.firstName} ${user.lastName}`,
-          contact: `${user.email} ${user.phoneNumber}`,
-          address: `${user.postalCode} ${user.street} ${user.province} ${user.country}`,
-        };
-      });
-      res.status(200).json({
-        message: ['All admin users', usersData.length],
-        data: usersData,
-      });
-    } else {
-      res.status(404).json({
-        message: 'No admin users found',
+module.exports.getAllAdmins = (req, res) => {
+  adminModel.find().then((user) => {
+    if (user.length > 0) {
+      res.json({
+        message: ['All Admin users', user.length],
+        data: user,
       });
     }
-  } catch (error) {
-    res.status(500).json({
-      message: `Error finding admin users: ${error}`,
-    });
-  }
+  });
 };
 
 module.exports.createAdmin = async (req, res) => {
@@ -115,33 +92,29 @@ module.exports.createAdmin = async (req, res) => {
 
 module.exports.UpdateAdminById = (req, res) => {
   adminModel
-    .findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then((user) => {
-      if (user) {
-        res.json({
-          message: `Admin with ID (${req.params.id}) has been updated successfully`,
-          Username: user.userName,
-          Name: `${user.firstName} ${user.lastName}`,
-          Contact_info: `${user.email} ${user.phoneNumber}`,
-          Address: `${user.postalCode} ${user.street} ${user.province} ${user.country}`,
-          Updated_at: now,
-        });
-      } else {
-        res.status(404).json({
-          message: `Admin with ID (${req.params.id}) is NOT found`,
-        });
-      }
-    })
-    .catch((err) => {
-      res.status(500).json({
-        message: err,
+  .findByIdAndUpdate(req.params.id, req.body, { new: true })
+  .then((user) => {
+    if (user) {
+      res.json({
+        message: `user with ID (${req.params.id}) has been updated successfully`,
+        data: user,
       });
+    } else {
+      res.status(404).json({
+        message: `user with ID (${req.params.id}) is NOT found`,
+      });
+    }
+  })
+  .catch((err) => {
+    res.status(500).json({
+      message: err,
     });
+  });
 };
 
 // DELETE Route - Deleting clients by ID
 module.exports.deleteAdmin = (req, res) => {
-  clientModel
+  adminModel
     .findByIdAndRemove(req.params.id)
     .then(() => {
       res.json({
@@ -177,11 +150,16 @@ module.exports.adminLogin = async (req, res) => {
 
   // create token
   const expiryDate = { expiresIn: '6 h' };
-  const token = jwt.sign(
-    { userName: adminUser.userName, role: adminUser.role },
-    process.env.SECRET_KEY,
-    expiryDate
-  );
+
+  // Create a new userData object that excludes password, and replace _id with id
+  const userData = { ...adminUser._doc };
+  userData.id = adminUser.id;
+
+  delete userData._id;
+  delete userData.password;
+
+  // Generate the JWT token using the userData object
+  const token = jwt.sign(userData, process.env.SECRET_KEY, expiryDate);
 
   res.status(200).json(token);
 };

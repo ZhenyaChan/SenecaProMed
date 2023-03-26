@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useRoleCheck from "../../useRoleCheck.js";
+
 
 export default function AddAdmin() {
-    
+   useRoleCheck(["admin"]);
    const [user, setUser] = useState()
    const navigate = useNavigate();
     
@@ -10,7 +12,7 @@ export default function AddAdmin() {
       setUser({
         firstName: "",
         lastName: "",
-        password: "",
+        password: "", 
         password1: "",
         email: "",
         phoneNumber: "",
@@ -22,6 +24,8 @@ export default function AddAdmin() {
       })
    }, [])
 
+   const [errorMessage, setErrorMessage] = useState(null); // Add error message state variable
+
    function handleChange(e) {
       const target = e.target
       let value = target.value
@@ -31,22 +35,32 @@ export default function AddAdmin() {
          return { ...currentUser, [name]: value }
       })
    }
+
    
    function handleSubmit(e) {
-      e.preventDefault()
-
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/signup`,
-         {
-            method: "POST",
-            body: JSON.stringify(user),
-            headers: {
-            "content-type": "application/json"
-            }
-         }
-      ).then(() => {
-        navigate(`../admin/all/admins`);
+      e.preventDefault();
+  
+      fetch(`http://localhost:8080/admin/signup`, {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: {
+          "content-type": "application/json"
+        }
       })
-   }
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .then(() => {
+          navigate(`../admin/all/admins`);
+        })
+        .catch((error) => {
+         console.log(error.message)
+          setErrorMessage(error.message);
+        });
+    }
     
    return (
       <>
@@ -350,6 +364,7 @@ export default function AddAdmin() {
          <br />
          <br />
          <br />
+                
       </>
    );
 }

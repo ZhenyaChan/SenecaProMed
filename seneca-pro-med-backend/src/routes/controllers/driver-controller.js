@@ -18,7 +18,9 @@ const orderService = require('../services/order-service.js');
  * @description Driver endpoints
  * @summary POST, PUT, DELETE
  */
+
 router.get('/:driverId', orderService.getOrdersByDriverId)
+router.post('/login', driverService.driverLogin);
 router.post('/signup', createUser, driverService.createDriver);
 router.put('/:id', orderService.updateOrderById)
 router.delete('/:id', driverService.deleteDriver);

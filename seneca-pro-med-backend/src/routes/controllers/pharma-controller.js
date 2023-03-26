@@ -17,11 +17,8 @@ const orderService = require('../services/order-service.js');
  * @summary GET, GET all, POST, PUT, DELETE
  */
 
-// These first two should only be accesible if you are an admin
-//router.get('/all_pharmacies', pharmaService.getAllPharmacyUsers);
-//router.get('/:id', pharmaService.getPharmacyById);
-
 router.get('/:pharmacyId', orderService.getOrdersByPharmacyId)
+router.post('/login', pharmaService.pharmacyLogin);
 router.post('/signup', pharmaService.createPharmacy);
 router.put('/:id', pharmaService.updatePharmacyById);
 router.put('/order/:id', orderService.updateOrderById)

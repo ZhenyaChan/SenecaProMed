@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useRoleCheck from "../../useRoleCheck.js";
 
-export default function ClientList() {
+export default function AdminList() {
   useRoleCheck(["admin"]);
 
   const [users, setUsers] = useState();
@@ -11,9 +11,8 @@ export default function ClientList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
 
-    fetch(`${process.env.REACT_APP_BACKEND}/admin/clients/all_clients`)
+    fetch(`${process.env.REACT_APP_BACKEND}/admin/all/admins`)
       .then((res) => res.json())
       .then((result) => {
         setUsers(result.data);
@@ -34,7 +33,7 @@ export default function ClientList() {
         <br />
         <br />
         <br />
-        <h2 className="text-lg font-medium text-gray-900 px-2 py-2 text-left">Clients</h2>
+        <h2 className="text-lg font-medium text-gray-900 px-2 py-2 text-left">Admin</h2>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -46,7 +45,7 @@ export default function ClientList() {
                         #
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Client
+                        Admin
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                         Email
@@ -66,7 +65,7 @@ export default function ClientList() {
                         }
                         key={index}
                         onClick={() => {
-                          navigate(`../admin/client/${user._id}`);
+                          navigate(`../admin/${user._id}`);
                         }}
                       >
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{index + 1}</td>

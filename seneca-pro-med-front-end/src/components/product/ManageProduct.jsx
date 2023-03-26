@@ -1,22 +1,18 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import useRoleCheck from "../../useRoleCheck.js";
 
-export default function ClientList() {
-  useRoleCheck(["admin"]);
-
-  const [users, setUsers] = useState();
+export default function ManageProduct() {
+  const [products, setProducts] = useState();
   const [loading, setLoading] = useState(true); // Because sometimes Heroku sleeps
-
   const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
 
-    fetch(`${process.env.REACT_APP_BACKEND}/admin/clients/all_clients`)
+    fetch(`${process.env.REACT_APP_BACKEND}/product/all_products`)
       .then((res) => res.json())
       .then((result) => {
-        setUsers(result.data);
+        setProducts(result.data);
         setLoading(false);
       });
   }, []);
@@ -30,12 +26,9 @@ export default function ClientList() {
     );
   } else {
     return (
-      <>
-        <br />
-        <br />
-        <br />
-        <h2 className="text-lg font-medium text-gray-900 px-2 py-2 text-left">Clients</h2>
-        <div className="flex flex-col">
+      <div>
+        <h1 className="text-3xl font-bold text-headingColor text-center">Products</h1>
+        <div className="flex flex-col my-8 border rounded">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overflow-hidden">
@@ -46,18 +39,18 @@ export default function ClientList() {
                         #
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Client
+                        Product Title
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Email
+                        Price
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Phone Number
+                        Description
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    {users.map((user, index) => (
+                    {products.map((product, index) => (
                       <tr
                         className={
                           index % 2
@@ -66,16 +59,18 @@ export default function ClientList() {
                         }
                         key={index}
                         onClick={() => {
-                          navigate(`../admin/client/${user._id}`);
+                          navigate(`/pharmacy/products/product/${product._id}`);
                         }}
                       >
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{index + 1}</td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {user.firstName + " " + user.lastName}
+                          {product.title}
                         </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{user.email}</td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {user.phoneNumber}
+                          {product.price}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {product.description}
                         </td>
                       </tr>
                     ))}
@@ -90,16 +85,13 @@ export default function ClientList() {
             type="button"
             className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
             onClick={() => {
-              navigate(`/../admin/client/signup`);
+              navigate(`/products/addProduct`);
             }}
           >
-            Add User
+            Add Product
           </button>
         </div>
-        <br />
-        <br />
-        <br />
-      </>
+      </div>
     );
   }
 }
