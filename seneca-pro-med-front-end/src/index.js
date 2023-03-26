@@ -15,11 +15,18 @@ import ListPharmacy from "./components/pharmacy/ListPharmacy";
 import PharmacyList from "./components/pharmacy/PharmacyList";
 import UpdatePharmacy from "./components/pharmacy/UpdatePharmacy";
 
+import PharmacyOrders from "./components/pharmacy/PharmacyOrders";
+import PharmacyOrderDetail from "./components/pharmacy/PharmacyOrderDetail";
+import PharmacyProductsDetail from "./components/pharmacy/PharmacyProductsDetail"
+
 // Driver Components
 import AddDriver from "./components/driver/AddDriver";
 import DriverList from "./components/driver/DriverList";
 import ListDriver from "./components/driver/ListDriver";
 import UpdateDriver from "./components/driver/UpdateDriver";
+
+import DriverOrders from "./components/driver/DriverOrders"
+import DriverOrderDetail from "./components/driver/DriverOrderDetail";
 
 // Client Components
 import AddClient from "./components/client/AddClient";
@@ -38,6 +45,11 @@ import SignUp from "./components/others/SignUp";
 // Providers
 import CartProvider from "./providers/CartProvider";
 import AuthProvider from "./providers/AuthProvider";
+
+// Admin components
+import AdminOrder from "./components/admin/AdminOrders";
+import OrderDetail from "./components/admin/AdminOrderDetail";
+
 
 import "./index.css";
 
@@ -81,6 +93,22 @@ root.render(
               <Route path="/admin/drivers/all_drivers" element={<DriverList />} />
               <Route path="/admin/driver/:id" element={<ListDriver />} />
               <Route path="/admin/driver/update_driver/:id" element={<UpdateDriver />} />
+              
+
+              {/* Orders */}
+              <Route path="/admin/orders" element={<AdminOrder />} />
+              <Route path="/admin/order_detail/:id" element={<OrderDetail />} />
+
+              <Route path="/driver/orders" element={<DriverOrders />} />
+              <Route path="/driver/order_detail/:id" element={<DriverOrderDetail />} />
+
+              <Route path="/pharmacy/orders" element={<PharmacyOrders />} />
+              <Route path="/pharmacy/order_detail/:id" element={<PharmacyOrderDetail />} />
+              <Route path="/pharmacy/products_detail" element={<PharmacyProductsDetail />} />
+              
+
+            
+
 
               <Route path="/*" element={<NotFound />} />
             </Routes>
