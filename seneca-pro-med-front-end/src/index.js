@@ -7,6 +7,7 @@ import AddAdmin from "./components/admin/AddAdmin";
 import AdminList from "./components/admin/AdminList";
 import ListAdmin from "./components/admin/ListAdmin";
 import UpdateAdmin from "./components/admin/UpdateAdmin"
+import AdminHome from "./components/admin/AdminHome"
 
 // Product Components
 import ProductDetails from "./components/product/ProductDetails";
@@ -72,11 +73,14 @@ root.render(
             <Routes>
               <Route path="/" element={<App />} />
 
+              
+
               {/* Login and Sign Up */}
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               
               {/* Admin */}
+              <Route path="/adminhome" element={<AdminHome/>}/>
               <Route path="/admin/signup" element={<AddAdmin />} />
               <Route path="/admin/all/admins" element={<AdminList />} />
               <Route path="/admin/:id" element={<ListAdmin />} />

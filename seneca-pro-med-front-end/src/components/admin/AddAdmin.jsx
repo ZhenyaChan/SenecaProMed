@@ -35,12 +35,11 @@ export default function AddAdmin() {
          return { ...currentUser, [name]: value }
       })
    }
-
    
    function handleSubmit(e) {
       e.preventDefault();
   
-      fetch(`http://localhost:8080/admin/signup`, {
+      fetch(`${process.env.REACT_APP_BACKEND}/admin/signup`, {
         method: "POST",
         body: JSON.stringify(user),
         headers: {
@@ -328,7 +327,7 @@ export default function AddAdmin() {
                         duration-150
                         ease-in-out"
                         onClick={() => {
-                            navigate(`../admin/all/admin`);
+                            navigate(`../admin/all/admins`);
                         }}
                      >
                         Back
