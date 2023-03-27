@@ -21,6 +21,8 @@ import AddPharmacy from "./components/pharmacy/AddPharmacy";
 import ListPharmacy from "./components/pharmacy/ListPharmacy";
 import PharmacyList from "./components/pharmacy/PharmacyList";
 import UpdatePharmacy from "./components/pharmacy/UpdatePharmacy";
+import PharmacyListLocation from "./components/pharmacy/PharmacyListLocation";
+import PharmacyLocation from "./components/pharmacy/PharmacyLocation";
 
 import PharmacyOrders from "./components/pharmacy/PharmacyOrders";
 import PharmacyOrderDetail from "./components/pharmacy/PharmacyOrderDetail";
@@ -103,8 +105,11 @@ root.render(
               {/* Pharmacy */}
               <Route path="/admin/pharmacy/signup" element={<AddPharmacy />} />
               <Route path="/admin/pharmacy/:id" element={<ListPharmacy />} />
-              <Route path="/admin/pharmacies/all_pharmacies" element={<PharmacyList />} />
+              <Route path="/admin/pharmacy/all_pharmacies" element={<PharmacyList />} />
               <Route path="/admin/pharmacy/update_pharmacy/:id" element={<UpdatePharmacy />} />
+              <Route path="/pharmacy/all_pharmacies" element={<PharmacyListLocation />} />
+              <Route path="/pharmacy/location/:id" element={<PharmacyLocation />} />
+
 
               {/* Driver */}
               <Route path="/admin/driver/signup" element={<AddDriver />} />
