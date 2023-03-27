@@ -7,7 +7,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   const { isLoggedIn, errorMsg, login } = useContext(AuthContext);
-
   const [formData, setFormData] = useState({ role: "", username: "", password: "" });
 
   const handleChange = (evt) => {
