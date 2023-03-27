@@ -73,8 +73,6 @@ root.render(
             <Routes>
               <Route path="/" element={<App />} />
 
-              
-
               {/* Login and Sign Up */}
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
