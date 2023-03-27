@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function OrderDetail() {
+export default function AdminOrderDetail() {
    const { id } = useParams();
 
    const [user, setUser] = useState();
@@ -12,7 +12,7 @@ export default function OrderDetail() {
    useEffect(() => {
       setLoading(true);
 
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/driver/${id}`) // Search by order ID later
+      fetch(`${process.env.REACT_APP_BACKEND}/admin/orders/${id}`) // Search by order ID later
          .then((res) => res.json())
          .then((result) => {
             setUser(result.data);
