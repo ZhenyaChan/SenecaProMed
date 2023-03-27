@@ -14,9 +14,7 @@ module.exports.getAdminById = (req, res) => {
   // Use the findById method to find an admin user with the specified ID.
   // Use a projection to include only the desired fields in the result.
   adminModel
-    .findById(
-      req.params.id,
-    )
+    .findById(req.params.id)
     .then((user) => {
       // If an admin user is found, return a JSON response with the user data.
       if (user) {
@@ -65,7 +63,8 @@ module.exports.createAdmin = async (req, res) => {
     let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(req.body.password, salt);
     req.body.password = hash;
-    req.body.userName = req.body.email;
+    req.body.email = req.body.email.toLowerCase();
+    req.body.userName = req.body.email.toLowerCase();
 
     const existingAdmin = await adminModel.findOne({ email: req.body.email });
     if (existingAdmin) {
@@ -92,24 +91,24 @@ module.exports.createAdmin = async (req, res) => {
 
 module.exports.UpdateAdminById = (req, res) => {
   adminModel
-  .findByIdAndUpdate(req.params.id, req.body, { new: true })
-  .then((user) => {
-    if (user) {
-      res.json({
-        message: `user with ID (${req.params.id}) has been updated successfully`,
-        data: user,
+    .findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then((user) => {
+      if (user) {
+        res.json({
+          message: `user with ID (${req.params.id}) has been updated successfully`,
+          data: user,
+        });
+      } else {
+        res.status(404).json({
+          message: `user with ID (${req.params.id}) is NOT found`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: err,
       });
-    } else {
-      res.status(404).json({
-        message: `user with ID (${req.params.id}) is NOT found`,
-      });
-    }
-  })
-  .catch((err) => {
-    res.status(500).json({
-      message: err,
     });
-  });
 };
 
 // DELETE Route - Deleting clients by ID
@@ -135,7 +134,7 @@ module.exports.adminLogin = async (req, res) => {
   const adminUser = await adminModel.findOne({ userName: username, role: role });
 
   if (!adminUser) {
-    return res.status(401).json({ message: 'invalid username or password' });
+    return res.status(401).json({ message: 'invalid username' });
   } else {
     console.log('username is valid');
   }
@@ -143,7 +142,7 @@ module.exports.adminLogin = async (req, res) => {
   const isPasswordValid = await bcrypt.compare(password, adminUser.password);
 
   if (!isPasswordValid) {
-    return res.status(401).json({ message: 'invalid username or password' });
+    return res.status(401).json({ message: 'invalid password' });
   } else {
     console.log('password matches');
   }

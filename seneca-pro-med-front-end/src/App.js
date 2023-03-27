@@ -9,7 +9,7 @@ import AuthContext from "./contexts/AuthContext";
 const App = () => {
   const { userData } = useContext(AuthContext);
 
-  const componentToRender = (userRole) => {
+  const homepageToRender = (userRole) => {
     switch (userRole) {
       case "admin":
         return <AdminHomepage />;
@@ -24,7 +24,7 @@ const App = () => {
     }
   };
 
-  return <div>{componentToRender(userData.role)}</div>;
+  return <div>{homepageToRender(userData.role)}</div>;
 };
 
 export default App;

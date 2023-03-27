@@ -34,11 +34,16 @@ const clientSchema = new Schema({
     type: String,
     required: true,
   },
-  postalCode: {
+  street: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  city: {
     type: String,
     required: true,
   },
-  city: {
+  postalCode: {
     type: String,
     required: true,
   },
