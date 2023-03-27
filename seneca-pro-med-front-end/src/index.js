@@ -57,6 +57,7 @@ import Map from "./components/map/Map";
 // Admin components
 import AdminOrder from "./components/admin/AdminOrders";
 import OrderDetail from "./components/admin/AdminOrderDetail";
+import AdminOrderProducts from "./components/admin/AdminOrderProducts";
 
 
 import "./index.css";
@@ -116,6 +117,7 @@ root.render(
               {/* Orders */}
               <Route path="/admin/orders" element={<AdminOrder />} />
               <Route path="/admin/order_detail/:id" element={<OrderDetail />} />
+              <Route path="/admin/order_products/:id" element={<AdminOrderProducts />} />
 
               <Route path="/driver/orders" element={<DriverOrders />} />
               <Route path="/driver/order_detail/:id" element={<DriverOrderDetail />} />
