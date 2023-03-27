@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import useRoleCheck from "../../useRoleCheck.js";
 
 export default function UpdateProduct() {
+  useRoleCheck(["pharmacy"]);
+  
   const { id } = useParams();
   const [product, setProduct] = useState();
   const [loading, setLoading] = useState(true);
@@ -53,7 +56,6 @@ export default function UpdateProduct() {
     if (product) {
       return (
         <div className="flex flex-col items-center">
-
           <h1 className="text-3xl font-bold text-headingColor text-center">Update: {product.title}</h1>
 
           <div className="over block p-6 my-8 border rounded-lg shadow-lg bg-white max-w-md">
