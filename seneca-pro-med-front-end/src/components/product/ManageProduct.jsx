@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useRoleCheck from "../../useRoleCheck.js";
 
 export default function ManageProduct() {
+  useRoleCheck(["pharmacy"]);
+
   const [products, setProducts] = useState();
   const [loading, setLoading] = useState(true); // Because sometimes Heroku sleeps
   const navigate = useNavigate();
