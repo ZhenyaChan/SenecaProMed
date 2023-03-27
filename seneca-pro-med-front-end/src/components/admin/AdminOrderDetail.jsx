@@ -12,13 +12,16 @@ export default function AdminOrderDetail() {
    useEffect(() => {
       setLoading(true);
 
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/orders/${id}`) // Search by order ID later
+      fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`)
          .then((res) => res.json())
          .then((result) => {
             setUser(result.data);
             setLoading(false);
          });
+      
    }, [id]); 
+
+   
 
    if (loading) {
       return (
@@ -36,33 +39,29 @@ export default function AdminOrderDetail() {
                <div className="flex justify-center">
                   <div className="block p-6 rounded-lg shadow-lg bg-white max-w-prose">
                      <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">
-                        Order: {"Order ID"} {/* Need to change */}
+                        Order: {user._id} {/* Need to change */}
                      </h5>
                      <br />
                      <ul className="bg-white rounded-lg text-gray-900">
-                        <li className="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Picture: &nbsp;&nbsp;{'Picture Link'}
+                        <li className="px-6 py-2 border-b border-gray-200 w-full">
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           Client ID: &nbsp;&nbsp;{user.clientId}
                         </li>
                         <li className="px-6 py-2 border-b border-gray-200 w-full">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                            Product: &nbsp;&nbsp;{'Phone Number'}
+                           &nbsp;&nbsp;
+                           Pharmacy ID: &nbsp;&nbsp;{user.pharmacyId}
                         </li>
                         <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Client ID: &nbsp;&nbsp;{'Client ID'}
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           Driver ID: &nbsp;&nbsp;{user.driverId}
                         </li>
                         <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Quantity: &nbsp;&nbsp;{'Quantity'}
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           Product(s): &nbsp;&nbsp;{user.products.length}
                         </li>
                         <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Total Price: &nbsp;&nbsp;{'$Price'}
-                        </li>
-                        <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Postal Code: &nbsp;&nbsp;{'Postal Code'}
+                           &nbsp;
+                           Total Amount: &nbsp;${user.products.reduce((totalPrice, product) => totalPrice += (product.quantity * product.price), 0).toFixed(2)}
                         </li>
                      </ul>
                      <br />
@@ -88,6 +87,29 @@ export default function AdminOrderDetail() {
                            }}
                         >
                            Back
+                        </button>
+                        &nbsp;&nbsp;&nbsp;
+
+                        <button
+                           type="button"
+                           className=" inline-block 
+                           px-6 py-2.5 
+                           bg-green-600 
+                           text-white 
+                           font-medium text-xs 
+                           leading-tight 
+                           uppercase 
+                           rounded 
+                           shadow-md 
+                           hover:bg-blue-700 hover:shadow-lg 
+                           focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 
+                           active:bg-blue-800 active:shadow-lg 
+                           transition duration-150 ease-in-out"
+                           onClick={() => {
+                              navigate(`../admin/order_products/${id}`);
+                           }}
+                        >
+                           Products
                         </button>
                         
                      </div>

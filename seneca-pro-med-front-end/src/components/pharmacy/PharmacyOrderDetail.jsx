@@ -12,13 +12,37 @@ export default function PharmacyOrderDetail() {
    useEffect(() => {
       setLoading(true);
 
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/driver/${id}`) // Search by order ID later
+      fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`) // Search by order ID later
          .then((res) => res.json())
          .then((result) => {
             setUser(result.data);
             setLoading(false);
          });
    }, [id]); 
+
+   function handleChange(e) {
+      const target = e.target;
+      let value = target.value;
+      const name = target.name;
+
+      setUser((currentUser) => {
+         return { ...currentUser, [name]: value };
+      });
+   }
+
+   function handleSubmit(e) {
+      e.preventDefault();
+
+      fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
+         method: "PUT",
+         body: JSON.stringify(user),
+         headers: {
+            "content-type": "application/json"
+         }
+      }).then(() => {
+         navigate(`../admin/driver/${user._id}`);
+      });
+   }
 
    if (loading) {
       return (
@@ -36,135 +60,142 @@ export default function PharmacyOrderDetail() {
                <div className="flex justify-center">
                   <div className="block p-6 rounded-lg shadow-lg bg-white max-w-prose">
                      <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">
-                        Order: {"Order ID"} {/* Need to change */}
+                        Order: {user._id} {/* Need to change */}
                      </h5>
                      <br />
-                     <ul className="bg-white rounded-lg text-gray-900">
-                        <li className="px-6 py-2 border-b border-gray-200 w-full">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            Product(s): &nbsp;&nbsp;{'# of Products'}
-                        </li>
-                        <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Client ID: &nbsp;&nbsp;{'Client ID'}
-                        </li>
-                        <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Quantity: &nbsp;&nbsp;{'Quantity'}
-                        </li>
-                        <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Total Price: &nbsp;&nbsp;{'$Price'}
-                        </li>
-                        <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Postal Code: &nbsp;&nbsp;{'Postal Code'}
-                        </li>
-                     </ul>
-                     <br />
+                     <form className="w-96" onSubmit={handleSubmit}>
+                        <ul className="bg-white rounded-lg text-gray-900">
+                           <li className="px-6 py-2 border-b border-gray-200 w-full">
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              Client ID: {user.clientId}
+                           </li>
+                           <li className="px-6 py-2 border-b border-gray-200 w-full">
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              Product(s): {user.products.length}
+                           </li>
+                           <li className="px-6 py-2 border-b border-gray-200 w-full">
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              Total Price: ${user.products.reduce((totalPrice, product) => totalPrice += (product.quantity * product.price), 0).toFixed(2)}
+                           </li>
+                        </ul>
+                        <br />
 
-                     <div className="flex justify-center">
-                        <button
-                           type="button"
-                           className=" inline-block 
-                           px-6 py-2.5 
-                           bg-blue-600 
-                           text-white 
-                           font-medium text-xs 
-                           leading-tight 
-                           uppercase 
-                           rounded 
-                           shadow-md 
-                           hover:bg-blue-700 hover:shadow-lg 
-                           focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 
-                           active:bg-blue-800 active:shadow-lg 
-                           transition duration-150 ease-in-out"
-                           onClick={() => {
-                              navigate(`../pharmacy/orders`);
-                           }}
-                        >
-                           Back
-                        </button>
-                        &nbsp;&nbsp;&nbsp;
-                        <button
-                           type="button"
-                           className=" inline-block 
-                           px-6 py-2.5 
-                           bg-green-500 
-                           text-white 
-                           font-medium 
-                           text-xs 
-                           leading-tight 
-                           uppercase 
-                           rounded 
-                           shadow-md 
-                           hover:bg-green-700 hover:shadow-lg 
-                           focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 
-                           active:bg-green-800 active:shadow-lg 
-                           transition duration-150 ease-in-out"
-                           onClick={() => {
-                              navigate(`../admin/pharmacy/update_pharmacy/${user._id}`);
-                           }}
-                        >
-                           ACCEPT
-                        </button>
-                        &nbsp;&nbsp;&nbsp;
-                        <button
-                           type="button"
-                           className=" inline-block 
-                           px-6 
-                           py-2.5 
-                           bg-red-600 
-                           text-white 
-                           font-medium 
-                           text-xs 
-                           leading-tight 
-                           uppercase 
-                           rounded 
-                           shadow-md 
-                           hover:bg-red-700 hover:shadow-lg 
-                           focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 
-                           active:bg-red-800 active:shadow-lg 
-                           transition duration-150 ease-in-out"
-                           onClick={() => {
-                            fetch(`${process.env.REACT_APP_BACKEND}/pharma/${id}`, {
-                                method: "DELETE"
-                             }).then(() => {
-                                navigate(`../admin/pharmacies/all_pharmacies`);
-                             });
-                           }}
-                        >
-                           DENY
-                        </button>
-                        &nbsp;&nbsp;&nbsp;
-                        <button
-                           type="button"
-                           className=" inline-block 
-                           px-6 
-                           py-2.5 
-                           bg-yellow-600 
-                           text-white 
-                           font-medium 
-                           text-xs 
-                           leading-tight 
-                           uppercase 
-                           rounded 
-                           shadow-md 
-                           hover:bg-yellow-700 hover:shadow-lg 
-                           focus:bg-yellow-700 focus:shadow-lg focus:outline-none focus:ring-0 
-                           active:bg-yellow-800 active:shadow-lg 
-                           transition duration-150 ease-in-out"
-                           onClick={() => {
-                            fetch(`${process.env.REACT_APP_BACKEND}/pharma/${id}`, {
-                                method: "DELETE"
-                             }).then(() => {
-                                navigate(`../pharmacy/products_detail`);
-                             });
-                           }}
-                        >
-                           Product Detail
-                        </button>
-                     </div>
+                        <div className="flex justify-center">
+                           <button
+                              type="button"
+                              className=" inline-block 
+                              px-6 py-2.5 
+                              bg-blue-600 
+                              text-white 
+                              font-medium text-xs 
+                              leading-tight 
+                              uppercase 
+                              rounded 
+                              shadow-md 
+                              hover:bg-blue-700 hover:shadow-lg 
+                              focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 
+                              active:bg-blue-800 active:shadow-lg 
+                              transition duration-150 ease-in-out"
+                              onClick={() => {
+                                 navigate(`../pharmacy/orders`);
+                              }}
+                           >
+                              Back
+                           </button>
+                           &nbsp;&nbsp;&nbsp;
+                           <button
+                              type="button"
+                              className=" inline-block 
+                              px-6 py-2.5 
+                              bg-green-500 
+                              text-white 
+                              font-medium 
+                              text-xs 
+                              leading-tight 
+                              uppercase 
+                              rounded 
+                              shadow-md 
+                              hover:bg-green-700 hover:shadow-lg 
+                              focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 
+                              active:bg-green-800 active:shadow-lg 
+                              transition duration-150 ease-in-out"
+                              onClick={() => {
+                                 fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
+                                    method: "PUT",
+                                    body: JSON.stringify({ field: 'order_status', value: 'Order_Denied' }),
+                                    headers: {
+                                       "content-type": "application/json"
+                                    }
+                                 }).then(() => {
+                                    navigate(`../pharmacy/orders`);
+                              });
+                              }}
+                           >
+                              ACCEPT
+                           </button>
+                           &nbsp;&nbsp;&nbsp;
+                           <button
+                              type="button"
+                              className=" inline-block 
+                              px-6 
+                              py-2.5 
+                              bg-red-600 
+                              text-white 
+                              font-medium 
+                              text-xs 
+                              leading-tight 
+                              uppercase 
+                              rounded 
+                              shadow-md 
+                              hover:bg-red-700 hover:shadow-lg 
+                              focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 
+                              active:bg-red-800 active:shadow-lg 
+                              transition duration-150 ease-in-out"
+                              onClick={() => {
+                                 fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
+                                    method: "PUT",
+                                    body: JSON.stringify({ field: 'order_status', value: 'Order_Denied' }),
+                                    headers: {
+                                       "Content-Type": "application/json"
+                                    },
+                                    
+                                 }).then(() => {
+                                 navigate(`../pharmacy/orders`);
+                              });
+                              }}
+                           >
+                              DENY
+                           </button>
+                           &nbsp;&nbsp;&nbsp;
+                           <button
+                              type="button"
+                              className=" inline-block 
+                              px-6 
+                              py-2.5 
+                              bg-yellow-600 
+                              text-white 
+                              font-medium 
+                              text-xs 
+                              leading-tight 
+                              uppercase 
+                              rounded 
+                              shadow-md 
+                              hover:bg-yellow-700 hover:shadow-lg 
+                              focus:bg-yellow-700 focus:shadow-lg focus:outline-none focus:ring-0 
+                              active:bg-yellow-800 active:shadow-lg 
+                              transition duration-150 ease-in-out"
+                              onClick={() => {
+                              fetch(`${process.env.REACT_APP_BACKEND}/pharma/${id}`, {
+                                 method: "DELETE"
+                              }).then(() => {
+                                 navigate(`../pharmacy/orders`);
+                              });
+                              }}
+                           >
+                              Products Detail
+                           </button>
+                        </div>
+                     </form>
                   </div>
                </div>
                <br />
