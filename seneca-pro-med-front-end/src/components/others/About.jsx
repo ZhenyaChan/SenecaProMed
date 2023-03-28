@@ -1,5 +1,6 @@
 import React from "react";
 import ZaneImg from "../../assets/images/ZaneImg.jpeg";
+import HumamImg from "../../assets/images/HumamImg.jpg"
 
 const About = () => {
   return (
@@ -84,7 +85,7 @@ const About = () => {
             <div className="p-4 pb-6 flex justify-center flex-col items-center">
               <img
                 className=""
-                src="https://i.ibb.co/7nSJPXQ/Rectangle-121.png"
+                src={HumamImg}
                 alt="HumamImg"
               />
               <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
