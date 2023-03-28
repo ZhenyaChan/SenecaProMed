@@ -58,6 +58,7 @@ router.get('/pharmacy/:id', pharmaService.getPharmacyById);
 router.post('/pharmacy/signup', pharmaService.createPharmacy);
 router.put('/pharmacy/:id', pharmaService.updatePharmacyById);
 
+
 /**
  * @name Admin/Order
  * @description Admin endpoints for orders

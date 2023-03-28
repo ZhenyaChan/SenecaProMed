@@ -27,6 +27,7 @@ import PharmacyLocation from "./components/pharmacy/PharmacyLocation";
 import PharmacyOrders from "./components/pharmacy/PharmacyOrders";
 import PharmacyOrderDetail from "./components/pharmacy/PharmacyOrderDetail";
 import PharmacyProductsDetail from "./components/pharmacy/PharmacyProductsDetail"
+import PharmacyPendingOrders from "./components/pharmacy/PharmacyPendingOrders";
 
 // Driver Components
 import AddDriver from "./components/driver/AddDriver";
@@ -51,6 +52,7 @@ import Footer from "./components/others/Footer";
 import NotFound from "./components/others/NotFound";
 import Login from "./components/others/Login";
 import SignUp from "./components/others/SignUp";
+import About from "./components/others/About";
 
 // Providers
 import CartProvider from "./providers/CartProvider";
@@ -76,6 +78,8 @@ root.render(
           <main className="my-8 w-3/4 flex flex-col mx-auto flex-grow">
             <Routes>
               <Route path="/" element={<App />} />
+              <Route path="/about" element={<About />} />
+
 
               {/* Login and Sign Up */}
               <Route path="/login" element={<Login />} />
@@ -94,8 +98,10 @@ root.render(
               <Route path="/admin/clients/all_clients" element={<ClientList />} />
               <Route path="/admin/client/:id" element={<ListClient />} />
               <Route path="/admin/client/update_client/:id" element={<UpdateClient />} />
-
-
+              <Route path="/client/:id" element={<ListClient />} />
+              <Route path="/client/update_client/:id" element={<UpdateClient />} />
+              
+                
               {/* Product */}
               <Route path="/products/product/:id" element={<ProductDetails />} />
               <Route path="/products/addProduct" element={<AddProduct />} />
@@ -103,6 +109,7 @@ root.render(
               <Route path="/pharmacy/products/all_products" element={<ManageProduct />} />
               <Route path="/pharmacy/product/update_product/:id" element={<UpdateProduct />} />
 
+                
               {/* Pharmacy */}
               <Route path="/admin/pharmacy/signup" element={<AddPharmacy />} />
               <Route path="/admin/pharmacy/:id" element={<ListPharmacy />} />
@@ -130,6 +137,8 @@ root.render(
               <Route path="/pharmacy/orders" element={<PharmacyOrders />} />
               <Route path="/pharmacy/order_detail/:id" element={<PharmacyOrderDetail />} />
               <Route path="/pharmacy/products_detail" element={<PharmacyProductsDetail />} />
+              <Route path="/pharmacy/orders/pending_orders" element={<PharmacyPendingOrders />} /> 
+
 
               <Route path="/client/orders/:clientId" element={<ClientOrders />} />
 

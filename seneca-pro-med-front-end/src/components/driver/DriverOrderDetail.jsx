@@ -12,7 +12,7 @@ export default function DriverOrderDetail() {
    useEffect(() => {
       setLoading(true);
 
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/driver/${id}`) // Search by order ID later
+      fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`) // Search by order ID later
          .then((res) => res.json())
          .then((result) => {
             setUser(result.data);
@@ -36,29 +36,25 @@ export default function DriverOrderDetail() {
                <div className="flex justify-center">
                   <div className="block p-6 rounded-lg shadow-lg bg-white max-w-prose">
                      <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">
-                        Order: {"Order ID"} {/* Need to change */}
+                        Order: {user._id} {/* Need to change */}
                      </h5>
                      <br />
                      <ul className={"bg-white rounded-lg text-gray-900"}>
                         <li className="px-6 py-2 border-b border-gray-200 w-full">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            Product(s): &nbsp;&nbsp;{'# of Products'}
-                        </li>
-                        <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Client ID: &nbsp;&nbsp;{'Client ID'}
-                        </li>
-                        <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Quantity: &nbsp;&nbsp;{'Quantity'}
-                        </li>
-                        <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Total Price: &nbsp;&nbsp;{'$Price'}
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           Client ID: {user.clientId}
                         </li>
                         <li className="px-6 py-2 border-b border-gray-200 w-full">
                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Postal Code: &nbsp;&nbsp;{'Postal Code'}
+                           Product(s): {user.products.length}
+                        </li>
+                        <li className="px-6 py-2 border-b border-gray-200 w-full">
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              Total Price: ${user.products.reduce((totalPrice, product) => totalPrice += (product.quantity * product.price), 0).toFixed(2)}
+                        </li>
+                        <li className="px-6 py-2 border-b border-gray-200 w-full">
+                           &nbsp;&nbsp;&nbsp;
+                           Postal Code: {'Postal Code'}
                         </li>
                      </ul>
                      <br />
@@ -103,7 +99,16 @@ export default function DriverOrderDetail() {
                            active:bg-green-800 active:shadow-lg 
                            transition duration-150 ease-in-out"
                            onClick={() => {
-                              navigate(`../admin/pharmacy/update_pharmacy/${user._id}`);
+                              fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
+                                 method: "PUT",
+         
+                                 headers: {
+                                    "content-type": "application/json"
+                                 },
+                                 body: JSON.stringify({ 'order_status': 'Order Delivered' })
+                              }).then(() => {
+                                 navigate(`../driver/orders`);
+                           });
                            }}
                         >
                            FINISH
@@ -127,11 +132,16 @@ export default function DriverOrderDetail() {
                            active:bg-red-800 active:shadow-lg 
                            transition duration-150 ease-in-out"
                            onClick={() => {
-                            fetch(`${process.env.REACT_APP_BACKEND}/pharma/${id}`, {
-                                method: "DELETE"
-                             }).then(() => {
-                                navigate(`../admin/pharmacies/all_pharmacies`);
-                             });
+                              fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
+                                 method: "PUT",
+         
+                                 headers: {
+                                    "content-type": "application/json"
+                                 },
+                                 body: JSON.stringify({ 'order_status': 'Delivery in Progress' })
+                              }).then(() => {
+                                 navigate(`../driver/orders`);
+                           });
                            }}
                         >
                            ACCEPT
