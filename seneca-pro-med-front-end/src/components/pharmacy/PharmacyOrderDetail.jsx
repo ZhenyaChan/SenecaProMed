@@ -139,7 +139,7 @@ export default function PharmacyOrderDetail() {
                                     headers: {
                                        "content-type": "application/json"
                                     },
-                                    body: JSON.stringify({ field: "order_status", value: 'Order_Ready_For_Pickup' })
+                                    body: JSON.stringify({  "order_status": 'Order_Ready_For_Pickup' })
                                  }).then(() => {
                                     navigate(`../pharmacy/orders`);
                               });
@@ -168,7 +168,7 @@ export default function PharmacyOrderDetail() {
                               onClick={() => {
                                  fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
                                     method: "PUT",
-                                    body: JSON.stringify({ field: 'order_status', value: 'Order_Denied' }),
+                                    body: JSON.stringify({ 'order_status' : 'Order_Denied' }),
                                     headers: {
                                        "Content-Type": "application/json"
                                     },
