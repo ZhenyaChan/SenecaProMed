@@ -50,6 +50,7 @@ import Footer from "./components/others/Footer";
 import NotFound from "./components/others/NotFound";
 import Login from "./components/others/Login";
 import SignUp from "./components/others/SignUp";
+import About from "./components/others/About";
 
 // Providers
 import CartProvider from "./providers/CartProvider";
@@ -75,6 +76,8 @@ root.render(
           <main className="my-8 w-3/4 flex flex-col mx-auto flex-grow">
             <Routes>
               <Route path="/" element={<App />} />
+              <Route path="/about" element={<About />} />
+
 
               {/* Login and Sign Up */}
               <Route path="/login" element={<Login />} />
