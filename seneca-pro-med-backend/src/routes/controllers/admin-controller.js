@@ -66,7 +66,7 @@ router.put('/pharmacy/:id', pharmaService.updatePharmacyById);
  */
 router.get('/orders/all_orders', orderService.getAllOrders)
 router.get('/orders/ready_for_pickup', orderService.getOrdersReadyForPickup)
-router.get('/orders/:clientId', orderService.getOrdersByClientId)
+router.get('/orders/client/:clientId', orderService.getOrdersByClientId)
 router.get('/orders/:pharmacyId', orderService.getOrdersByPharmacyId)
 router.get('/orders/:driverId', orderService.getOrdersByDriverId)
 router.get('/order/:id', orderService.getOrderById)
