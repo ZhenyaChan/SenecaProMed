@@ -1,15 +1,17 @@
 import { useContext, useState } from "react";
 import { BiMenu } from "react-icons/bi";
-import { MdLogout, MdNotificationsNone, MdOutlineLocationOn, MdShoppingCart } from "react-icons/md";
+import { MdLogout, MdNotificationsNone, MdOutlineLocationOn, MdShoppingCart,MdAccountCircle  } from "react-icons/md";
 import { Link } from "react-router-dom";
 import AuthContext from "../../contexts/AuthContext";
 import useRoleCheck from "../../useRoleCheck.js";
 import { motion } from "framer-motion";
 import CartContext from "../../contexts/CartContext";
 import Cart from "../cart/Cart";
+import { useNavigate } from "react-router-dom";
 
 const ClientHeader = () => {
   useRoleCheck("client");
+  const navigate = useNavigate();
 
   const { totalItemsCount, isCartOpen, displayCart } = useContext(CartContext);
   const [displayAccountBox, setDisplayAccountBox] = useState(false);
@@ -18,7 +20,10 @@ const ClientHeader = () => {
   const handleSearch = () => {
     // TODO
   };
-
+  const Account = () =>{
+    console.log(userData.id)
+    navigate(`../client/update_client/${userData.id}`);
+  }
   return (
     <header className="flex justify-between items-center p-3 px-16 border-b-0.5 border-b-gray-300 bg-slate-100 gap-8">
       {/* Logo */}
@@ -90,11 +95,21 @@ const ClientHeader = () => {
           >
             <div
               className="px-4 py-2 flex items-center gap-4 cursor-pointer hover:bg-slate-100 text-base"
-              onClick={() => logOut()}
+              onClick={() => {
+                Account()
+              }}
             >
-              <MdLogout className="text-xl" />
-              <p>Sign Out</p>
+              <MdAccountCircle className="text-xl" />
+              <p>Account</p>
             </div>
+            
+            <div
+            className="px-4 py-2 flex items-center gap-4 cursor-pointer hover:bg-slate-100 text-base"
+            onClick={() => logOut()}
+          >
+            <MdLogout className="text-xl" />
+            <p>Sign Out</p>
+          </div>
           </div>
         )}
       </div>
