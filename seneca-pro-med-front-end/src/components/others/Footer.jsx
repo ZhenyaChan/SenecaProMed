@@ -25,7 +25,7 @@ const Footer = () => {
           <h1 className="text-lg font-bold">About Us</h1>
 
           <div className="flex flex-col">
-            <Link className="link" to={"#"}>
+            <Link className="link" to={"/about"}>
               Our Story
             </Link>
             <Link className="link" to={"/pharmacy/locations"}>
