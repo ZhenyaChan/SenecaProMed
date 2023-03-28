@@ -84,7 +84,8 @@ module.exports.getOrdersByDriverId = async (req, res) => {
 // For driver users to see orders they can choose to deliver
 module.exports.getOrdersReadyForPickup = async (req, res) => {
   try {
-    const orderData = await orderModel.find({ role: "order_ready_for_pickup" }).exec()
+    const orderData = await orderModel.find({ order_status: "order_ready_for_pickup" }).exec()
+    // console.log("Pending Orders:", orderData);
     res.status(200).json({
       message: [`There are ${orderData.length} orders ready for pickup.`],
       data: orderData,
@@ -119,9 +120,9 @@ module.exports.updateOrderById = async (req, res) => {
     .findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((order) => {
       // if order was found
-      console.log("aaa")
+      // console.log("aaa")
       if (order) {
-      console.log("bbb")
+      // console.log("bbb")
         res.status(200).json({
           message: `Updated Order with id: ${req.params.id}.`,
           data: order,
