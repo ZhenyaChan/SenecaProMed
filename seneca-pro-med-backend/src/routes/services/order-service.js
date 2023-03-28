@@ -84,7 +84,7 @@ module.exports.getOrdersByDriverId = async (req, res) => {
 // For driver users to see orders they can choose to deliver
 module.exports.getOrdersReadyForPickup = async (req, res) => {
   try {
-    const orderData = await orderModel.find({ order_status: "order_ready_for_pickup" }).exec()
+    const orderData = await orderModel.find({ order_status: "Order Ready for Pickup" }).exec()
     // console.log("Pending Orders:", orderData);
     res.status(200).json({
       message: [`There are ${orderData.length} orders ready for pickup.`],
@@ -94,6 +94,37 @@ module.exports.getOrdersReadyForPickup = async (req, res) => {
     res.status(500).json({ message: err });
   }
 }
+
+// Get orders by status 'Order Delivered'
+// For driver users to see orders they can choose to deliver
+module.exports.getDeliveredOrders = async (req, res) => {
+  try {
+    const orderData = await orderModel.find({ order_status: "Order Delivered" }).exec()
+    // console.log("Pending Orders:", orderData);
+    res.status(200).json({
+      message: [`There are ${orderData.length} orders delivered.`],
+      data: orderData,
+    });
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+}
+
+// Get order by status: 'order_placed'
+// For Pharmacists to see if any orders needs to be confirmed
+module.exports.getOrdersConfirmed = async (req, res) => {
+  try {
+    const orderData = await orderModel.find({ order_status: "order_placed" }).exec()
+    // console.log("Pending Orders:", orderData);
+    res.status(200).json({
+      message: [`There are ${orderData.length} orders needed to be confirmed.`],
+      data: orderData,
+    });
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+}
+
 
 // Get order by Id
 module.exports.getOrderById = async (req, res) => {

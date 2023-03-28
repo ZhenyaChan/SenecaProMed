@@ -37,6 +37,8 @@ import UpdateDriver from "./components/driver/UpdateDriver";
 
 import DriverOrders from "./components/driver/DriverOrders"
 import DriverOrderDetail from "./components/driver/DriverOrderDetail";
+import DriverAvailableOrders from "./components/driver/DriverAvailableOrders";
+import DriverDeliveredOrders from "./components/driver/DriverDeliveredOrders";
 
 // Client Components
 import AddClient from "./components/client/AddClient";
@@ -129,6 +131,9 @@ root.render(
 
               <Route path="/driver/orders" element={<DriverOrders />} />
               <Route path="/driver/order_detail/:id" element={<DriverOrderDetail />} />
+              <Route path="/driver/available_orders" element={<DriverAvailableOrders />} />
+              <Route path="/driver/delivered_orders" element={<DriverDeliveredOrders />} />
+
 
               <Route path="/pharmacy/orders" element={<PharmacyOrders />} />
               <Route path="/pharmacy/order_detail/:id" element={<PharmacyOrderDetail />} />
