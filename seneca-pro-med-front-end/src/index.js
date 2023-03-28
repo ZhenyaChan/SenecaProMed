@@ -55,6 +55,7 @@ import NotFound from "./components/others/NotFound";
 import Login from "./components/others/Login";
 import SignUp from "./components/others/SignUp";
 import About from "./components/others/About";
+import ContactForm from "./components/others/ContactForm";
 
 // Providers
 import CartProvider from "./providers/CartProvider";
@@ -75,6 +76,7 @@ root.render(
             <Routes>
               <Route path="/" element={<App />} />
               <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<ContactForm />} />
 
               {/* Login and Sign Up */}
               <Route path="/login" element={<Login />} />
