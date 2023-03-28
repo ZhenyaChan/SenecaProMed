@@ -56,15 +56,15 @@ export default function PharmacyOrderDetail() {
                      <form className="w-96">
                         <ul className="bg-white rounded-lg text-gray-900">
                            <li className="px-6 py-2 border-b border-gray-200 w-full">
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                               Client ID: {user.clientId}
                            </li>
                            <li className="px-6 py-2 border-b border-gray-200 w-full">
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              &nbsp;&nbsp;&nbsp;
                               Product(s): {user.products.length}
                            </li>
                            <li className="px-6 py-2 border-b border-gray-200 w-full">
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              &nbsp;&nbsp;&nbsp;&nbsp;
                               Total Price: ${user.products.reduce((totalPrice, product) => totalPrice += (product.quantity * product.price), 0).toFixed(2)}
                            </li>
                         </ul>
@@ -87,7 +87,7 @@ export default function PharmacyOrderDetail() {
                               active:bg-blue-800 active:shadow-lg 
                               transition duration-150 ease-in-out"
                               onClick={() => {
-                                 navigate(`../pharmacy/orders`);
+                                 navigate(`../`);
                               }}
                            >
                               Back
@@ -119,7 +119,7 @@ export default function PharmacyOrderDetail() {
                                     },
                                     body: JSON.stringify({ 'order_status': 'Order Confirmed' })
                                  }).then(() => {
-                                    navigate(`../pharmacy/orders`);
+                                    navigate(`../`);
                               });
                               }}
                            >
@@ -152,7 +152,7 @@ export default function PharmacyOrderDetail() {
                                     },
                                     
                                  }).then(() => {
-                                    navigate(`../pharmacy/orders`);
+                                    navigate(`../`);
                                  });
                               }}
                            >
