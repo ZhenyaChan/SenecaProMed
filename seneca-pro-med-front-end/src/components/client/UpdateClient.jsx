@@ -4,7 +4,7 @@ import useRoleCheck from "../../useRoleCheck.js";
 
 
 export default function UpdateClient() {
-   useRoleCheck(["admin"]);
+   useRoleCheck(["admin", "client"]);
    
    const { id } = useParams();
    const [user, setUser] = useState();
