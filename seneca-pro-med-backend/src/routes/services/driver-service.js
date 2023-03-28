@@ -11,7 +11,8 @@ module.exports.createDriver = (req, res) => {
   let salt = bcrypt.genSaltSync(10);
   let hash = bcrypt.hashSync(req.body.password, salt);
   req.body.password = hash;
-  req.body.userName = req.body.email;
+  req.body.email = req.body.email.toLowerCase();
+  req.body.userName = req.body.email.toLowerCase();
 
   driverModel.find({ userName: req.body.email }).then((userDB) => {
     if (userDB.length > 0) {
@@ -116,7 +117,7 @@ module.exports.driverLogin = async (req, res) => {
   const driverUser = await driverModel.findOne({ userName: username, role: role });
 
   if (!driverUser) {
-    return res.status(401).json({ message: 'invalid username or password' });
+    return res.status(401).json({ message: 'invalid username' });
   } else {
     console.log('username is valid');
   }
@@ -124,7 +125,7 @@ module.exports.driverLogin = async (req, res) => {
   const isPasswordValid = await bcrypt.compare(password, driverUser.password);
 
   if (!isPasswordValid) {
-    return res.status(401).json({ message: 'invalid username or password' });
+    return res.status(401).json({ message: 'invalid password' });
   } else {
     console.log('password matches');
   }

@@ -11,7 +11,7 @@ export default function PharmacyOrders() {
       setLoading(true);
 
       // Fetch order list
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/drivers/all_drivers`)
+      fetch(`${process.env.REACT_APP_BACKEND}/admin/orders/all_orders`)
          .then((res) => res.json())
          .then((result) => {
             setUsers(result.data);
@@ -98,19 +98,19 @@ export default function PharmacyOrders() {
                                        {index + 1}
                                     </td>
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                       {'Order ID'}
+                                       {user._id}
                                     </td>
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                       {'Order Status'}
+                                       {user.order_status}
                                     </td>
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                       {'# of Products'}
+                                       {user.products.length}
                                     </td>
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                       {'Final Amount'}
+                                       ${user.products.reduce((totalPrice, product) => totalPrice += (product.quantity * product.price), 0).toFixed(2)}
                                     </td>
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                       {'Date'}
+                                       {user.datePlaced}
                                     </td>
                                  </tr>
                               ))}

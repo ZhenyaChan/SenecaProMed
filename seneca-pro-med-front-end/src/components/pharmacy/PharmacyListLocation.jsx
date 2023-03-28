@@ -1,21 +1,18 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import useRoleCheck from "../../useRoleCheck.js";
 
-export default function ManageProduct() {
-  useRoleCheck(["pharmacy"]);
-
-  const [products, setProducts] = useState();
+export default function PharmacyListLocation() {
+  const [users, setUsers] = useState();
   const [loading, setLoading] = useState(true); // Because sometimes Heroku sleeps
   const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
 
-    fetch(`${process.env.REACT_APP_BACKEND}/product/all_products`)
+    fetch(`${process.env.REACT_APP_BACKEND}/admin/pharmacies/all_pharmacies`)
       .then((res) => res.json())
       .then((result) => {
-        setProducts(result.data);
+        setUsers(result.data);
         setLoading(false);
       });
   }, []);
@@ -30,7 +27,9 @@ export default function ManageProduct() {
   } else {
     return (
       <div>
-        <h1 className="text-3xl font-bold text-headingColor text-center">Products</h1>
+        <h1 className="text-3xl font-bold text-headingColor text-center">
+          Pharmacy Users
+        </h1>
         <div className="flex flex-col my-8 border rounded">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -38,22 +37,40 @@ export default function ManageProduct() {
                 <table className="min-w-full">
                   <thead className="bg-white border-b">
                     <tr>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                      <th
+                        scope="col"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      >
                         #
                       </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Product Title
+                      <th
+                        scope="col"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      >
+                        Pharmacy
                       </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Price
+                      <th
+                        scope="col"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      >
+                        Email
                       </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Description
+                      <th
+                        scope="col"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      >
+                        Phone #
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      >
+                        Location
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    {products.map((product, index) => (
+                    {users.map((user, index) => (
                       <tr
                         className={
                           index % 2
@@ -62,18 +79,23 @@ export default function ManageProduct() {
                         }
                         key={index}
                         onClick={() => {
-                          navigate(`/pharmacy/products/product/${product._id}`);
+                          navigate(`/pharmacy/location/${user._id}`);
                         }}
                       >
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{index + 1}</td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {product.title}
+                          {index + 1}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {product.price}
+                          {user.pharmacyName}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {product.description}
+                          {user.email}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {user.phoneNumber}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {user.street}, {user.city}
                         </td>
                       </tr>
                     ))}
@@ -82,17 +104,6 @@ export default function ManageProduct() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex justify-end">
-          <button
-            type="button"
-            className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            onClick={() => {
-              navigate(`/products/addProduct`);
-            }}
-          >
-            Add Product
-          </button>
         </div>
       </div>
     );

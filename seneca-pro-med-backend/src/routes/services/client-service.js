@@ -11,7 +11,8 @@ module.exports.createClient = (req, res) => {
   let salt = bcrypt.genSaltSync(10);
   let hash = bcrypt.hashSync(req.body.password, salt);
   req.body.password = hash;
-  req.body.userName = req.body.email;
+  req.body.email = req.body.email.toLowerCase();
+  req.body.userName = req.body.email.toLowerCase();
 
   clientModel.find({ userName: req.body.email }).then((userDB) => {
     if (userDB.length > 0) {
@@ -122,7 +123,7 @@ module.exports.clientLogin = async (req, res) => {
   const clientUser = await clientModel.findOne({ userName: username, role: role });
 
   if (!clientUser) {
-    return res.status(401).json({ message: 'invalid username or password' });
+    return res.status(401).json({ message: 'invalid username' });
   } else {
     console.log('username is valid');
   }
@@ -130,7 +131,7 @@ module.exports.clientLogin = async (req, res) => {
   const isPasswordValid = await bcrypt.compare(password, clientUser.password);
 
   if (!isPasswordValid) {
-    return res.status(401).json({ message: 'invalid username or password' });
+    return res.status(401).json({ message: 'invalid password' });
   } else {
     console.log('password matches');
   }

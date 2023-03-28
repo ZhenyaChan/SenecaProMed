@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useRoleCheck from "../../useRoleCheck.js";
 
 const ProductForm = () => {
+  useRoleCheck(["pharmacy"]);
+
   const navigate = useNavigate();
   const [product, setProduct] = useState();
   const [errorTitle, setErrorTitle] = useState("");

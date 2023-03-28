@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import useRoleCheck from "../../useRoleCheck.js";
 
 export default function ListProduct() {
+  useRoleCheck(["pharmacy"]);
+
   const { id } = useParams();
 
   const [product, setProduct] = useState();
