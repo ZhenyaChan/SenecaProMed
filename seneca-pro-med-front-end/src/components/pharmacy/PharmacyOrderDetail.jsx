@@ -20,28 +20,6 @@ export default function PharmacyOrderDetail() {
          });
    }, [id]); 
 
-   function handleChange(e) {
-      const target = e.target;
-      let value = target.value;
-      const name = target.name;
-
-      setUser((currentUser) => {
-         return { ...currentUser, [name]: value };
-      });
-   }
-
-   function handleClick(newState) {
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
-         method: "PUT",
-         body: JSON.stringify({field: user.order_Status, value: newState}),
-         headers: {
-            "content-type": "application/json"
-         }
-      }).then(() => {
-         navigate(`../pharmacy/orders`);
-      });
-   }
-
    function handleSubmit(e) {
       e.preventDefault();
 
@@ -139,7 +117,7 @@ export default function PharmacyOrderDetail() {
                                     headers: {
                                        "content-type": "application/json"
                                     },
-                                    body: JSON.stringify({  "order_status": 'Order_Ready_For_Pickup' })
+                                    body: JSON.stringify({ 'order_status': 'Order Confirmed' })
                                  }).then(() => {
                                     navigate(`../pharmacy/orders`);
                               });
@@ -168,14 +146,14 @@ export default function PharmacyOrderDetail() {
                               onClick={() => {
                                  fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
                                     method: "PUT",
-                                    body: JSON.stringify({ 'order_status' : 'Order_Denied' }),
+                                    body: JSON.stringify({ 'order_status' : 'Order Denied' }),
                                     headers: {
                                        "Content-Type": "application/json"
                                     },
                                     
                                  }).then(() => {
                                     navigate(`../pharmacy/orders`);
-                              });
+                                 });
                               }}
                            >
                               DENY
@@ -199,11 +177,11 @@ export default function PharmacyOrderDetail() {
                               active:bg-yellow-800 active:shadow-lg 
                               transition duration-150 ease-in-out"
                               onClick={() => {
-                              fetch(`${process.env.REACT_APP_BACKEND}/pharma/${id}`, {
-                                 method: "DELETE"
-                              }).then(() => {
-                                 navigate(`../pharmacy/orders`);
-                              });
+                                 fetch(`${process.env.REACT_APP_BACKEND}/pharma/${id}`, {
+                                    method: "DELETE"
+                                 }).then(() => {
+                                    navigate(`../pharmacy/orders`);
+                                 });
                               }}
                            >
                               Products Detail

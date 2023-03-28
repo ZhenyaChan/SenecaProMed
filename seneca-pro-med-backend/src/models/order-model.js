@@ -9,7 +9,7 @@ const orderSchema = new Schema({
     default: 'order_placed',     // When customer places an order
     // 'order_ready_for_pickup', // Pharmacy has order ready for driver to pick up
     // 'order_driver_accepted',  // Driver has selected this order
-    // 'order_driver_pickedup,   // Driver has picked up order
+    // 'order_driver_pickedup',   // Driver has picked up order
     // 'order_delivered',        // Client has confirmed order delivery
   },
 
