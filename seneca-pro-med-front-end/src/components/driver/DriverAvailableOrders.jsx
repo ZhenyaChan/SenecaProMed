@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function PharmacyPendingOrders() {
+export default function DriverAvailableOrders() {
    const [users, setUsers] = useState();
    const [loading, setLoading] = useState(true); // Because sometimes Heroku sleeps
 
@@ -11,7 +11,7 @@ export default function PharmacyPendingOrders() {
       setLoading(true);
 
       // Fetch order list
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/orders/needs_confirmation`)
+      fetch(`${process.env.REACT_APP_BACKEND}/admin/orders/ready_for_pickup`)
          .then((res) => res.json())
          .then((result) => {
             setUsers(result.data);
@@ -33,7 +33,7 @@ export default function PharmacyPendingOrders() {
             <br />
             <br />
             <h2 className="text-lg font-medium text-gray-900 px-2 py-2 text-left">
-               Orders
+               Orders Available for Pickup
             </h2>
             <div className="flex flex-col">
                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">

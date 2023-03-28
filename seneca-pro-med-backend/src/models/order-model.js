@@ -7,6 +7,14 @@ const orderSchema = new Schema({
   order_status: {
     type: String,
     default: 'order_placed',     // When customer places an order
+
+    /*
+      'Order Ready for Pickup' -> Pharmacy confirmed the order and driver can pick it up
+      'Order Denied' -> Pharmacy declining the order (could be for a safety issue or something is wrong)
+      'Order in Delivery' -> Driver picked up the order and it's on the way
+      'Order Delivered' -> Driver delivered the ordered
+    */
+
     // 'order_ready_for_pickup', // Pharmacy has order ready for driver to pick up
     // 'order_driver_accepted',  // Driver has selected this order
     // 'order_driver_pickedup',   // Driver has picked up order

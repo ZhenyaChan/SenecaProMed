@@ -6,7 +6,7 @@ const AdminHomepage = () => {
     <section className="flex flex-col items-center justify-center gap-10 w-full">
       <h1 className="text-3xl font-bold text-headingColor text-center">Home</h1>
 
-      <div className="flex flex-row items-center justify-between w-3/4 gap-6 w-full">
+      <div className="flex flex-row items-center justify-between gap-6 w-full">
         <Link
           to={"/admin/drivers/all_drivers"}
           className="border rounded-lg border-1 border-slate-900 shadow flex flex-col items-center justify-center bg-slate-100 hover:bg-blue-100 p-8 w-1/3 gap-4 hover:cursor-pointer"
@@ -34,7 +34,7 @@ const AdminHomepage = () => {
 
       <Link
         to={"/"}
-        className="border rounded-lg border-1 border-slate-900 shadow w-1/2 flex flex-col items-center justify-center bg-gray-100 hover:bg-blue-100 w-full gap-4 hover:cursor-pointer py-4"
+        className="border rounded-lg border-1 border-slate-900 shadow w-1/2 flex flex-col items-center justify-center bg-gray-100 hover:bg-blue-100 gap-4 hover:cursor-pointer py-4"
       >
         <BsPersonPlus className="text-[60px]" />
         <h1>Add New User</h1>
