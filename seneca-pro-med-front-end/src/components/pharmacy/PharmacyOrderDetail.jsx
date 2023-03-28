@@ -12,7 +12,7 @@ export default function PharmacyOrderDetail() {
    useEffect(() => {
       setLoading(true);
 
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`) // Search by order ID later
+      fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`)
          .then((res) => res.json())
          .then((result) => {
             setUser(result.data);
@@ -30,6 +30,18 @@ export default function PharmacyOrderDetail() {
       });
    }
 
+   function handleClick(newState) {
+      fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
+         method: "PUT",
+         body: JSON.stringify({field: user.order_Status, value: newState}),
+         headers: {
+            "content-type": "application/json"
+         }
+      }).then(() => {
+         navigate(`../pharmacy/orders`);
+      });
+   }
+
    function handleSubmit(e) {
       e.preventDefault();
 
@@ -40,7 +52,7 @@ export default function PharmacyOrderDetail() {
             "content-type": "application/json"
          }
       }).then(() => {
-         navigate(`../admin/driver/${user._id}`);
+         navigate(`../pharmacy/orders`);
       });
    }
 
@@ -63,7 +75,7 @@ export default function PharmacyOrderDetail() {
                         Order: {user._id} {/* Need to change */}
                      </h5>
                      <br />
-                     <form className="w-96" onSubmit={handleSubmit}>
+                     <form className="w-96">
                         <ul className="bg-white rounded-lg text-gray-900">
                            <li className="px-6 py-2 border-b border-gray-200 w-full">
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -80,7 +92,7 @@ export default function PharmacyOrderDetail() {
                         </ul>
                         <br />
 
-                        <div className="flex justify-center">
+                        <div className="flex justify-center" onSubmit={handleSubmit}>
                            <button
                               type="button"
                               className=" inline-block 
@@ -120,12 +132,14 @@ export default function PharmacyOrderDetail() {
                               active:bg-green-800 active:shadow-lg 
                               transition duration-150 ease-in-out"
                               onClick={() => {
+
                                  fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
                                     method: "PUT",
-                                    body: JSON.stringify({ field: 'order_status', value: 'Order_Denied' }),
+            
                                     headers: {
                                        "content-type": "application/json"
-                                    }
+                                    },
+                                    body: JSON.stringify({ field: "order_status", value: 'Order_Ready_For_Pickup' })
                                  }).then(() => {
                                     navigate(`../pharmacy/orders`);
                               });
@@ -160,7 +174,7 @@ export default function PharmacyOrderDetail() {
                                     },
                                     
                                  }).then(() => {
-                                 navigate(`../pharmacy/orders`);
+                                    navigate(`../pharmacy/orders`);
                               });
                               }}
                            >
