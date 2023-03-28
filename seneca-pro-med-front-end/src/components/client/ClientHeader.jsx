@@ -22,7 +22,7 @@ const ClientHeader = () => {
   };
   const Account = () =>{
     console.log(userData.id)
-    navigate(`../client/update_client/${userData.id}`);
+    navigate(`../client/${userData.id}`);
   }
   return (
     <header className="flex justify-between items-center p-3 px-16 border-b-0.5 border-b-gray-300 bg-slate-100 gap-8">
