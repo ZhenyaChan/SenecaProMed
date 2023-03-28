@@ -42,6 +42,7 @@ import AddClient from "./components/client/AddClient";
 import ClientList from "./components/client/ClientList";
 import ListClient from "./components/client/ListClient";
 import UpdateClient from "./components/client/UpdateClient";
+import ClientOrders from "./components/client/ClientOrders";
 
 // Others
 import App from "./App";
@@ -94,6 +95,7 @@ root.render(
               <Route path="/admin/client/:id" element={<ListClient />} />
               <Route path="/admin/client/update_client/:id" element={<UpdateClient />} />
 
+
               {/* Product */}
               <Route path="/products/product/:id" element={<ProductDetails />} />
               <Route path="/products/addProduct" element={<AddProduct />} />
@@ -128,6 +130,8 @@ root.render(
               <Route path="/pharmacy/orders" element={<PharmacyOrders />} />
               <Route path="/pharmacy/order_detail/:id" element={<PharmacyOrderDetail />} />
               <Route path="/pharmacy/products_detail" element={<PharmacyProductsDetail />} />
+
+              <Route path="/client/orders/:clientId" element={<ClientOrders />} />
 
               {/* Map for Pharmacy locations */}
               <Route path="/pharmacy/locations" element={<Map />} />

@@ -42,12 +42,17 @@ module.exports.getAllOrders = async (req, res) => {
 // For client users to see their orders (and order status)
 module.exports.getOrdersByClientId = async (req, res) => {
   try {
+    console.log("In order-service0. Get oders by clientId.")
+    console.log("clientId: ", req.params.clientId)
+    
     const orderData = await orderModel.find({ clientId: req.params.clientId }).exec()
+    console.log("orderData: ", orderData)
     res.status(200).json({
       message: [`There are ${orderData.length} orders for client: ${clientId}.`],
       data: orderData,
     });
   } catch (err) {
+    console.log("In order-service1. Get oders by clientId.")
     res.status(500).json({ message: err });
   }
 }
