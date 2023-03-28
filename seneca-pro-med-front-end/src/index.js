@@ -27,6 +27,7 @@ import PharmacyLocation from "./components/pharmacy/PharmacyLocation";
 import PharmacyOrders from "./components/pharmacy/PharmacyOrders";
 import PharmacyOrderDetail from "./components/pharmacy/PharmacyOrderDetail";
 import PharmacyProductsDetail from "./components/pharmacy/PharmacyProductsDetail"
+import PharmacyPendingOrders from "./components/pharmacy/PharmacyPendingOrders";
 
 // Driver Components
 import AddDriver from "./components/driver/AddDriver";
@@ -96,7 +97,11 @@ root.render(
               <Route path="/admin/clients/all_clients" element={<ClientList />} />
               <Route path="/admin/client/:id" element={<ListClient />} />
               <Route path="/admin/client/update_client/:id" element={<UpdateClient />} />
-
+              <Route path="/client/:id" element={<ListClient />} />
+              <Route path="/client/update_client/:id" element={<UpdateClient />} />
+              
+              
+            
               {/* Product */}
               <Route path="/products/product/:id" element={<ProductDetails />} />
               <Route path="/products/addProduct" element={<AddProduct />} />
@@ -131,6 +136,8 @@ root.render(
               <Route path="/pharmacy/orders" element={<PharmacyOrders />} />
               <Route path="/pharmacy/order_detail/:id" element={<PharmacyOrderDetail />} />
               <Route path="/pharmacy/products_detail" element={<PharmacyProductsDetail />} />
+              <Route path="/pharmacy/orders/pending_orders" element={<PharmacyPendingOrders />} /> 
+
 
               {/* Map for Pharmacy locations */}
               <Route path="/pharmacy/locations" element={<Map />} />

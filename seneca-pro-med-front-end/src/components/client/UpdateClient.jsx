@@ -4,7 +4,7 @@ import useRoleCheck from "../../useRoleCheck.js";
 
 
 export default function UpdateClient() {
-   useRoleCheck(["admin"]);
+   useRoleCheck(["admin", "client"]);
    
    const { id } = useParams();
    const [user, setUser] = useState();
@@ -282,7 +282,11 @@ export default function UpdateClient() {
                               duration-150
                               ease-in-out"
                               onClick={() => {
+                                 if(user.role==="client"){
+                                    navigate(`../client/${user._id}`);
+                                 }else 
                                  navigate(`../admin/client/${user._id}`);
+
                               }}
                            >
                               Back

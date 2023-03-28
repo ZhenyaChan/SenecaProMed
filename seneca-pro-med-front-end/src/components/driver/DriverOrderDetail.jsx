@@ -99,7 +99,16 @@ export default function DriverOrderDetail() {
                            active:bg-green-800 active:shadow-lg 
                            transition duration-150 ease-in-out"
                            onClick={() => {
-                              navigate(`../admin/pharmacy/update_pharmacy/${user._id}`);
+                              fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
+                                 method: "PUT",
+         
+                                 headers: {
+                                    "content-type": "application/json"
+                                 },
+                                 body: JSON.stringify({ 'order_status': 'Order Delivered' })
+                              }).then(() => {
+                                 navigate(`../driver/orders`);
+                           });
                            }}
                         >
                            FINISH
@@ -123,11 +132,16 @@ export default function DriverOrderDetail() {
                            active:bg-red-800 active:shadow-lg 
                            transition duration-150 ease-in-out"
                            onClick={() => {
-                            fetch(`${process.env.REACT_APP_BACKEND}/pharma/${id}`, {
-                                method: "DELETE"
-                             }).then(() => {
-                                navigate(`../admin/pharmacies/all_pharmacies`);
-                             });
+                              fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
+                                 method: "PUT",
+         
+                                 headers: {
+                                    "content-type": "application/json"
+                                 },
+                                 body: JSON.stringify({ 'order_status': 'Delivery in Progress' })
+                              }).then(() => {
+                                 navigate(`../driver/orders`);
+                           });
                            }}
                         >
                            ACCEPT
