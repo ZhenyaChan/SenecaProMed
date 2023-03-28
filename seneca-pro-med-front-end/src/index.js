@@ -93,6 +93,7 @@ root.render(
               <Route path="/admin/clients/all_clients" element={<ClientList />} />
               <Route path="/admin/client/:id" element={<ListClient />} />
               <Route path="/admin/client/update_client/:id" element={<UpdateClient />} />
+              <Route path="/client/:id" element={<ListClient />} />
               <Route path="/client/update_client/:id" element={<UpdateClient />} />
               
               

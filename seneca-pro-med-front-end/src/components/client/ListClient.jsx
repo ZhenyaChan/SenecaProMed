@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useRoleCheck from "../../useRoleCheck.js";
 
 export default function ListClient() {
-  useRoleCheck(["admin"]);
+  useRoleCheck(["admin", "client"]);
 
   const { id } = useParams();
 
@@ -88,7 +88,12 @@ export default function ListClient() {
                            active:bg-blue-800 active:shadow-lg 
                            transition duration-150 ease-in-out"
                   onClick={() => {
-                    navigate(`../admin/clients/all_clients`);
+                    if(user.role==='client'){
+                        navigate(`../`)
+                    }else{
+                      navigate(`../admin/clients/all_clients`);
+                    }
+                    
                   }}
                 >
                   Back
@@ -111,39 +116,34 @@ export default function ListClient() {
                            active:bg-green-800 active:shadow-lg 
                            transition duration-150 ease-in-out"
                   onClick={() => {
-                    navigate(`../admin/client/update_client/${user._id}`);
+                    if(user.role === "client"){
+                      navigate(`../client/update_client/${user._id}`);
+                    }else{
+                      navigate(`../admin/client/update_client/${user._id}`);
+                    }
+                    
                   }}
                 >
                   Edit
+                
                 </button>
                 &nbsp;&nbsp;&nbsp;
-                <button
-                  type="button"
-                  className=" inline-block 
-                           px-6 
-                           py-2.5 
-                           bg-red-600 
-                           text-white 
-                           font-medium 
-                           text-xs 
-                           leading-tight 
-                           uppercase 
-                           rounded 
-                           shadow-md 
-                           hover:bg-red-700 hover:shadow-lg 
-                           focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 
-                           active:bg-red-800 active:shadow-lg 
-                           transition duration-150 ease-in-out"
-                  onClick={() => {
-                    fetch(`${process.env.REACT_APP_BACKEND}/client/${id}`, {
-                      method: "DELETE",
-                    }).then(() => {
-                      navigate(`../admin/clients/all_clients`);
-                    });
-                  }}
-                >
-                  Delete
-                </button>
+                {user.role !== 'client' && (
+                  <button
+                    type="button"
+                    className="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
+                    onClick={() => {
+                      fetch(`${process.env.REACT_APP_BACKEND}/client/${id}`, {
+                        method: "DELETE",
+                      }).then(() => {
+                        navigate(`../admin/clients/all_clients`);
+                      });
+                    }}
+                  >
+                    Delete
+                  </button>
+                )}
+                
               </div>
             </div>
           </div>

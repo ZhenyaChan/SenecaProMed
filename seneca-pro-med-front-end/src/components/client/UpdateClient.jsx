@@ -282,7 +282,11 @@ export default function UpdateClient() {
                               duration-150
                               ease-in-out"
                               onClick={() => {
+                                 if(user.role==="client"){
+                                    navigate(`../client/${user._id}`);
+                                 }else 
                                  navigate(`../admin/client/${user._id}`);
+
                               }}
                            >
                               Back
