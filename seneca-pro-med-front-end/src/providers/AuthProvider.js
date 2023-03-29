@@ -24,8 +24,6 @@ const AuthProvider = ({ children }) => {
       // set current user logged in status to true
       setIsLoggedIn(true);
     }
-
-    setErrorMsg("");
   }, [token]);
 
   const login = async (formData) => {
@@ -81,6 +79,10 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const resetErrorMsg = () => {
+    setErrorMsg("");
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -90,6 +92,7 @@ const AuthProvider = ({ children }) => {
         errorMsg,
         login,
         logOut,
+        resetErrorMsg,
       }}
     >
       {children}

@@ -7,6 +7,7 @@ const AuthContext = React.createContext({
   errorMsg: "",
   login: () => {},
   logOut: () => {},
+  resetErrorMsg: () => {},
 });
 
 export default AuthContext;
