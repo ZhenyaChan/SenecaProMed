@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import AuthContext from "../contexts/AuthContext";
+import React, { useEffect, useState } from "react";
 import CartContext from "../contexts/CartContext";
 
 const LOCAL_STORAGE_KEY = "senecaProMedCart";
@@ -86,77 +85,6 @@ const CartProvider = ({ children }) => {
     setSubTotal(0);
   };
 
-  const placeOrder = () => {
-
-    var order = {}
-    var products = []
-    var index = 0
-    let pharmIds = 
-    [
-      "63f10c3397afd41dfb506e99",
-      "63f10c4e97afd41dfb506e9c",
-      "63f10c5d97afd41dfb506e9f",
-      "63f10c6a97afd41dfb506ea2",
-      "63f1c75012b21d1cc0441f2f",
-      "640e19962efb4149accb64df",
-      "641cdd0f1517b29a60144cfb",
-      "64230a79c41fba186191b95b",
-      "642340776d0089d5461a1b54",
-      "64234b55f039aff79d164590",
-    ]
-
-    function addProduct(product) {
-      products[index++] = 
-      { 
-        title : product.title, 
-        description : product.description,
-        price : product.price,
-        quantity : product.quantity,
-        photo : product.photo
-      }
-    }
-
-    cartItems.forEach(addProduct)
-
-    let date = new Date().toISOString()
-
-    // Adjust timezone
-    // Moves the hour 4 hours back to match our time
-    // As long as the hour does not become "negative"
-    // If it becomes negative it is set to '00'
-    let hour = parseInt(date.slice(11, 13)) - 4
-    if (hour < 0) hour = 0
-    let formattedHour = ("0" + hour).slice(-2);
-    date = date.slice(0, 11) + formattedHour + date.slice(13, 16)
-
-
-    order.datePlaced = date
-    order.pharmacyId = pharmIds[Math.floor(Math.random() * pharmIds.length)]
-    order.clientId = "63f0ec98ae8695d00d0efa86"   // Get from token
-    order.products = products
-    
-    console.log("order: ", order)
-
-    /*const { userData } = useContext(AuthContext)
-    const clientId = userData.id
-    console.log("id: ", clientId)*/
-    
-    fetch(`${process.env.REACT_APP_BACKEND}/client/create_order`, {
-      method: "POST",
-      body: JSON.stringify(order),
-      headers: {
-         "content-type": "application/json"
-      }
-   }).then(() => {
-      // Message to client "order placed"
-      // navigate to where?
-      // Probably should navigate from Cart.jsx where the button is clicked? 
-
-      //navigate(`../admin/pharmacies/all_pharmacies`);
-   });
-      
-  }
-
   return (
     <CartContext.Provider
       value={{
@@ -170,7 +98,6 @@ const CartProvider = ({ children }) => {
         removeAllItems,
         decrementItemQty,
         incrementItemQty,
-        placeOrder,
       }}
     >
       {children}
