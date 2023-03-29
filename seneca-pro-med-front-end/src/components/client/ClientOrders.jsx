@@ -96,7 +96,7 @@ export default function AdminOrders() {
                                     key={index}
                                     onClick={() => {
                                        // Change to order id
-                                       navigate(`../admin/order_detail/${user._id}`);
+                                       navigate(`../client/order_detail/${user._id}`);
                                     }}
                                  >
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -133,7 +133,7 @@ export default function AdminOrders() {
                      navigate(`/../admin/orders`);
                   }}
                >
-                  Back
+                  Add Order
                </button>
             </div>
             <br />
