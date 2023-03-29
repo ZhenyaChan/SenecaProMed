@@ -57,6 +57,26 @@ module.exports.getOrdersByClientId = async (req, res) => {
   }
 }
 
+// Get client's ordered products
+// For admins, pharmacists, drivers to see client's ordered products
+module.exports.getClientProducts = async (req, res) => {
+  try {
+    const order = await orderModel.findOne({ _id: req.params.id }).lean().exec();
+    res.status(200).json({
+      message: `Order with the id: ${req.params.id} found.`,
+      data: order.products,
+    });
+  } catch (err) {
+    if (err.name === 'CastError' && err.kind === 'ObjectId') {
+      res.status(404).json({
+        message: `There is no Order with the id: ${req.params.id} in the database.`,
+      });
+    } else {
+      res.status(500).json({ message: err });
+    }
+  }
+}
+
 // Get order by pharmacyId
 // For pharmacy users to see their orders (and order status)
 module.exports.getOrdersByPharmacyId = async (req, res) => {
