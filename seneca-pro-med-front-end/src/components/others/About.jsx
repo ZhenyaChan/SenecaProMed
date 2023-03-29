@@ -54,7 +54,7 @@ const About = () => {
           <div className="grid grid-cols-5 gap-6 shadow-lg rounded-md">
             <div className="p-4 pb-6 flex justify-center flex-col items-center">
               <img
-                className=""
+                className="rounded-md block h-48 w-40"
                 src="https://i.ibb.co/FYTKDG6/Rectangle-118-2.png"
                 alt="AlexImg"
               />
@@ -74,7 +74,7 @@ const About = () => {
             </div>
             <div className="p-4 pb-6 flex justify-center flex-col items-center">
               <img
-                className=""
+                className="rounded-md block h-48 w-40"
                 src="https://i.ibb.co/Pc6XVVC/Rectangle-120.png"
                 alt="JasonImg"
               />
@@ -84,7 +84,7 @@ const About = () => {
             </div>
             <div className="p-4 pb-6 flex justify-center flex-col items-center">
               <img
-                className=""
+                className="rounded-md block h-48 w-48"
                 src={HumamImg}
                 alt="HumamImg"
               />
@@ -94,7 +94,7 @@ const About = () => {
             </div>
             <div className="p-4 pb-6 flex justify-center flex-col items-center">
               <img
-                className=""
+                className="rounded-md block h-48 w-40"
                 src="https://i.ibb.co/7nSJPXQ/Rectangle-121.png"
                 alt="KevinImg"
               />
