@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/images/SenecaProMed-Logo.svg";
 
 const AddUser = () => {
   const [formDetails, setFormDetails] = useState({ role: "" });
