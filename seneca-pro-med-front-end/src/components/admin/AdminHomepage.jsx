@@ -24,7 +24,7 @@ const AdminHomepage = () => {
         </Link>
 
         <Link
-          to={"/admin/pharmacies/all_pharmacies"}
+          to={"/admin/pharmacy/all_pharmacies"}
           className="border rounded-lg border-1 border-slate-900 shadow flex flex-col items-center justify-center bg-slate-100 hover:bg-blue-100 p-8 w-1/3 gap-4 hover:cursor-pointer"
         >
           <BsShopWindow className="text-[60px]" />
@@ -33,7 +33,7 @@ const AdminHomepage = () => {
       </div>
 
       <Link
-        to={"/"}
+        to={"/admin/user/signup"}
         className="border rounded-lg border-1 border-slate-900 shadow w-1/2 flex flex-col items-center justify-center bg-gray-100 hover:bg-blue-100 gap-4 hover:cursor-pointer py-4"
       >
         <BsPersonPlus className="text-[60px]" />

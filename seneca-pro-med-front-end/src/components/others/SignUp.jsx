@@ -41,9 +41,6 @@ const SignUp = () => {
         break;
     }
 
-    console.log("formDetails.role", formDetails.role);
-    console.log("roleUrlBase", roleUrlBase);
-
     fetch(`${process.env.REACT_APP_BACKEND}/${roleUrlBase}/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -115,7 +112,7 @@ const SignUp = () => {
                 required
                 className="input-field w-full block px-3 py-2 text-base font-normal"
               >
-                <option value="">Select Role</option>
+                <option value="">Select The Role</option>
                 <option value="admin">Admin</option>
                 <option value="client">Client</option>
                 <option value="pharmacy">Pharmacy</option>
