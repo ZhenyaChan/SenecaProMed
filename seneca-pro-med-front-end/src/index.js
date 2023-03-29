@@ -110,7 +110,7 @@ root.render(
               {/* Pharmacy */}
               <Route path="/admin/pharmacy/signup" element={<AddPharmacy />} />
               <Route path="/admin/pharmacy/:id" element={<ListPharmacy />} />
-              <Route path="/admin/pharmacy/all_pharmacies" element={<PharmacyList />} />
+              <Route path="admin/pharmacies/all_pharmacies" element={<PharmacyList />} />
               <Route path="/admin/pharmacy/update_pharmacy/:id" element={<UpdatePharmacy />} />
               <Route path="/pharmacy/all_pharmacies" element={<PharmacyListLocation />} />
               <Route path="/pharmacy/location/:id" element={<PharmacyLocation />} />
