@@ -95,7 +95,7 @@ const CartProvider = ({ children }) => {
       "63f10c3397afd41dfb506e99",
       "63f10c4e97afd41dfb506e9c",
       "63f10c5d97afd41dfb506e9f",
-      "63f10c6a97afd41dfb506ea2 ",
+      "63f10c6a97afd41dfb506ea2",
       "63f1c75012b21d1cc0441f2f",
       "640e19962efb4149accb64df",
       "641cdd0f1517b29a60144cfb",
@@ -118,7 +118,15 @@ const CartProvider = ({ children }) => {
     cartItems.forEach(addProduct)
 
     let date = new Date().toISOString()
+
     // Adjust timezone
+    // Moves the hour 4 hours back to match our time
+    // As long as this does not change the date to the previous day (order cannot be placed between midnight and 4 am)
+    // Im ok with leaving it this way...anyone else?
+    let hour = parseInt(date.slice(11, 13)) - 4
+    let formattedHour = ("0" + hour).slice(-2);
+    date = date.slice(0, 11) + formattedHour + date.slice(13, 16)
+
 
     order.datePlaced = date
     order.pharmacyId = pharmIds[Math.floor(Math.random() * pharmIds.length)]
