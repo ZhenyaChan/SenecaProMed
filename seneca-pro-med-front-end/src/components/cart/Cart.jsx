@@ -6,7 +6,8 @@ import EmptyCart from "../../assets/images/EmptyCart.jpeg";
 import CartItem from "./CatItem";
 
 const Cart = () => {
-  const { cartItems, totalItemsCount, subTotal, displayCart, removeAllItems } = useContext(CartContext);
+  const { cartItems, totalItemsCount, subTotal, displayCart, removeAllItems } =
+    useContext(CartContext);
 
   return (
     <motion.div
@@ -30,11 +31,18 @@ const Cart = () => {
       <div className="flex justify-between items-center">
         {/* Top Container */}
         <motion.div whileTap={{ scale: 0.8 }} whileHover={{ scale: 1.2 }}>
-          <MdClose className="text-2xl hover:cursor-pointer hover:text-blue-700" onClick={displayCart} />
+          <MdClose
+            className="text-2xl hover:cursor-pointer hover:text-blue-700"
+            onClick={displayCart}
+          />
         </motion.div>
 
         <h1>My Cart</h1>
-        <motion.button whileTap={{ scale: 0.85 }} className="btn px-2 py-1" onClick={removeAllItems}>
+        <motion.button
+          whileTap={{ scale: 0.85 }}
+          className="btn px-2 py-1"
+          onClick={removeAllItems}
+        >
           Clear
         </motion.button>
       </div>
@@ -49,27 +57,41 @@ const Cart = () => {
       ) : (
         <div className="w-full h-full flex flex-col items-center justify-center gap-6">
           <img src={EmptyCart} className="w-300" alt="empty-cart" />
-          <p className="text-xl text-textColor font-semibold">Add items to your cart</p>
+          <p className="text-xl text-textColor font-semibold">
+            Add items to your cart
+          </p>
         </div>
       )}
 
       {/* Totals */}
       {subTotal > 0 && (
-        <div className="border-t-2 border-b-2 border-black p-2 mb-10 w-full">
-          <div className="flex flex-row justify-between">
-            <p className="text-lg">Subtotal: </p>
-            <p className="text-lg">${subTotal.toFixed(2)}</p>
+        <div>
+          <div className="border-t-2 border-b-2 border-black p-2 mb-10 w-full">
+            <div className="flex flex-row justify-between">
+              <p className="text-lg">Subtotal: </p>
+              <p className="text-lg">${subTotal.toFixed(2)}</p>
+            </div>
+
+            <div className="flex flex-row justify-between">
+              <p className="text-lg">Delivery Fee: </p>
+              <p className="text-lg">${2.5}</p>
+            </div>
+
+            <div className="flex flex-row justify-between mt-4 w-full">
+              <p className="text-lg font-bold">Total Fee: </p>
+              <p className="text-lg font-bold">
+                ${(2.5 + subTotal).toFixed(2)}
+              </p>
+            </div>
           </div>
 
-          <div className="flex flex-row justify-between">
-            <p className="text-lg">Delivery Fee: </p>
-            <p className="text-lg">${2.5}</p>
-          </div>
-
-          <div className="flex flex-row justify-between mt-4 w-full">
-            <p className="text-lg font-bold">Total Fee: </p>
-            <p className="text-lg font-bold">${(2.5 + subTotal).toFixed(2)}</p>
-          </div>
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            type="button"
+            className="w-full p-2 rounded-xl bg-red-500 text-gray-50 text-lg my-2 hover:shadow-lg"
+          >
+            Check Out
+          </motion.button>
         </div>
       )}
     </motion.div>
