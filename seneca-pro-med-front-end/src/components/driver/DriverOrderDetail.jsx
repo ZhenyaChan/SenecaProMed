@@ -64,28 +64,6 @@ export default function DriverOrderDetail() {
                            type="button"
                            className=" inline-block 
                            px-6 py-2.5 
-                           bg-blue-600 
-                           text-white 
-                           font-medium text-xs 
-                           leading-tight 
-                           uppercase 
-                           rounded 
-                           shadow-md 
-                           hover:bg-blue-700 hover:shadow-lg 
-                           focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 
-                           active:bg-blue-800 active:shadow-lg 
-                           transition duration-150 ease-in-out"
-                           onClick={() => {
-                              navigate(`../driver/orders`);
-                           }}
-                        >
-                           Back
-                        </button>
-                        &nbsp;&nbsp;&nbsp;
-                        <button
-                           type="button"
-                           className=" inline-block 
-                           px-6 py-2.5 
                            bg-green-500 
                            text-white 
                            font-medium 
@@ -107,11 +85,33 @@ export default function DriverOrderDetail() {
                                  },
                                  body: JSON.stringify({ 'order_status': 'Order Delivered' })
                               }).then(() => {
-                                 navigate(`../driver/orders`);
+                                 navigate(`../`);
                            });
                            }}
                         >
                            FINISH
+                        </button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button
+                           type="button"
+                           className=" inline-block 
+                           px-6 py-2.5 
+                           bg-blue-600 
+                           text-white 
+                           font-medium text-xs 
+                           leading-tight 
+                           uppercase 
+                           rounded 
+                           shadow-md 
+                           hover:bg-blue-700 hover:shadow-lg 
+                           focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 
+                           active:bg-blue-800 active:shadow-lg 
+                           transition duration-150 ease-in-out"
+                           onClick={() => {
+                              navigate(`../`);
+                           }}
+                        >
+                           Home
                         </button>
                         &nbsp;&nbsp;&nbsp;
                         <button
@@ -140,7 +140,7 @@ export default function DriverOrderDetail() {
                                  },
                                  body: JSON.stringify({ 'order_status': 'Delivery in Progress' })
                               }).then(() => {
-                                 navigate(`../driver/orders`);
+                                 navigate(`../`);
                            });
                            }}
                         >

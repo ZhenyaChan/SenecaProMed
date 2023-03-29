@@ -72,8 +72,8 @@ router.get('/orders/client/:clientId', orderService.getOrdersByClientId)
 router.get('/orders/:pharmacyId', orderService.getOrdersByPharmacyId)
 router.get('/orders/:driverId', orderService.getOrdersByDriverId)
 router.get('/order/:id', orderService.getOrderById)
+router.get('/order/products/:id', orderService.getClientProducts)
 router.post('/order/create_order', orderService.createOrder)
 router.put('/order/:id', orderService.updateOrderById)
-
 
 module.exports = router;

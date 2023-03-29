@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function PharmacyOrders() {
+export default function PharmacyProductsDetail() {
+   const { id } = useParams();
+
    const [users, setUsers] = useState();
    const [loading, setLoading] = useState(true); // Because sometimes Heroku sleeps
 
@@ -11,13 +13,13 @@ export default function PharmacyOrders() {
       setLoading(true);
 
       // Fetch order list
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/drivers/all_drivers`)
+      fetch(`${process.env.REACT_APP_BACKEND}/admin/order/products/${id}`)
          .then((res) => res.json())
          .then((result) => {
             setUsers(result.data);
             setLoading(false);
          });
-   }, []);
+   }, [id]);
 
    if (loading) {
       return (
@@ -82,26 +84,21 @@ export default function PharmacyOrders() {
                                           ? "bg-white border-b transition duration-300 ease-in-out hover:bg-sky-200 cursor-pointer"
                                           : "bg-gray-100 border-b transition duration-300 ease-in-out hover:bg-sky-200 cursor-pointer"
                                     }
-                                    key={index}
-                                    onClick={() => {
-                                       // Change to order id
-                                       navigate(`../pharmacy/order_detail/${user._id}`);
-                                    }}
                                  >
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                        {index + 1}
                                     </td>
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                       {'Product Name'}
+                                       {user.title}
                                     </td>
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                       {'Quantity Ordered'}
+                                       {user.quantity}
                                     </td>
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                       {'Price / Bottle'}
+                                       ${user.price}
                                     </td>
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                       {'Total Price'}
+                                       ${(user.price * user.quantity).toFixed(2)}
                                     </td>
                                  </tr>
                               ))}
@@ -116,7 +113,7 @@ export default function PharmacyOrders() {
                   type="button"
                   className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                   onClick={() => {
-                     navigate(`../pharmacy/orders`);
+                     navigate(`../pharmacy/order_detail/${id}`);
                   }}
                >
                   Back

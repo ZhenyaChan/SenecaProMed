@@ -90,7 +90,7 @@ export default function PharmacyOrderDetail() {
                                  navigate(`../`);
                               }}
                            >
-                              Back
+                              Home
                            </button>
                            &nbsp;&nbsp;&nbsp;
                            <button
@@ -177,11 +177,12 @@ export default function PharmacyOrderDetail() {
                               active:bg-yellow-800 active:shadow-lg 
                               transition duration-150 ease-in-out"
                               onClick={() => {
-                                 fetch(`${process.env.REACT_APP_BACKEND}/pharma/${id}`, {
-                                    method: "DELETE"
-                                 }).then(() => {
-                                    navigate(`../pharmacy/orders`);
-                                 });
+                                 // fetch(`${process.env.REACT_APP_BACKEND}/pharma/${id}`, {
+                                 //    method: "DELETE"
+                                 // }).then(() => {
+                                 //    navigate(`../pharmacy/orders`);
+                                 // });
+                                 navigate(`../pharmacy/products_detail/${id}`)
                               }}
                            >
                               Products Detail

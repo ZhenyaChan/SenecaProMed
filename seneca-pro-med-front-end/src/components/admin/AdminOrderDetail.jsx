@@ -83,10 +83,10 @@ export default function AdminOrderDetail() {
                            active:bg-blue-800 active:shadow-lg 
                            transition duration-150 ease-in-out"
                            onClick={() => {
-                              navigate(`../admin/orders`);
+                              navigate(`../`);
                            }}
                         >
-                           Back
+                           Home
                         </button>
                         &nbsp;&nbsp;&nbsp;
 
@@ -111,7 +111,6 @@ export default function AdminOrderDetail() {
                         >
                            Products
                         </button>
-                        
                      </div>
                   </div>
                </div>

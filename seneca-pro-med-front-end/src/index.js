@@ -40,6 +40,7 @@ import DriverOrderDetail from "./components/driver/DriverOrderDetail";
 import DriverAvailableOrders from "./components/driver/DriverAvailableOrders";
 import DriverDeliveredOrders from "./components/driver/DriverDeliveredOrders";
 
+
 // Client Components
 import AddClient from "./components/client/AddClient";
 import ClientList from "./components/client/ClientList";
@@ -116,7 +117,7 @@ root.render(
               <Route path="/admin/drivers/all_drivers" element={<DriverList />} />
               <Route path="/admin/driver/:id" element={<ListDriver />} />
               <Route path="/admin/driver/update_driver/:id" element={<UpdateDriver />} />
-
+              
               {/* Orders */}
               <Route path="/admin/orders" element={<AdminOrder />} />
               <Route path="/admin/order_detail/:id" element={<OrderDetail />} />
@@ -127,10 +128,9 @@ root.render(
               <Route path="/driver/available_orders" element={<DriverAvailableOrders />} />
               <Route path="/driver/delivered_orders" element={<DriverDeliveredOrders />} />
 
-
               <Route path="/pharmacy/orders" element={<PharmacyOrders />} />
               <Route path="/pharmacy/order_detail/:id" element={<PharmacyOrderDetail />} />
-              <Route path="/pharmacy/products_detail" element={<PharmacyProductsDetail />} />
+              <Route path="/pharmacy/products_detail/:id" element={<PharmacyProductsDetail />} />
               <Route path="/pharmacy/orders/pending_orders" element={<PharmacyPendingOrders />} />
 
               <Route path="/client/orders/:clientId" element={<ClientOrders />} />
