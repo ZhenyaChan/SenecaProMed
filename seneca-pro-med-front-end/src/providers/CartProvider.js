@@ -90,6 +90,19 @@ const CartProvider = ({ children }) => {
     var order = {}
     var products = []
     var index = 0
+    let pharmIds = 
+    [
+      "63f10c3397afd41dfb506e99",
+      "63f10c4e97afd41dfb506e9c",
+      "63f10c5d97afd41dfb506e9f",
+      "63f10c6a97afd41dfb506ea2 ",
+      "63f1c75012b21d1cc0441f2f",
+      "640e19962efb4149accb64df",
+      "641cdd0f1517b29a60144cfb",
+      "64230a79c41fba186191b95b",
+      "642340776d0089d5461a1b54",
+      "64234b55f039aff79d164590",
+    ]
 
     function addProduct(product) {
       products[index++] = 
@@ -108,7 +121,7 @@ const CartProvider = ({ children }) => {
     // Adjust timezone
 
     order.datePlaced = date
-    order.pharmacyId = "63f10c3397afd41dfb506e99" // Make random pharmacyId
+    order.pharmacyId = pharmIds[Math.floor(Math.random() * pharmIds.length)]
     order.clientId = "63f0ec98ae8695d00d0efa86"   // Get from token
     order.products = products
     
@@ -124,7 +137,7 @@ const CartProvider = ({ children }) => {
       // Message to client "order placed"
       // navigate to where?
       // Probably should navigate from Cart.jsx where the button is clicked? 
-      
+
       //navigate(`../admin/pharmacies/all_pharmacies`);
    });
       
