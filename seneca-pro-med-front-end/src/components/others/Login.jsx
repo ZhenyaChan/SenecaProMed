@@ -6,7 +6,7 @@ import AuthContext from "../../contexts/AuthContext";
 const Login = () => {
   const navigate = useNavigate();
 
-  const { isLoggedIn, errorMsg, login } = useContext(AuthContext);
+  const { isLoggedIn, errorMsg, login, resetErrorMsg } = useContext(AuthContext);
   const [formData, setFormData] = useState({ role: "", username: "", password: "" });
 
   const handleChange = (evt) => {
@@ -27,6 +27,7 @@ const Login = () => {
     if (isLoggedIn) {
       navigate("/");
     }
+    resetErrorMsg();
   }, [isLoggedIn]);
 
   return (

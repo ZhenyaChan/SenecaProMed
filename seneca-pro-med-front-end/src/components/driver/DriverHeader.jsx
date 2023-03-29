@@ -9,7 +9,7 @@ const DriverHeader = () => {
   useRoleCheck(["driver"]);
 
   const [displayAccountBox, setDisplayAccountBox] = useState(false);
-  const { logOut } = useContext(AuthContext);
+  const { logOut, userData } = useContext(AuthContext);
 
   const [status, setStatus] = useState("Offline");
 
@@ -44,7 +44,9 @@ const DriverHeader = () => {
       <div className="flex justify-end gap-8 items-center relative">
         {/* My Account */}
         <div className="flex flex-row items-center gap-4 font-bold">
-          <p className="cursor-default">My Account</p>
+          <p className="cursor-default">
+            {userData.firstName} {userData.lastName}
+          </p>
           <BiMenu
             className="text-[30px] cursor-pointer text-black"
             onClick={() => setDisplayAccountBox(!displayAccountBox)}

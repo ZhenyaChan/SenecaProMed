@@ -9,7 +9,7 @@ const AdminHeader = () => {
   useRoleCheck(["admin"]);
 
   const [displayAccountBox, setDisplayAccountBox] = useState(false);
-  const { logOut } = useContext(AuthContext);
+  const { logOut, userData } = useContext(AuthContext);
   const [searchFilter, setSearchFilter] = useState("all");
 
   const handleSearchFilter = (evt) => {
@@ -52,7 +52,7 @@ const AdminHeader = () => {
       <div className="flex justify-end gap-8 items-center relative">
         {/* My Account */}
         <div className="flex flex-row items-center gap-4 font-bold">
-          <p className="cursor-default">My Account</p>
+          <p className="cursor-default">Hi, {userData.firstName}</p>
           <BiMenu
             className="text-[30px] cursor-pointer text-black"
             onClick={() => setDisplayAccountBox(!displayAccountBox)}

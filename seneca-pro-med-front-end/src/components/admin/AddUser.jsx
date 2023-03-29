@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/images/SenecaProMed-Logo.svg";
+import { useNavigate } from "react-router-dom";
 
-const SignUp = () => {
+const AddUser = () => {
   const [formDetails, setFormDetails] = useState({ role: "" });
   const [isSignedUp, setIsSignedUp] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -50,7 +49,6 @@ const SignUp = () => {
         if (!res.ok) {
           throw new Error("Failed to create a new account");
         }
-
         return res.json();
       })
       .then((data) => {
@@ -64,42 +62,36 @@ const SignUp = () => {
       });
   };
 
+  const handleNewUser = () => {
+    setFormDetails({ role: "" });
+    setIsSignedUp(false);
+    setIsError(false);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center w-full">
       <h1 className="text-3xl font-bold text-headingColor text-center">Create a New Account</h1>
 
       {/* Side panel */}
-      <div className="flex items-start justify-center gap-1 p-6 my-8 border rounded-lg shadow-lg bg-white w-3/4">
-        <div className="flex flex-col gap-8 items-center px-10 py-20 w-1/2">
-          <img src={logo} alt="Logo" width="1000px" className="w-full" />
-
-          <div className="flex flex-col justify-center items-center gap-4">
-            <h2 className="text-lg">Already have an Account?</h2>
-
-            <Link to={"/login"} className="btn btn-secondary px-3 py-2">
-              Login
-            </Link>
-          </div>
-        </div>
-
+      <div className="flex items-start justify-around p-6 my-8 border rounded-lg shadow-lg bg-white">
         {/* Login Form */}
         {isSignedUp ? (
-          <div className="over block p-6 rounded-lg bg-white max-w-md">
-            <h1 className="text-xl font-bold px-2 py-2 text-center m-6 text-green-500">Thank you for registering!</h1>
-            <h1 className="text-xl font-medium text-gray-900 px-2 py-2 text-center m-6">
-              You can now log in with your new account.
+          <div className="over block p-6 rounded-lg bg-white">
+            <h1 className="text-xl font-bold px-2 py-2 text-center m-6 text-green-500">
+              A new {formDetails.role} has been created
             </h1>
+            <h1 className="text-xl font-medium text-gray-900 px-2 py-2 text-center m-6">{formDetails.email}</h1>
             <div className="grid grid-cols-2 gap-4 px-8">
-              <button type="button" className="btn btn-secondary py-2" onClick={() => navigate("/")}>
+              <button type="button" className="btn btn-secondary py-2 px-2" onClick={() => navigate("/")}>
                 Home
               </button>
-              <button type="submit" className="btn btn-primary py-2" onClick={() => navigate("/login")}>
-                Login
+              <button type="submit" className="btn btn-primary py-2 px-2" onClick={handleNewUser}>
+                New User
               </button>
             </div>
           </div>
         ) : (
-          <div className="over block p-6 bg-white max-w-md">
+          <div className="over block p-6 bg-white">
             {isError && (
               <p className="text-xl font-bold text-red-500 px-2 py-2 text-center m-6 ">Failed to submit form</p>
             )}
@@ -254,15 +246,9 @@ const SignUp = () => {
                     </div>
                   )}
 
-                  <div className="grid grid-cols-2 gap-4 my-2 p-4">
-                    <button type="button" className="btn btn-secondary px-3 py-2" onClick={() => navigate("/")}>
-                      Back
-                    </button>
-
-                    <button type="submit" className="btn btn-primary px-3 py-2">
-                      Sign up
-                    </button>
-                  </div>
+                  <button type="submit" className="btn btn-primary my-2 p-2">
+                    Create
+                  </button>
                 </div>
               )}
             </form>
@@ -272,4 +258,4 @@ const SignUp = () => {
     </div>
   );
 };
-export default SignUp;
+export default AddUser;

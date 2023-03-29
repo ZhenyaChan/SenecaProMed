@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-//admin
+// Admin Components
 import AddAdmin from "./components/admin/AddAdmin";
 import AdminList from "./components/admin/AdminList";
 import ListAdmin from "./components/admin/ListAdmin";
@@ -10,6 +10,7 @@ import UpdateAdmin from "./components/admin/UpdateAdmin";
 import AdminOrder from "./components/admin/AdminOrders";
 import OrderDetail from "./components/admin/AdminOrderDetail";
 import AdminOrderProducts from "./components/admin/AdminOrderProducts";
+import AddUser from "./components/admin/AddUser";
 
 // Product Components
 import ProductDetails from "./components/product/ProductDetails";
@@ -40,7 +41,6 @@ import DriverOrderDetail from "./components/driver/DriverOrderDetail";
 import DriverAvailableOrders from "./components/driver/DriverAvailableOrders";
 import DriverDeliveredOrders from "./components/driver/DriverDeliveredOrders";
 
-
 // Client Components
 import AddClient from "./components/client/AddClient";
 import ClientList from "./components/client/ClientList";
@@ -50,7 +50,7 @@ import ClientOrders from "./components/client/ClientOrders";
 import ClientOrderDetail from "./components/client/ClientOrderDetail";
 import ClientOrderProducts from "./components/client/ClientOrderProducts";
 
-// Others
+// Other Components
 import App from "./App";
 import Header from "./components/others/Header";
 import Footer from "./components/others/Footer";
@@ -87,6 +87,7 @@ root.render(
 
               {/* Admin */}
               <Route path="/admin/signup" element={<AddAdmin />} />
+              <Route path="/admin/user/signup" element={<AddUser />} />
               <Route path="/admin/all/admins" element={<AdminList />} />
               <Route path="/admin/:id" element={<ListAdmin />} />
               <Route path="/admin/update_admin/:id" element={<UpdateAdmin />} />
@@ -109,7 +110,7 @@ root.render(
               {/* Pharmacy */}
               <Route path="/admin/pharmacy/signup" element={<AddPharmacy />} />
               <Route path="/admin/pharmacy/:id" element={<ListPharmacy />} />
-              <Route path="/admin/pharmacy/all_pharmacies" element={<PharmacyList />} />
+              <Route path="admin/pharmacies/all_pharmacies" element={<PharmacyList />} />
               <Route path="/admin/pharmacy/update_pharmacy/:id" element={<UpdatePharmacy />} />
               <Route path="/pharmacy/all_pharmacies" element={<PharmacyListLocation />} />
               <Route path="/pharmacy/location/:id" element={<PharmacyLocation />} />
@@ -119,7 +120,7 @@ root.render(
               <Route path="/admin/drivers/all_drivers" element={<DriverList />} />
               <Route path="/admin/driver/:id" element={<ListDriver />} />
               <Route path="/admin/driver/update_driver/:id" element={<UpdateDriver />} />
-              
+
               {/* Orders */}
               <Route path="/admin/orders" element={<AdminOrder />} />
               <Route path="/admin/order_detail/:id" element={<OrderDetail />} />
@@ -138,7 +139,7 @@ root.render(
               <Route path="/client/orders/:clientId" element={<ClientOrders />} />
               <Route path="/client/order_detail/:id" element={<ClientOrderDetail />} />
               <Route path="/client/order_products/:id" element={<ClientOrderProducts />} />
-              
+
               {/* Map for Pharmacy locations */}
               <Route path="/pharmacy/locations" element={<Map />} />
 

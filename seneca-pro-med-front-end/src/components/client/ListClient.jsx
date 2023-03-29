@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useRoleCheck from "../../useRoleCheck.js";
 
 export default function ListClient() {
-  useRoleCheck(["admin", "client"]);
+  useRoleCheck(["admin", "client", "pharmacy"]);
 
   const { id } = useParams();
 

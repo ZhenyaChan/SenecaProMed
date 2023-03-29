@@ -79,6 +79,10 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const resetErrorMsg = () => {
+    setErrorMsg("");
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -88,6 +92,7 @@ const AuthProvider = ({ children }) => {
         errorMsg,
         login,
         logOut,
+        resetErrorMsg,
       }}
     >
       {children}
