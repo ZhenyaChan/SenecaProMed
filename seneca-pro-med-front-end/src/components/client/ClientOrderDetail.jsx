@@ -12,13 +12,16 @@ export default function ClientOrderDetail() {
    useEffect(() => {
       setLoading(true);
 
-      fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`) // Search by order ID later
+      fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`)
          .then((res) => res.json())
          .then((result) => {
             setUser(result.data);
             setLoading(false);
          });
+      
    }, [id]); 
+
+   
 
    if (loading) {
       return (
@@ -39,59 +42,31 @@ export default function ClientOrderDetail() {
                         Order: {user._id} {/* Need to change */}
                      </h5>
                      <br />
-                     <ul className={"bg-white rounded-lg text-gray-900"}>
+                     <ul className="bg-white rounded-lg text-gray-900">
                         <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Client ID: {user.clientId}
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           Client ID: &nbsp;&nbsp;{user.clientId}
                         </li>
                         <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           Product(s): {user.products.length}
+                           &nbsp;&nbsp;
+                           Pharmacy ID: &nbsp;&nbsp;{user.pharmacyId}
                         </li>
                         <li className="px-6 py-2 border-b border-gray-200 w-full">
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              Total Price: ${user.products.reduce((totalPrice, product) => totalPrice += (product.quantity * product.price), 0).toFixed(2)}
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           Driver ID: &nbsp;&nbsp;{user.driverId}
                         </li>
                         <li className="px-6 py-2 border-b border-gray-200 w-full">
-                           &nbsp;&nbsp;&nbsp;
-                           Postal Code: {'Postal Code'}
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           Product(s): &nbsp;&nbsp;{user.products.length}
+                        </li>
+                        <li className="px-6 py-2 border-b border-gray-200 w-full">
+                           &nbsp;
+                           Total Amount: &nbsp;${user.products.reduce((totalPrice, product) => totalPrice += (product.quantity * product.price), 0).toFixed(2)}
                         </li>
                      </ul>
                      <br />
 
                      <div className="flex justify-center">
-                        <button
-                           type="button"
-                           className=" inline-block 
-                           px-6 py-2.5 
-                           bg-green-500 
-                           text-white 
-                           font-medium 
-                           text-xs 
-                           leading-tight 
-                           uppercase 
-                           rounded 
-                           shadow-md 
-                           hover:bg-green-700 hover:shadow-lg 
-                           focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 
-                           active:bg-green-800 active:shadow-lg 
-                           transition duration-150 ease-in-out"
-                           onClick={() => {
-                              fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
-                                 method: "PUT",
-         
-                                 headers: {
-                                    "content-type": "application/json"
-                                 },
-                                 body: JSON.stringify({ 'order_status': 'Order Delivered' })
-                              }).then(() => {
-                                 navigate(`../`);
-                           });
-                           }}
-                        >
-                           FINISH
-                        </button>
-                        &nbsp;&nbsp;&nbsp;
                         <button
                            type="button"
                            className=" inline-block 
@@ -114,37 +89,27 @@ export default function ClientOrderDetail() {
                            Home
                         </button>
                         &nbsp;&nbsp;&nbsp;
+
                         <button
                            type="button"
                            className=" inline-block 
-                           px-6 
-                           py-2.5 
-                           bg-red-600 
+                           px-6 py-2.5 
+                           bg-green-600 
                            text-white 
-                           font-medium 
-                           text-xs 
+                           font-medium text-xs 
                            leading-tight 
                            uppercase 
                            rounded 
                            shadow-md 
-                           hover:bg-red-700 hover:shadow-lg 
-                           focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 
-                           active:bg-red-800 active:shadow-lg 
+                           hover:bg-blue-700 hover:shadow-lg 
+                           focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 
+                           active:bg-blue-800 active:shadow-lg 
                            transition duration-150 ease-in-out"
                            onClick={() => {
-                              fetch(`${process.env.REACT_APP_BACKEND}/admin/order/${id}`, {
-                                 method: "PUT",
-         
-                                 headers: {
-                                    "content-type": "application/json"
-                                 },
-                                 body: JSON.stringify({ 'order_status': 'Delivery in Progress' })
-                              }).then(() => {
-                                 navigate(`../`);
-                           });
+                              navigate(`../client/order_products/${id}`);
                            }}
                         >
-                           ACCEPT
+                           Products
                         </button>
                      </div>
                   </div>
