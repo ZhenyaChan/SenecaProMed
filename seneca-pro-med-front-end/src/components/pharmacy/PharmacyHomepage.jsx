@@ -24,21 +24,13 @@ const PharmacyHomepage = () => {
           className="border rounded-lg border-1 border-slate-900 shadow flex flex-col items-center justify-center bg-slate-100 hover:bg-blue-100 p-8 w-1/3 gap-4 hover:cursor-pointer"
         >
           <BsFileBarGraph className="text-[60px]" />
-          <h1 className="text-2xl font-semibold ">Orders Status</h1>
-        </Link>
-
-        <Link
-          to={"#"}
-          className="border rounded-lg border-1 border-slate-900 shadow flex flex-col items-center justify-center bg-slate-100 hover:bg-blue-100 p-8 w-1/3 gap-4 hover:cursor-pointer"
-        >
-          <BsChatLeftText className="text-[60px]" />
-          <h1 className="text-2xl font-semibold">Messages</h1>
+          <h1 className="text-2xl font-semibold ">Orders</h1>
         </Link>
       </div>
 
       <div className="flex flex-row items-center justify-center gap-6 w-full">
         <Link
-          to={"#"}
+          to={"/admin/clients/all_clients"}
           className="border rounded-lg border-1 border-slate-900 shadow flex flex-col items-center justify-center bg-slate-100 hover:bg-blue-100 p-8 w-1/3 gap-4 hover:cursor-pointer"
         >
           <BsPeople className="text-[60px]" />
@@ -46,7 +38,7 @@ const PharmacyHomepage = () => {
         </Link>
 
         <Link
-          to={"#"}
+          to={"/pharmacy/products/all_products"}
           className="border rounded-lg border-1 border-slate-900 shadow flex flex-col items-center justify-center bg-slate-100 hover:bg-blue-100 p-8 w-1/3 gap-4 hover:cursor-pointer"
         >
           <BsBoxSeam className="text-[60px]" />

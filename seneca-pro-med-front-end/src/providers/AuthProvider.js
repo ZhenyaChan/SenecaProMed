@@ -24,6 +24,8 @@ const AuthProvider = ({ children }) => {
       // set current user logged in status to true
       setIsLoggedIn(true);
     }
+
+    setErrorMsg("");
   }, [token]);
 
   const login = async (formData) => {

@@ -51,11 +51,6 @@ const ClientHeader = () => {
         </button>
       </div>
 
-      {/* Notifications */}
-      <motion.div whileTap={{ scale: 0.8 }} whileHover={{ scale: 1.2 }} className="link text-lg cursor-pointer">
-        <MdNotificationsNone className="text-2xl" />
-      </motion.div>
-
       {/* Cart */}
       <motion.div
         whileTap={{ scale: 0.8 }}
