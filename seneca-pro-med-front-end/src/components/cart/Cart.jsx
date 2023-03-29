@@ -6,7 +6,7 @@ import EmptyCart from "../../assets/images/EmptyCart.jpeg";
 import CartItem from "./CatItem";
 
 const Cart = () => {
-  const { cartItems, totalItemsCount, subTotal, displayCart, removeAllItems } =
+  const { cartItems, totalItemsCount, subTotal, displayCart, removeAllItems, placeOrder } =
     useContext(CartContext);
 
   return (
@@ -89,6 +89,7 @@ const Cart = () => {
             whileTap={{ scale: 0.95 }}
             type="button"
             className="w-full p-2 rounded-xl bg-red-500 text-gray-50 text-lg my-2 hover:shadow-lg"
+            onClick={placeOrder}
           >
             Check Out
           </motion.button>

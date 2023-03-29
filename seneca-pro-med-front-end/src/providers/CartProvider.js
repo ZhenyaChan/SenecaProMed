@@ -85,6 +85,51 @@ const CartProvider = ({ children }) => {
     setSubTotal(0);
   };
 
+  const placeOrder = () => {
+
+    var order = {}
+    var products = []
+    var index = 0
+
+    function addProduct(product) {
+      products[index++] = 
+      { 
+        title : product.title, 
+        description : product.description,
+        price : product.price,
+        quantity : product.quantity,
+        photo : product.photo
+      }
+    }
+
+    cartItems.forEach(addProduct)
+
+    let date = new Date().toISOString()
+    // Adjust timezone
+
+    order.datePlaced = date
+    order.pharmacyId = "63f10c3397afd41dfb506e99" // Make random pharmacyId
+    order.clientId = "63f0ec98ae8695d00d0efa86"   // Get from token
+    order.products = products
+    
+    console.log("order: ", order)
+    
+    fetch(`${process.env.REACT_APP_BACKEND}/client/create_order`, {
+      method: "POST",
+      body: JSON.stringify(order),
+      headers: {
+         "content-type": "application/json"
+      }
+   }).then(() => {
+      // Message to client "order placed"
+      // navigate to where?
+      // Probably should navigate from Cart.jsx where the button is clicked? 
+      
+      //navigate(`../admin/pharmacies/all_pharmacies`);
+   });
+      
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -98,6 +143,7 @@ const CartProvider = ({ children }) => {
         removeAllItems,
         decrementItemQty,
         incrementItemQty,
+        placeOrder,
       }}
     >
       {children}
