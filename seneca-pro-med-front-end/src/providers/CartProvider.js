@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import AuthContext from "../contexts/AuthContext";
 import CartContext from "../contexts/CartContext";
 
 const LOCAL_STORAGE_KEY = "senecaProMedCart";
@@ -121,9 +122,10 @@ const CartProvider = ({ children }) => {
 
     // Adjust timezone
     // Moves the hour 4 hours back to match our time
-    // As long as this does not change the date to the previous day (order cannot be placed between midnight and 4 am)
-    // Im ok with leaving it this way...anyone else?
+    // As long as the hour does not become "negative"
+    // If it becomes negative it is set to '00'
     let hour = parseInt(date.slice(11, 13)) - 4
+    if (hour < 0) hour = 0
     let formattedHour = ("0" + hour).slice(-2);
     date = date.slice(0, 11) + formattedHour + date.slice(13, 16)
 
@@ -134,6 +136,10 @@ const CartProvider = ({ children }) => {
     order.products = products
     
     console.log("order: ", order)
+
+    /*const { userData } = useContext(AuthContext)
+    const clientId = userData.id
+    console.log("id: ", clientId)*/
     
     fetch(`${process.env.REACT_APP_BACKEND}/client/create_order`, {
       method: "POST",
