@@ -91,7 +91,7 @@ export default function DriverAvailableOrders() {
                                     key={index}
                                     onClick={() => {
                                        // Change to order id
-                                       navigate(`../pharmacy/order_detail/${user._id}`);
+                                       navigate(`../driver/order_detail/${user._id}`);
                                     }}
                                  >
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
