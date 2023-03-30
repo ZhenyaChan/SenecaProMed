@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { BiMenu } from "react-icons/bi";
-import { MdLogout, MdNotificationsNone, MdOutlineLocationOn, MdShoppingCart,MdAccountCircle  } from "react-icons/md";
+import { MdLogout, MdOutlineLocationOn, MdShoppingCart,MdAccountCircle,MdOutlineHistory   } from "react-icons/md";
 import { Link } from "react-router-dom";
 import AuthContext from "../../contexts/AuthContext";
 import useRoleCheck from "../../useRoleCheck.js";
@@ -21,8 +21,12 @@ const ClientHeader = () => {
     // TODO
   };
   const Account = () =>{
-    console.log(userData.id)
+  
     navigate(`../client/${userData.id}`);
+  }
+
+  const orderHistory = () =>{
+    navigate(`../client/orders/${userData.id}`);
   }
   return (
     <header className="flex justify-between items-center p-3 px-16 border-b-0.5 border-b-gray-300 bg-slate-100 gap-8">
@@ -88,23 +92,35 @@ const ClientHeader = () => {
               setDisplayAccountBox(false);
             }}
           >
+              <div
+                className="px-4 py-2 flex items-center gap-4 cursor-pointer hover:bg-slate-100 text-base"
+                onClick={() => {
+                  Account()
+                }}
+              >
+                <MdAccountCircle   className="text-xl" />
+                <p>Account</p>
+              </div>
+
+
             <div
-              className="px-4 py-2 flex items-center gap-4 cursor-pointer hover:bg-slate-100 text-base"
-              onClick={() => {
-                Account()
-              }}
-            >
-              <MdAccountCircle className="text-xl" />
-              <p>Account</p>
+                    className="px-4 py-2 flex items-center gap-4 cursor-pointer hover:bg-slate-100 text-base"
+                    onClick={() => {
+                      orderHistory()
+                    }}
+                  >
+                <MdOutlineHistory className="text-xl" />
+                <p>Orders</p>
             </div>
-            
+
+
             <div
-            className="px-4 py-2 flex items-center gap-4 cursor-pointer hover:bg-slate-100 text-base"
-            onClick={() => logOut()}
-          >
-            <MdLogout className="text-xl" />
-            <p>Sign Out</p>
-          </div>
+                className="px-4 py-2 flex items-center gap-4 cursor-pointer hover:bg-slate-100 text-base"
+                onClick={() => logOut()}
+              >
+                <MdLogout className="text-xl" />
+                <p>Sign Out</p>
+            </div>
           </div>
         )}
       </div>
