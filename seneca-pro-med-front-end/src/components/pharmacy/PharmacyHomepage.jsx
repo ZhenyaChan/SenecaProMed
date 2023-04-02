@@ -31,7 +31,7 @@ const PharmacyHomepage = () => {
 
         <div className="flex flex-row items-center justify-center gap-6 w-full">
           <Link
-            to={"/admin/clients/all_clients"}
+            to={"/pharmacy/clients/all_clients"}
             className="border rounded-lg border-1 border-slate-900 shadow flex flex-col items-center justify-center bg-slate-100 hover:bg-blue-100 p-8 w-1/3 gap-4 hover:cursor-pointer"
           >
             <BsPeople className="text-[60px]" />

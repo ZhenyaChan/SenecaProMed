@@ -30,6 +30,7 @@ import PharmacyOrders from "./components/pharmacy/PharmacyOrders";
 import PharmacyOrderDetail from "./components/pharmacy/PharmacyOrderDetail";
 import PharmacyProductsDetail from "./components/pharmacy/PharmacyProductsDetail";
 import PharmacyPendingOrders from "./components/pharmacy/PharmacyPendingOrders";
+import PharmacyClientList from "./components/pharmacy/PharmacyClientList";
 
 // Driver Components
 import AddDriver from "./components/driver/AddDriver";
@@ -66,6 +67,7 @@ import AuthProvider from "./providers/AuthProvider";
 import Map from "./components/map/Map";
 
 import "./index.css";
+import PharmacyListClient from "./components/pharmacy/PharmacyListClient";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -99,6 +101,8 @@ root.render(
               <Route path="/admin/client/update_client/:id" element={<UpdateClient />} />
               <Route path="/client/:id" element={<ListClient />} />
               <Route path="/client/update_client/:id" element={<UpdateClient />} />
+              <Route path="/pharmacy/clients/all_clients" element={<PharmacyClientList/>} />
+              <Route path="/pharmacy/client/:id" element={<PharmacyListClient />} />
 
               {/* Product */}
               <Route path="/products/product/:id" element={<ProductDetails />} />
