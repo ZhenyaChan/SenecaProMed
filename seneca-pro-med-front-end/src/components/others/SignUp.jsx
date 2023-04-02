@@ -256,7 +256,7 @@ const SignUp = () => {
 
                   <div className="grid grid-cols-2 gap-4 my-2 p-4">
                     <button type="button" className="btn btn-secondary px-3 py-2" onClick={() => navigate("/")}>
-                      Back
+                      Return
                     </button>
 
                     <button type="submit" className="btn btn-primary px-3 py-2">

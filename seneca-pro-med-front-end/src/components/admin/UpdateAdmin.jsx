@@ -284,7 +284,7 @@ export default function UpdateAdmin() {
                                  navigate(`../admin/${user._id}`);
                               }}
                            >
-                              Back
+                              Return
                            </button>
                            <button
                               type="submit"

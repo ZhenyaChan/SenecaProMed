@@ -330,7 +330,7 @@ export default function AddAdmin() {
                             navigate(`../admin/all/admins`);
                         }}
                      >
-                        Back
+                        Return
                      </button>
                      
                      <button

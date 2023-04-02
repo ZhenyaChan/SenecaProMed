@@ -367,7 +367,7 @@ export default function AddDriver() {
                             navigate(`../admin/drivers/all_drivers`);
                         }}
                      >
-                        Back
+                        Return
                      </button>
                      
                      <button

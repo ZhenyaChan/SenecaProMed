@@ -102,7 +102,7 @@ export default function ListDriver() {
                               navigate(`../admin/drivers/all_drivers`);
                            }}
                         >
-                           Back
+                           Return
                         </button>
                         &nbsp;&nbsp;&nbsp;
                         <button

@@ -460,7 +460,7 @@ export default function AddPharmacy() {
                            navigate(`../admin/pharmacies/all_pharmacies`);
                         }}
                      >
-                        Back
+                        Return
                      </button>
                      <button
                         type="submit"

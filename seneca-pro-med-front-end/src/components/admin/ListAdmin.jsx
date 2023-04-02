@@ -96,7 +96,7 @@ export default function ListAdmin() {
                               navigate(`../admin/all/admins`);
                            }}
                         >
-                           Back
+                           Return
                         </button>
 
                         &nbsp;&nbsp;&nbsp;

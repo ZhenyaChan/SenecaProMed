@@ -313,7 +313,7 @@ export default function AddClient() {
                   navigate(`../admin/clients/all_clients`);
                 }}
               >
-                Back
+                Return
               </button>
 
               <button

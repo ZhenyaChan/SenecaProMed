@@ -98,7 +98,7 @@ export default function ListPharmacy() {
                               navigate(`../admin/pharmacies/all_pharmacies`);
                            }}
                         >
-                           Back
+                           Return
                         </button>
                         &nbsp;&nbsp;&nbsp;
                         <button

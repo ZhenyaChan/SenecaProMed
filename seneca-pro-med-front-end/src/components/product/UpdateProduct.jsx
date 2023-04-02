@@ -157,7 +157,7 @@ export default function UpdateProduct() {
                     navigate(`/pharmacy/products/product/${product._id}`);
                   }}
                 >
-                  Back
+                  Return
                 </button>
                 <button
                   type="submit"

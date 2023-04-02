@@ -116,7 +116,7 @@ export default function ClientOrderProducts() {
                      navigate(`../client/order_detail/${id}`);
                   }}
                >
-                  Back
+                  Return
                </button>
             </div>
             <br />

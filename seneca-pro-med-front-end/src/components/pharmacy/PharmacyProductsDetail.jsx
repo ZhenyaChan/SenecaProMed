@@ -116,7 +116,7 @@ export default function PharmacyProductsDetail() {
                      navigate(`../pharmacy/order_detail/${id}`);
                   }}
                >
-                  Back
+                  Return
                </button>
             </div>
             <br />

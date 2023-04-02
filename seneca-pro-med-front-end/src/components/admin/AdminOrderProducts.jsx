@@ -116,7 +116,7 @@ export default function AdminOrderProducts() {
                      navigate(`../admin/order_detail/${id}`);
                   }}
                >
-                  Back
+                  Return
                </button>
             </div>
             <br />

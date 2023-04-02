@@ -69,7 +69,7 @@ export default function ListProduct() {
                   navigate(`/pharmacy/products/all_products`);
                 }}
               >
-                Back
+                Return
               </button>
               &nbsp;&nbsp;&nbsp;
               <button

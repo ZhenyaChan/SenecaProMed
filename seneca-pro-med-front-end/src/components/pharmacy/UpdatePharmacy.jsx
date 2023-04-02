@@ -401,7 +401,7 @@ export default function UpdatePharmacy() {
                                  navigate(`../admin/pharmacy/${user._id}`);
                               }}
                            >
-                              Back
+                              Return
                            </button>
                            <button
                               type="submit"
