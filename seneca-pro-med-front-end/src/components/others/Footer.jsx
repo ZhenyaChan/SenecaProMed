@@ -15,9 +15,6 @@ const Footer = () => {
             <Link className="link" to={"/signUp"}>
               Register
             </Link>
-            <Link className="link" to={"#"}>
-              Order Status
-            </Link>
           </div>
         </div>
 
@@ -28,11 +25,11 @@ const Footer = () => {
             <Link className="link" to={"/about"}>
               Our Story
             </Link>
+            <Link className="link" to={"/pharmacy/all_pharmacies"}>
+              Our Pharmacies
+            </Link>
             <Link className="link" to={"/pharmacy/locations"}>
               Our Locations
-            </Link>
-            <Link className="link" to={"#"}>
-              Careers
             </Link>
           </div>
         </div>
@@ -45,10 +42,7 @@ const Footer = () => {
               Contact Us
             </Link>
             <Link className="link" to={"#"}>
-              Order Status
-            </Link>
-            <Link className="link" to={"#"}>
-              Returns
+              Return Policy
             </Link>
           </div>
         </div>
@@ -61,13 +55,13 @@ const Footer = () => {
           </p>
 
           <div className="flex flex-row gap-5 underline">
-            <Link className="link" to={"#"}>
+            <Link className="link" to={"https://www.instagram.com"}>
               Instagram
             </Link>
-            <Link className="link" to={"#"}>
+            <Link className="link" to={"https://www.facebook.com"}>
               Facebook
             </Link>
-            <Link className="link" to={"#"}>
+            <Link className="link" to={"https://twitter.com"}>
               Twitter
             </Link>
           </div>
